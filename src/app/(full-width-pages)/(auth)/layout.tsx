@@ -22,22 +22,22 @@ export default function AuthLayout({
               <GridShape />
               <div className="flex flex-col items-center max-w-xs">
                 <Link href="/" className="block mb-4">
-                  <Image
+                  {/* <Image
                     width={231}
                     height={48}
                     src="./images/logo/auth-logo.svg"
                     alt="Logo"
-                  />
+                  /> */}
                 </Link>
                 <p className="text-center text-gray-400 dark:text-white/60">
-                  Free and Open-Source Tailwind CSS Admin Dashboard Template
+                  Appellon
                 </p>
               </div>
             </div>
           </div>
-          <div className="fixed bottom-6 right-6 z-50 hidden sm:block">
+          {/* <div className="fixed bottom-6 right-6 z-50 hidden sm:block">
             <ThemeTogglerTwo />
-          </div>
+          </div> */}
         </div>
       </ThemeProvider>
     </div>
