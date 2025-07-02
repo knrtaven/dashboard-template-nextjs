@@ -1,3 +1,7 @@
+
+
+import InteractiveVideoPlayer from "@/components/InteractiveVideoPlayer/interActiveVideoPlayer";
+import LearningCards from "@/components/learning/LearningCards";
 import LearningHeadline from "@/components/learning/LearningHeadline";
 import type { Metadata } from "next";
 
@@ -13,10 +17,14 @@ export const metadata: Metadata = {
 export default function Learning() {
   return (
     <div className="flex flex-col gap-4">
+
+<InteractiveVideoPlayer
+  
+/>
       <LearningHeadline/>
     
       
-
+      <LearningCards/>
       <div className="rounded-lg flex justify-evenly gap-5 h-50 bg-[#7f56d9]">
         <div>
         <span>Your learning Path</span>

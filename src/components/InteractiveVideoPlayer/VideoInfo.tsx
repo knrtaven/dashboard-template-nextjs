@@ -23,9 +23,11 @@ export const VideoInfo: React.FC<VideoInfoProps> = ({
   return (
     <div className="flex items-center justify-between text-white text-sm">
       <div className="flex items-center space-x-4">
-        <span>{formatTime(currentTime)} / {formatTime(duration)}</span>
+        <span className="font-mono">
+          {formatTime(currentTime)} / {formatTime(duration || 0)}
+        </span>
         <span className="hidden sm:block">
-          Chapter: {chapters[currentChapter]?.title}
+          {chapters[currentChapter]?.title || 'Loading...'}
         </span>
       </div>
       <div className="text-right">
