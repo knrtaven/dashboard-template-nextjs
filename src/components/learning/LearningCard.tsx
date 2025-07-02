@@ -16,18 +16,18 @@ export const  LearningCard: React.FC<LearningCardData> = ({
   totalLessons,
   completedLessons
 }) => {
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case 'Beginner':
-        return 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400';
-      case 'Intermediate':
-        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400';
-      case 'Advanced':
-        return 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400';
-      default:
-        return 'bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400';
-    }
-  };
+//   const getLevelColor = (level: string) => {
+//     switch (level) {
+//       case 'Beginner':
+//         return 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400';
+//       case 'Intermediate':
+//         return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400';
+//       case 'Advanced':
+//         return 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400';
+//       default:
+//         return 'bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400';
+//     }
+//   };
 
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 group hover:scale-[1.02]">
