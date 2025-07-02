@@ -251,7 +251,6 @@ export function useNotifications() {
           body: options?.body || '',
           icon: options?.icon || '/icons/icon-192x192.png',
           badge: options?.badge || '/icons/icon-72x72.png',
-          vibrate: [100, 50, 100],
           ...options
         });
       });
