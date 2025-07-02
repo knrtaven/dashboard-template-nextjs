@@ -4,8 +4,7 @@ export interface LearningCardData {
     description: string;
     progress: number; // Progress percentage (0-100)
     duration: string;
-    instructor: string;
-    level: 'Beginner' | 'Intermediate' | 'Advanced';
+
     bannerColor: string; // Solid background color for banner
     category: string;
     tags?: string[];
@@ -18,15 +17,14 @@ export interface LearningCardData {
   export const LEARNING_CARDS_DATA: LearningCardData[] = [
     {
       id: 1,
-      title: "Introduction to React Development",
-      description: "Learn the fundamentals of React including components, state management, and modern hooks.",
+      title: "IPSUM LOREPSUM",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       progress: 75,
       duration: "4 hours",
-      instructor: "Sarah Johnson",
-      level: "Beginner",
+
       bannerColor: "bg-gradient-to-r from-blue-500 to-blue-600",
-      category: "Web Development",
-      tags: ["React", "JavaScript", "Frontend"],
+      category: "Work-Rite",
+      tags: ["A", "B", "C"],
       enrolledDate: "2024-01-15",
       lastAccessed: "2024-01-20",
       totalLessons: 12,
@@ -34,15 +32,14 @@ export interface LearningCardData {
     },
     {
       id: 2,
-      title: "Advanced TypeScript Patterns",
-      description: "Master advanced TypeScript concepts including generics, utility types, and design patterns.",
+      title: "IPSUM LOREPSUM",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       progress: 45,
       duration: "6 hours",
-      instructor: "Michael Chen",
-      level: "Advanced",
+
       bannerColor: "bg-gradient-to-r from-purple-500 to-purple-600",
-      category: "Programming",
-      tags: ["TypeScript", "Advanced", "Patterns"],
+      category: "Work-Rite",
+      tags: ["A", "B", "C"],
       enrolledDate: "2024-01-10",
       lastAccessed: "2024-01-18",
       totalLessons: 20,
@@ -50,15 +47,14 @@ export interface LearningCardData {
     },
     {
       id: 3,
-      title: "UI/UX Design Principles",
-      description: "Explore modern design principles, user research, and prototyping techniques.",
+      title: "IPSUM LOREPSUM",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       progress: 90,
       duration: "5 hours",
-      instructor: "Emma Rodriguez",
-      level: "Intermediate",
+
       bannerColor: "bg-gradient-to-r from-green-500 to-green-600",
-      category: "Design",
-      tags: ["UI", "UX", "Design", "Figma"],
+      category: "Work-Rite",
+      tags: ["A", "B", "C"],
       enrolledDate: "2024-01-05",
       lastAccessed: "2024-01-19",
       totalLessons: 15,
@@ -66,15 +62,15 @@ export interface LearningCardData {
     },
     {
       id: 4,
-      title: "Node.js Backend Development",
-      description: "Build scalable backend applications with Node.js, Express, and database integration.",
+      title: "IPSUM LOREPSUM",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       progress: 20,
       duration: "8 hours",
-      instructor: "James Wilson",
+
       level: "Intermediate",
       bannerColor: "bg-gradient-to-r from-orange-500 to-orange-600",
       category: "Backend",
-      tags: ["Node.js", "Express", "Database"],
+      tags: ["A", "B", "C"],
       enrolledDate: "2024-01-12",
       lastAccessed: "2024-01-16",
       totalLessons: 25,
@@ -82,15 +78,14 @@ export interface LearningCardData {
     },
     {
       id: 5,
-      title: "Python Data Science Fundamentals",
-      description: "Learn data analysis, visualization, and machine learning basics with Python.",
+      title: "IPSUM LOREPSUM",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       progress: 60,
       duration: "7 hours",
-      instructor: "Dr. Lisa Park",
-      level: "Beginner",
+
       bannerColor: "bg-gradient-to-r from-teal-500 to-teal-600",
-      category: "Data Science",
-      tags: ["Python", "Data Analysis", "ML"],
+      category: "Lead-Rite",
+      tags: ["A", "B", "C"],
       enrolledDate: "2024-01-08",
       lastAccessed: "2024-01-17",
       totalLessons: 18,
@@ -98,15 +93,14 @@ export interface LearningCardData {
     },
     {
       id: 6,
-      title: "Mobile App Development with React Native",
-      description: "Create cross-platform mobile applications using React Native and modern development practices.",
+      title: "IPSUM LOREPSUM",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       progress: 35,
       duration: "10 hours",
-      instructor: "Alex Thompson",
-      level: "Intermediate",
+
       bannerColor: "bg-gradient-to-r from-indigo-500 to-indigo-600",
-      category: "Mobile Development",
-      tags: ["React Native", "Mobile", "Cross-platform"],
+      category: "Lead-Rite",
+      tags: ["A", "B", "C"],
       enrolledDate: "2024-01-14",
       lastAccessed: "2024-01-21",
       totalLessons: 30,
@@ -174,14 +168,5 @@ export interface LearningCardData {
   
   // Course categories
   export const COURSE_CATEGORIES = [
-    "Web Development",
-    "Programming",
-    "Design",
-    "Backend",
-    "Data Science",
-    "Mobile Development",
-    "DevOps",
-    "Machine Learning",
-    "Cybersecurity",
-    "Project Management"
+    "Work-Rite", "Lead-Rite"
   ];

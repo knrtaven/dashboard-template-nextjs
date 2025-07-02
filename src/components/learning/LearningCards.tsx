@@ -26,13 +26,13 @@ const LearningCards: React.FC = () => {
       <div className="sm:hidden bg-white dark:bg-gray-900 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
         <div className="grid grid-cols-3 gap-4 text-center">
           <div>
-            <div className="text-xl font-bold text-blue-600 dark:text-blue-400">
+            <div className="text-xl font-bold text-green-500 dark:text-blue-400">
               {completedCourses.length}
             </div>
             <div className="text-xs text-gray-500 dark:text-gray-400">Completed</div>
           </div>
           <div>
-            <div className="text-xl font-bold text-green-600 dark:text-green-400">
+            <div className="text-xl font-bold text-gray-600 dark:text-green-400">
               {inProgressCourses.length}
             </div>
             <div className="text-xs text-gray-500 dark:text-gray-400">In Progress</div>

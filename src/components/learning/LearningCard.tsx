@@ -41,12 +41,6 @@ export const  LearningCard: React.FC<LearningCardData> = ({
           <div className="text-sm font-medium opacity-90">{category}</div>
         </div>
         
-        {/* Level Badge */}
-        <div className="absolute top-3 right-3">
-          <span className={`px-2 py-1 rounded-full text-xs font-medium ${getLevelColor(level)}`}>
-            {level}
-          </span>
-        </div>
       </div>
 
       {/* Content Section */}
@@ -68,10 +62,10 @@ export const  LearningCard: React.FC<LearningCardData> = ({
               <Clock className="w-4 h-4" />
               <span>{duration}</span>
             </div>
-            <div className="flex items-center space-x-1">
+            {/* <div className="flex items-center space-x-1">
               <Users className="w-4 h-4" />
               <span>{instructor}</span>
-            </div>
+            </div> */}
           </div>
           
           {progress === 100 && (
