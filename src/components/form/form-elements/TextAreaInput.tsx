@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import ComponentCard from "../../common/ComponentCard";
+import ComponentCard from "../../references/common/ComponentCard";
 import TextArea from "../input/TextArea";
 import Label from "../Label";
 
