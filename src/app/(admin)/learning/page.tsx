@@ -1,3 +1,4 @@
+import LearningHeadline from "@/components/learning/LearningHeadline";
 import type { Metadata } from "next";
 
 import React from "react";
@@ -12,19 +13,9 @@ export const metadata: Metadata = {
 export default function Learning() {
   return (
     <div className="flex flex-col gap-4">
+      <LearningHeadline/>
     
-      <div className="rounded-lg flex justify-evenly gap-5 h-50 bg-[#7f56d9]">
-        <div>
-        <span>Your learning Path</span>
-
-        <p>Please complete your lessons each month.</p>
-        </div>
-        
-        <div className="bg-[#0205d3] h-10 boredr">
-          items here
-        </div>
-
-      </div>
+      
 
       <div className="rounded-lg flex justify-evenly gap-5 h-50 bg-[#7f56d9]">
         <div>
