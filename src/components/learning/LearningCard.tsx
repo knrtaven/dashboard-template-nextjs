@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Clock, Users, Award } from 'lucide-react';
+import { BookOpen, Clock, Award } from 'lucide-react';
 import { 
   LearningCardData,
 } from '../../constants/index';
@@ -9,8 +9,8 @@ export const  LearningCard: React.FC<LearningCardData> = ({
   description,
   progress,
   duration,
-  instructor,
-  level,
+  // instructor,
+  // level,
   bannerColor,
   category,
   totalLessons,

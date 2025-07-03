@@ -17,7 +17,7 @@ import {
   VideoPlayerState,
   MultipleChoiceQuestion,
   EssayQuestion,
-  RatingQuestion
+  // RatingQuestion
 } from './types';
 
 interface InteractiveVideoPlayerProps {
