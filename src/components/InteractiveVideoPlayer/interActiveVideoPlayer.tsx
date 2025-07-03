@@ -20,11 +20,21 @@ import {
   // RatingQuestion
 } from './types';
 
+interface ProgressData {
+  currentTime: number;
+  duration: number;
+  progress: number;
+  currentChapter: number;
+  score: number;
+  totalQuestions: number;
+  completedQuestions: number;
+}
+
 interface InteractiveVideoPlayerProps {
   videoUrl?: string;
   chapters?: Chapter[];
   questions?: Question[];
-  onProgressUpdate?: (progress: any) => void;
+  onProgressUpdate?: (progress: ProgressData) => void;
   onQuestionAnswered?: (questionId: number, answer: UserAnswer) => void;
   className?: string;
 }

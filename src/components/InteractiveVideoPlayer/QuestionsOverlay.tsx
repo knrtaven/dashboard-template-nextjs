@@ -21,7 +21,7 @@ export const QuestionOverlay: React.FC<QuestionOverlayProps> = ({
   essayAnswer,
   wordCount,
   hasAnswered,
-  userAnswers,
+  // userAnswers,
   onAnswerSelect,
   onEssayChange,
   onSubmitAnswer,
