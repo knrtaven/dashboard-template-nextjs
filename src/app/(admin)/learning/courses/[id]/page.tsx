@@ -6,11 +6,12 @@ import PageBreadcrumb from "@/components/references/common/PageBreadCrumb";
 import { notFound } from "next/navigation";
 import { BookOpen, Clock, Play, CheckCircle, ArrowLeft, Lock, Users } from 'lucide-react';
 import Link from "next/link";
+import React from "react";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 // Generate metadata dynamically based on the course
@@ -32,7 +33,11 @@ interface PageProps {
 //   }
   
 export default function CoursePage({ params }: PageProps) {
-  const courseId = parseInt(params.id);
+    // Unwrap params using React.use()
+    const { id } = React.use(params);
+    const courseId = parseInt(id);
+  
+ 
   const course = getLearningCardById(courseId);
   const courseContent = getCourseContent(courseId);
 
@@ -204,7 +209,7 @@ export default function CoursePage({ params }: PageProps) {
                         
                         <div className="flex items-center space-x-1">
                           <Users className="w-4 h-4" />
-                          <span>{module.totalLessons || 'Multiple'} lessons</span>
+                          <span>{module.totalLessons || 'Multiple'} topics</span>
                         </div>
                         
                   
