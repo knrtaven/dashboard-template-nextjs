@@ -67,7 +67,6 @@ export interface LearningCardData {
       progress: 20,
       duration: "8 hours",
 
-      level: "Intermediate",
       bannerColor: "bg-gradient-to-r from-orange-500 to-orange-600",
       category: "Backend",
       tags: ["A", "B", "C"],
@@ -117,10 +116,6 @@ export interface LearningCardData {
     return LEARNING_CARDS_DATA.filter(card => 
       card.category.toLowerCase() === category.toLowerCase()
     );
-  };
-  
-  export const getLearningCardsByLevel = (level: 'Beginner' | 'Intermediate' | 'Advanced'): LearningCardData[] => {
-    return LEARNING_CARDS_DATA.filter(card => card.level === level);
   };
   
   export const getCompletedCourses = (): LearningCardData[] => {
