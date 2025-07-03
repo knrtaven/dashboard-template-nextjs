@@ -315,7 +315,7 @@ export default function InteractiveVideoPlayer({
       ...prev,
       userAnswers: newAnswers, 
       hasAnswered: true,
-      score: isValid && state.currentQuestion.type === 'multiple-choice' ? prev.score + 1 : prev.score,
+      score: isValid && state?.currentQuestion?.type === 'multiple-choice' ? prev.score + 1 : prev.score,
       totalQuestions: prev.totalQuestions + 1
     }));
     
