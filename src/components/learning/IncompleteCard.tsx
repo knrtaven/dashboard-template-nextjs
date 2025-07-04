@@ -1,61 +1,60 @@
 "use client";
 import { Clock } from 'lucide-react';
 import Link from 'next/link';
-import React from 'react'
+import React from 'react';
+import { ModuleData } from '@/constants/lessons';
 
-export const IncompleteCard = () => {
+interface IncompleteCardProps {
+  module: ModuleData;
+  courseId: number;
+  courseName?: string;
+}
+
+export const IncompleteCard: React.FC<IncompleteCardProps> = ({ 
+  module, 
+  courseId, 
+  courseName 
+}) => {
   return (
-    <div className='flex items-center'>
-    <div className=''>
-      <div className='rounded-xl border border-gray-200 overflow-hidden'>
-        <div className='p-3'>
-
-          <div className='flex items-center justify-between'>
-            <div className='flex-1'>
-              <div className='flex items-center space-x-3 mb-3'>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                Eiusmod Tempor
-                  {/* {module.title} */}
-                </h3>
+    <div className='w-full'>
+      <div className='rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden hover:shadow-md transition-shadow duration-200'>
+        <div className='p-4'>
+          <div className='space-y-3'>
+            {/* Course Name (if provided) */}
+            {courseName && (
+              <div className="text-xs text-gray-500 dark:text-gray-400 font-medium">
+                {courseName}
               </div>
+            )}
 
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
-                description
-                  {/* {module.description} */}
-              </p>
+            {/* Title */}
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white line-clamp-1">
+              {module.title}
+            </h3>
 
-              <div className="flex items-center space-x-6 text-sm text-gray-500 dark:text-gray-400">
-                  <div className="flex items-center space-x-1">
-                    <Clock className="w-4 h-4" />
-                    <span>time</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-1">
-                    <span>1 topics</span>
-                  </div>
-                  
-            
-                </div>
+            {/* Description */}
+            <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
+              {module.description}
+            </p>
+
+            {/* Duration */}
+            <div className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400">
+              <Clock className="w-4 h-4" />
+              <span>{module.duration}</span>
             </div>
 
-            <div  className='flex items-center space-x-4'>
-              <div>
-                <Link
-                    href={'/'}
-                    // href={`/learning/courses/${courseId}/module/${module.id}`}
-                    className={`px-6 py-3 rounded-lg bg-[#7f56d9] text-white font-medium transition-colors`}
-                  >
-                    Continue
-                </Link>
-              </div>
-
+            {/* Continue Button */}
+            <div className="pt-2">
+              <Link
+                href={`/learning/courses/${courseId}/module/${module.id}`}
+                className="inline-block w-full text-center px-4 py-2 rounded-lg bg-[#7f56d9] hover:bg-[#6d48c7] text-white font-medium transition-colors duration-200 text-sm"
+              >
+                Continue
+              </Link>
             </div>
-            
           </div>
         </div>
       </div>
-      {}
     </div>
-  </div>
-  )
-}
+  );
+};

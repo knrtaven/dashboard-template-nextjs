@@ -14,7 +14,15 @@ const LearningCards: React.FC = () => {
   const totalCourses = LEARNING_CARDS_DATA.length;
 
   return (
-    <div className="space-y-6">
+    <div className="w-full space-y-6">
+
+      <div className='px-1'>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">
+          Courses
+        </h2>
+      
+      </div>
+
       {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {LEARNING_CARDS_DATA.map((course) => (
