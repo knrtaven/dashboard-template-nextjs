@@ -1,4 +1,5 @@
 
+import IncompleteCards from "@/components/learning/IncompleteCards";
 import LearningCards from "@/components/learning/LearningCards";
 import LearningHeadline from "@/components/learning/LearningHeadline";
 import type { Metadata } from "next";
@@ -18,7 +19,8 @@ export default function Learning() {
       
 
       <LearningHeadline/>
-    
+
+      <IncompleteCards/>
       
       <LearningCards/>
     

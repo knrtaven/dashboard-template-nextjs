@@ -4,7 +4,7 @@ import { getCourseContent } from "@/constants/lessons";
 import PageBreadcrumb from "@/components/references/common/PageBreadCrumb";
 // import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { BookOpen, Clock, Play, CheckCircle, ArrowLeft, Lock, Users } from 'lucide-react';
+import { BookOpen, Clock, Play, CheckCircle, ArrowLeft, Lock} from 'lucide-react';
 import Link from "next/link";
 import React from "react";
 
@@ -181,9 +181,9 @@ export default function CoursePage({ params }: PageProps) {
                     {/* Module Info */}
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-3">
-                        <div className="flex items-center justify-center w-10 h-10 bg-blue-100 dark:bg-blue-900/20 rounded-full">
-                          <span className="text-sm font-bold text-blue-600 dark:text-blue-400">
-                            {moduleIndex + 1}
+                        <div className="flex items-center justify-center w-10 h-10  bg-blue-100 dark:bg-blue-900/20 rounded-full">
+                          <span className="text-sm font-bold text-blue-600  dark:text-blue-400">
+                            {moduleIndex + 1} 
                           </span>
                         </div>
                         <div>
@@ -208,7 +208,6 @@ export default function CoursePage({ params }: PageProps) {
                         </div>
                         
                         <div className="flex items-center space-x-1">
-                          <Users className="w-4 h-4" />
                           <span>{module.totalLessons || 'Multiple'} topics</span>
                         </div>
                         

@@ -35,7 +35,7 @@ export const  LearningCard: React.FC<LearningCardData> = ({
   return (
     <div 
     onClick={() => {navigate.push(`/learning/courses/${id}`)}}
-    className="bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 group hover:scale-[1.02]"
+    className="bg-white dark:bg-gray-900 hover:cursor-pointer rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 group hover:scale-[1.02]"
     >
       {/* Banner Section */}
       <div className={`h-32 ${bannerColor} relative flex items-center justify-center`}>

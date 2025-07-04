@@ -166,4 +166,50 @@ export interface ModuleData {
     return Math.round((completedModules / courseContent.totalModules) * 100);
   };
   
-  
+  // Helper function to get incomplete modules for a specific course
+  export const getIncompleteModules = (courseId: number): ModuleData[] => {
+    const courseContent = getCourseContent(courseId);
+    if (!courseContent) return [];
+
+    return courseContent.modules
+      .filter(module => !module.isCompleted && !module.isLocked)
+      .sort((a, b) => a.order - b.order);
+  };
+
+  // Helper function to get incomplete modules across all Work-Rite courses
+export const getIncompleteWorkRiteModules = (): { courseId: number, modules: ModuleData[], courseName?: string }[] => {
+  const workRiteCourseIds = [1, 2, 3, 4]; // Work-Rite course IDs
+  const incompleteModulesData: { courseId: number, modules: ModuleData[], courseName?: string }[] = [];
+
+  workRiteCourseIds.forEach(courseId => {
+    const incompleteModules = getIncompleteModules(courseId);
+    if (incompleteModules.length > 0) {
+      incompleteModulesData.push({
+        courseId,
+        modules: incompleteModules,
+        courseName: `Work-Rite Course ${courseId}` // You can customize this based on actual course names
+      });
+    }
+  });
+
+  return incompleteModulesData;
+};
+
+// Helper function to get incomplete modules across all Lead-Rite courses
+export const getIncompleteLeadRiteModules = (): { courseId: number, modules: ModuleData[], courseName?: string }[] => {
+  const leadRiteCourseIds = [5, 6]; // Lead-Rite course IDs
+  const incompleteModulesData: { courseId: number, modules: ModuleData[], courseName?: string }[] = [];
+
+  leadRiteCourseIds.forEach(courseId => {
+    const incompleteModules = getIncompleteModules(courseId);
+    if (incompleteModules.length > 0) {
+      incompleteModulesData.push({
+        courseId,
+        modules: incompleteModules,
+        courseName: `Lead-Rite Course ${courseId}` // You can customize this based on actual course names
+      });
+    }
+  });
+
+  return incompleteModulesData;
+};

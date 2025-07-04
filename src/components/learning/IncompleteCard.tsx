@@ -1,10 +1,8 @@
 "use client";
 import React from 'react'
 
-const CoursesInprogress = () => {
+export const IncompleteCard = () => {
   return (
     <div>CoursesInprogress</div>
   )
 }
-
-export default CoursesInprogress
