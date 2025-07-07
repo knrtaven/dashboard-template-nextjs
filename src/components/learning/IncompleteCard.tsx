@@ -18,14 +18,29 @@ export const IncompleteCard: React.FC<IncompleteCardProps> = ({
   return (
     <div className='w-full'>
       <div className='rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden hover:shadow-md transition-shadow duration-200'>
-        <div className='p-4'>
-          <div className='space-y-3'>
-            {/* Course Name (if provided) */}
+      
+        
+      <div className="h-32 bg-purple-600 relative overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url('/images/course-banner.jpg')` // Replace with your image path
+            }}
+          />
+          {/* Optional: Overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/20" />
+          
+          <div className="absolute bottom-2 left-4 right-4">
             {courseName && (
-              <div className="text-xs text-gray-500 dark:text-gray-400 font-medium">
+              <div className="text-xs text-white font-medium bg-black/30 backdrop-blur-sm px-2 py-1 rounded-md inline-block">
                 {courseName}
               </div>
             )}
+          </div>
+        </div>
+        
+        <div className='p-4'>
+          <div className='space-y-3'>
 
             {/* Title */}
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white line-clamp-1">
