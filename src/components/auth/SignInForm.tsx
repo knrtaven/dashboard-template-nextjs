@@ -6,7 +6,7 @@ import Button from "@/components/ui/button/Button";
 import { EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
+import { MdOutlineEmail } from "react-icons/md";
 import React, { useState } from "react";
 
 export default function SignInForm() {
@@ -37,7 +37,7 @@ export default function SignInForm() {
 
           <form onSubmit={(e)=> {
                     e.preventDefault(); 
-                    router.push('/learning')
+                    router.push('/twofactor')
                     }}>
               <div className="space-y-6">
                 <div>
@@ -132,6 +132,7 @@ export default function SignInForm() {
               </button>
               <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
                       {/* {ADD 2FA PASSAGE} */}
+                      <MdOutlineEmail className="text-[20px]" />
                 SSO
               </button>
             </div>
