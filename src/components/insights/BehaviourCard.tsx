@@ -13,10 +13,10 @@ const BehaviourCard = ({ icon, title, description }: BehaviourCardProps) => {
     <div className='w-52 shrink-0 cursor-pointer h-52 aspect-square rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden hover:shadow-md transition-shadow duration-200'>
       <div className='p-4 space-y-3'>
         <Icon className='w-8 h-8 text-theme-purple-500' />
-        <h3 className='text-lg font-medium'>
+        <h3 className='text-lg font-medium text-black dark:text-white'>
           {title}
         </h3>
-        <p className='text-sm text-gray-500'>
+        <p className='text-sm text-gray-500 dark:text-gray-400'>
           {description}
         </p>
       </div>

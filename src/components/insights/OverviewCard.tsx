@@ -42,7 +42,7 @@ const OverviewCard = ({
             )}
           </div>
         )}
-        <h2 className='text-lg font-bold text-gray-800'>
+        <h2 className='text-lg font-bold text-gray-800 dark:text-white'>
           {title}
         </h2>
         <div className="flex flex-wrap gap-2">
@@ -55,7 +55,7 @@ const OverviewCard = ({
             </span>
           ))}
         </div>
-        <p className='text-sm text-gray-500'>
+        <p className='text-sm text-gray-500 dark:text-gray-400'>
           {description}
         </p>
       </div>
