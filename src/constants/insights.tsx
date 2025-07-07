@@ -26,3 +26,33 @@ export const behaviours: {
     description: 'We use our resources wisely'
   }
 ]
+
+export const insightsOverview: {
+  title: string;
+  description: string;
+  score: number;
+  percentageChange: number;
+  visibleTo: string[]
+}[] = [
+  {
+    title: 'Lead-Rite',
+    description: 'Lead-Rite analytics provide insight into the degree to which leadership are leading wisely in the best interest of the organization.',
+    score: 72,
+    percentageChange: -8,
+    visibleTo: ['Super Admin', 'Leader']
+  },
+  {
+    title: 'Work-Rite',
+    description: 'Your work-rite score is a combination of behaviour application, performance focus and well-being outcomes.',
+    score: 60,
+    percentageChange: 3,
+    visibleTo: ['Super Admin', 'Leader', 'Workforce']
+  },
+  {
+    title: 'Care-Rite',
+    description: 'Your Care-Rite score measures how well clients and residents psychological, emotional and spiritual (PES) needs are being met.',
+    score: 79,
+    percentageChange: 0,
+    visibleTo: ['Super Admin']
+  }
+]
