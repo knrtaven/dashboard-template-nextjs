@@ -5,13 +5,13 @@ import SitesPerformance from '@/components/insights/SitesPerformance';
 
 const Insights = () => {
   return (
-    <div className='flex flex-col gap-5'>
+    <div className="flex flex-col gap-5">
       <InsightsHeader />
 
       <BehaviourCards />
 
-      <OverviewCards />
-      
+       <OverviewCards />
+
       <SitesPerformance />
     </div>
   );
