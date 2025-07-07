@@ -43,6 +43,7 @@ jobs:
   deploy-vercel:
     needs: build-and-test
     runs-on: ubuntu-latest
+    # Only deploy to production from main branch on push (not PRs)
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     
     steps:
