@@ -1,4 +1,5 @@
 import { behaviours } from '@/constants/insights';
+import { ScrollArea, ScrollBar } from '../ui/scroll-area/ScrollArea';
 import BehaviourCard from './BehaviourCard';
 
 const BehaviourCards = () => {
@@ -7,13 +8,16 @@ const BehaviourCards = () => {
       <h2 className='text-lg text-gray-500 font-medium'>
         Our behaviours
       </h2>
-      <div className='flex flex-row gap-4 h-52 overflow-x-auto'>
-        {
-          behaviours.map((behaviour) => (
-            <BehaviourCard key={behaviour.title} icon={behaviour.icon} title={behaviour.title} description={behaviour.description} />
-          ))
-        }
-      </div>
+      <ScrollArea>
+        <div className='flex space-x-4 py-1'>
+          {
+            behaviours.map((behaviour) => (
+              <BehaviourCard key={behaviour.title} icon={behaviour.icon} title={behaviour.title} description={behaviour.description} />
+            ))
+          }
+        </div>
+        <ScrollBar orientation="horizontal" className='hidden' />
+      </ScrollArea>
     </div>
   );
 };
