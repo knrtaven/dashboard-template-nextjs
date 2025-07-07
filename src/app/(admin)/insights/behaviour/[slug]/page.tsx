@@ -1,3 +1,4 @@
+import BehaviourAddCard from '@/components/behaviour/BehaviourAddCard';
 import BehaviourHeader from '@/components/behaviour/BehaviourHeader';
 import { getBehaviour } from '@/constants/insights';
 import { notFound } from 'next/navigation';
@@ -18,6 +19,7 @@ const BehaviourPage = async ({ params }: { params: Promise<{ slug: string }> }) 
         description={behaviour.description}
         icon={behaviour.icon}
       />
+      <BehaviourAddCard />
     </div>
   );
 };
