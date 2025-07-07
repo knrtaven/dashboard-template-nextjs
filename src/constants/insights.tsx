@@ -30,8 +30,8 @@ export const behaviours: {
 export const insightsOverview: {
   title: string;
   description: string;
-  score: number;
-  percentageChange: number;
+  score?: number;
+  percentageChange?: number;
   visibleTo: string[]
 }[] = [
   {
@@ -54,5 +54,16 @@ export const insightsOverview: {
     score: 79,
     percentageChange: 0,
     visibleTo: ['Super Admin']
+  },
+  {
+    title: 'Showcase',
+    description: 'How behaviours have been demonstrated and what impact this has had on teams and the organisation.',
+    visibleTo: ['Super Admin', 'Leader', 'Workforce'],
+    score: 51
+  },
+  {
+    title: 'Platform Analytics',
+    description: 'How platform data has been monitored and what insights this has provided into user engagement and overall performance.',
+    visibleTo: ['Super Admin', 'View Only', 'Leader', 'Site View Only', 'Appellon Board Members']
   }
 ]
