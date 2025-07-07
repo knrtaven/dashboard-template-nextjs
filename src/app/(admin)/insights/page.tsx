@@ -1,9 +1,9 @@
-import React from 'react';
+import InsightsHeader from '@/components/insights/InsightsHeader';
 
 const Insights = () => {
   return (
-    <div>
-      TEST
+    <div className='flex flex-col gap-4'>
+      <InsightsHeader />
     </div>
   );
 };
