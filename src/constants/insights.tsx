@@ -67,3 +67,8 @@ export const insightsOverview: {
     visibleTo: ['Super Admin', 'View Only', 'Leader', 'Site View Only', 'Appellon Board Members']
   }
 ]
+
+export const getBehaviour = async (slug: string) => {
+  const behaviour = behaviours.find((behaviour) => behaviour.title.toLowerCase() === slug.toLowerCase());
+  return behaviour;
+};
