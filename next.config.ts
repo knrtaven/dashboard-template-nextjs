@@ -9,6 +9,15 @@ const nextConfig: NextConfig = {
     });
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "health-e.in",
+        pathname: "/wp-content/uploads/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
