@@ -1,11 +1,10 @@
 'use client';
 
 import React, { useState, useRef, useMemo, useCallback } from 'react';
-import { ChevronDownIcon, PlusIcon } from '@/icons';
+import { ChevronDown, Plus, Share2 } from 'lucide-react';
 import { Dropdown } from '@/components/ui/dropdown/Dropdown';
 import { DropdownItem } from '@/components/ui/dropdown/DropdownItem';
 import Button from '@/components/ui/button/Button';
-import { Share2 } from 'lucide-react';
 import Checkbox from '@/components/form/input/Checkbox';
 
 const Header = () => {
@@ -67,7 +66,7 @@ const Header = () => {
               size="sm"
               className="dropdown-toggle !h-10 !rounded-[54px]"
               endIcon={
-                <ChevronDownIcon
+                <ChevronDown
                   className={`h-4 w-4 text-gray-600 transition-transform duration-200 ${
                     isSitesDropdownOpen ? 'rotate-180' : ''
                   }`}
@@ -125,7 +124,7 @@ const Header = () => {
             variant="outline"
             size="sm"
             className="!ring-[#7f56d9]"
-            endIcon={<PlusIcon size={20} className="text-gray-700" />}
+            endIcon={<Plus width={20} height={20} className="text-gray-700" />}
           >
             Add
           </Button>
