@@ -20,15 +20,33 @@ const OverviewBySiteChart = () => {
   const options: ApexOptions = {
     chart: {
       type: 'bar',
+      toolbar: { 
+        show: false,
+      },
+    },
+    tooltip: {
+      enabled: false
+    },
+    dataLabels: {
+      enabled: true, // Show numbers on bars
+      style: {
+        colors: ['#fff'] // White text for contrast
+      },
+      offsetX: 10, // Position inside bars
+    },
+    legend: {
+      show: false // Remove legend
     },
     plotOptions: {
       bar: {
         horizontal: true,
+        barHeight: '80%', // Proportional height for spacing
+        distributed: false, // Default spacing
         colors: {
           ranges: [{
             from: 0,
             to: 100,
-            color: '#8B5CF6' // theme-purple-500
+            color: '#8B5CF6'
           }]
         }
       }
@@ -58,7 +76,7 @@ const OverviewBySiteChart = () => {
         </div>
 
         {/* Chart */}
-        <ReactApexChart options={options} series={series} type="bar" height={310} />
+        <ReactApexChart options={options} series={series} type="bar" height={350} />
       </div>
     </div>
   );
