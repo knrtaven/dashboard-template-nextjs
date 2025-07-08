@@ -21,7 +21,7 @@ const OverviewHeader = ({ title, description, score, percentageChange }: Overvie
               <ChevronLeft />
             </Link>
           </Button>
-          <h3 className="text-xl font-thin md:text-2xl">Apollo Care Alliance</h3>
+          <h3 className="text-xl font-thin md:text-2xl">Apollo Care Alliance / {title}</h3>
         </div>
         <h2 className="text-2xl font-medium md:text-3xl">{title} analytics</h2>
         <p className="text-sm text-gray-300 md:text-base">{description}</p>
