@@ -6,7 +6,7 @@ interface SwitchProps {
   defaultChecked?: boolean;
   disabled?: boolean;
   onChange?: (checked: boolean) => void;
-  color?: "blue" | "gray"; // Added prop to toggle color theme
+  color?: "blue" | "gray" | string; // Allow any string for hex values
 }
 
 const Switch: React.FC<SwitchProps> = ({
@@ -27,42 +27,47 @@ const Switch: React.FC<SwitchProps> = ({
     }
   };
 
-  const switchColors =
-    color === "blue"
-      ? {
-          background: isChecked
-            ? "bg-brand-500 "
-            : "bg-gray-200 dark:bg-white/10", // Blue version
-          knob: isChecked
-            ? "translate-x-full bg-white"
-            : "translate-x-0 bg-white",
-        }
-      : {
-          background: isChecked
-            ? "bg-gray-800 dark:bg-white/10"
-            : "bg-gray-200 dark:bg-white/10", // Gray version
-          knob: isChecked
-            ? "translate-x-full bg-white"
-            : "translate-x-0 bg-white",
-        };
+  // Function to determine if color is a predefined theme or hex
+  const isHexColor = (color: string) => {
+    return color.startsWith("#");
+  };
+
+  // Get the appropriate background class
+  const getBackgroundClass = () => {
+    if (disabled) return "bg-gray-100 pointer-events-none dark:bg-gray-800";
+
+    if (!isChecked) return "bg-gray-200 dark:bg-white/10";
+
+    if (isHexColor(color)) {
+      return `bg-[${color}]`; // Use the hex color directly
+    }
+
+    // Predefined colors
+    switch (color) {
+      case "blue":
+        return "bg-brand-500";
+      case "gray":
+        return "bg-gray-800 dark:bg-white/10";
+      default:
+        return "bg-brand-500"; // Default to blue if unrecognized
+    }
+  };
 
   return (
     <label
-      className={`flex cursor-pointer select-none items-center gap-3 text-sm font-medium ${
+      className={`flex cursor-pointer items-center gap-3 text-sm font-medium select-none ${
         disabled ? "text-gray-400" : "text-gray-700 dark:text-gray-400"
       }`}
-      onClick={handleToggle} // Toggle when the label itself is clicked
+      onClick={handleToggle}
     >
       <div className="relative">
         <div
-          className={`block transition duration-150 ease-linear h-6 w-11 rounded-full ${
-            disabled
-              ? "bg-gray-100 pointer-events-none dark:bg-gray-800"
-              : switchColors.background
-          }`}
+          className={`block h-6 w-11 rounded-full transition duration-150 ease-linear ${getBackgroundClass()}`}
         ></div>
         <div
-          className={`absolute left-0.5 top-0.5 h-5 w-5 rounded-full shadow-theme-sm duration-150 ease-linear transform ${switchColors.knob}`}
+          className={`shadow-theme-sm absolute top-0.5 left-0.5 h-5 w-5 transform rounded-full duration-150 ease-linear ${
+            isChecked ? "translate-x-full bg-white" : "translate-x-0 bg-white"
+          }`}
         ></div>
       </div>
       {label}
