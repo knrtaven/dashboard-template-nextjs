@@ -2,8 +2,6 @@
 import React from 'react';
 import { 
   LEARNING_CARDS_DATA,
-  getCompletedCourses,
-  getInProgressCourses
 } from '../../constants/index';
 import { getCourseContent, calculateCourseProgress } from '../../constants/lessons';
 import { LearningCard } from './LearningCard';

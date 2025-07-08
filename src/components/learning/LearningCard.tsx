@@ -14,8 +14,6 @@ export const LearningCard: React.FC<LearningCardData> = ({
   duration,
   bannerColor,
   category,
-  totalLessons,
-  completedLessons
 }) => {
   const navigate = useRouter();
   

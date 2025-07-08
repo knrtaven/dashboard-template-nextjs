@@ -46,10 +46,6 @@ export const IncompleteCard: React.FC<IncompleteCardProps> = ({
               {module.title}
             </h3>
 
-            {/* Description */}
-            <p className="text-gray-600 max-w-96 truncate dark:text-gray-400 text-sm line-clamp-2">
-              {module.description}
-            </p>
 
 
             {/* Continue Button */}
