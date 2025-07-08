@@ -10,95 +10,90 @@ const ReactApexChart = dynamic(() => import('react-apexcharts'), {
 const MainOverviewChart = () => {
   const options: ApexOptions = {
     legend: {
-      show: false, // Hide legend
+      show: false,
       position: 'top',
       horizontalAlign: 'left',
     },
-    colors: ['#465FFF', '#9CB9FF'], // Define line colors
+    colors: ['#7a5af8', '#000000', '#808080'], // Purple line, black/gray bars
     chart: {
       fontFamily: 'Outfit, sans-serif',
       height: 310,
-      type: 'line', // Set the chart type to 'line'
+      type: 'line',
       toolbar: {
-        show: false, // Hide chart toolbar
+        show: false,
       },
     },
     stroke: {
-      curve: 'straight', // Define the line style (straight, smooth, or step)
-      width: [2, 2], // Line width for each dataset
-    },
-
-    fill: {
-      type: 'gradient',
-      gradient: {
-        opacityFrom: 0.55,
-        opacityTo: 0,
-      },
+      curve: 'straight',
+      width: [4, 0, 0], // 2x thicker line (4px)
     },
     markers: {
-      size: 0, // Size of the marker points
-      strokeColors: '#fff', // Marker border color
+      size: 6, // Show markers (circles)
+      colors: ['#7a5af8'], // Purple markers
+      strokeColors: '#fff',
       strokeWidth: 2,
       hover: {
-        size: 6, // Marker size on hover
+        size: 8,
       },
+    },
+    fill: {
+      type: 'solid', // Remove gradient
     },
     grid: {
       xaxis: {
         lines: {
-          show: false, // Hide grid lines on x-axis
+          show: false,
         },
       },
       yaxis: {
         lines: {
-          show: true, // Show grid lines on y-axis
+          show: true,
         },
       },
     },
     dataLabels: {
-      enabled: false, // Disable data labels
+      enabled: false,
     },
     tooltip: {
-      enabled: true, // Enable tooltip
+      enabled: true,
+      shared: true,
+      intersect: false,
       x: {
-        format: 'dd MMM yyyy', // Format for x-axis tooltip
+        format: 'dd MMM yyyy',
       },
     },
+    plotOptions: {
+      bar: {
+        columnWidth: '30%', // Thinner bars
+        distributed: false
+      }
+    },
     xaxis: {
-      type: 'category', // Category-based x-axis
+      type: 'category',
       categories: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec',
+        'Jul-24', 'Aug-24', 'Sep-24', 'Oct-24', 
+        'Nov-24', 'Dec-24', 'Jan-25', 'Feb-25', 
+        'Mar-25', 'Apr-25', 'May-25', 'Jun-25'
       ],
       axisBorder: {
-        show: false, // Hide x-axis border
+        show: false,
       },
       axisTicks: {
-        show: false, // Hide x-axis ticks
+        show: false,
       },
       tooltip: {
-        enabled: false, // Disable tooltip for x-axis points
+        enabled: false,
       },
     },
     yaxis: {
       labels: {
         style: {
-          fontSize: '12px', // Adjust font size for y-axis labels
-          colors: ['#6B7280'], // Color of the labels
+          fontSize: '12px',
+          colors: ['#6B7280'],
         },
       },
       title: {
-        text: '', // Remove y-axis title
+        text: '',
         style: {
           fontSize: '0px',
         },
@@ -108,12 +103,19 @@ const MainOverviewChart = () => {
 
   const series = [
     {
-      name: 'Sales',
-      data: [180, 190, 170, 160, 175, 165, 170, 205, 230, 210, 240, 235],
+      name: 'Adjusted score',
+      type: 'line',
+      data: [45, 52, 38, 60, 55, 48, 50, 55, 45, 60, 52, 48],
     },
     {
-      name: 'Revenue',
-      data: [40, 30, 50, 40, 55, 40, 70, 100, 110, 120, 150, 140],
+      name: 'Respondents',
+      type: 'bar',
+      data: [30, 40, 25, 50, 35, 45, 40, 35, 30, 45, 40, 35],
+    },
+    {
+      name: 'Participants',
+      type: 'bar',
+      data: [20, 30, 35, 40, 25, 35, 30, 25, 20, 35, 30, 25],
     },
   ];
 
