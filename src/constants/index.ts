@@ -17,9 +17,9 @@ export interface LearningCardData {
   export const LEARNING_CARDS_DATA: LearningCardData[] = [
     {
       id: 1,
-      title: "IPSUM LOREPSUM",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      progress: 75,
+      title: "Blame Busting",
+      description: "How to identify blame and flip it to improve connection and wellbeing",
+      progress: 0,
       duration: "4 hours",
 
       bannerColor: "bg-gradient-to-r from-blue-500 to-blue-600",
@@ -27,14 +27,14 @@ export interface LearningCardData {
       tags: ["A", "B", "C"],
       enrolledDate: "2024-01-15",
       lastAccessed: "2024-01-20",
-      totalLessons: 12,
-      completedLessons: 9
+      totalLessons: 4,
+      completedLessons: 0
     },
     {
       id: 2,
-      title: "IPSUM LOREPSUM",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      progress: 45,
+      title: "Kindness",
+      description: "Kindness strengthens connection and wellbeing by uncovering its deeper value, sparking ripple effects... ",
+      progress: 0,
       duration: "6 hours",
 
       bannerColor: "bg-gradient-to-r from-purple-500 to-purple-600",
@@ -42,14 +42,14 @@ export interface LearningCardData {
       tags: ["A", "B", "C"],
       enrolledDate: "2024-01-10",
       lastAccessed: "2024-01-18",
-      totalLessons: 20,
-      completedLessons: 9
+      totalLessons: 4,
+      completedLessons: 0
     },
     {
       id: 3,
-      title: "IPSUM LOREPSUM",
+      title: "The Art of Giving Compliments",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      progress: 90,
+      progress: 0,
       duration: "5 hours",
 
       bannerColor: "bg-gradient-to-r from-green-500 to-green-600",
@@ -57,54 +57,25 @@ export interface LearningCardData {
       tags: ["A", "B", "C"],
       enrolledDate: "2024-01-05",
       lastAccessed: "2024-01-19",
-      totalLessons: 15,
-      completedLessons: 14
+      totalLessons: 4,
+      completedLessons: 0
     },
     {
       id: 4,
-      title: "IPSUM LOREPSUM",
+      title: "Achievement & Connection",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      progress: 20,
+      progress: 0,
       duration: "8 hours",
 
       bannerColor: "bg-gradient-to-r from-orange-500 to-orange-600",
-      category: "Backend",
+      category: "Work-Rite",
       tags: ["A", "B", "C"],
       enrolledDate: "2024-01-12",
       lastAccessed: "2024-01-16",
-      totalLessons: 25,
+      totalLessons: 4,
       completedLessons: 5
     },
-    {
-      id: 5,
-      title: "IPSUM LOREPSUM",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      progress: 60,
-      duration: "7 hours",
-
-      bannerColor: "bg-gradient-to-r from-teal-500 to-teal-600",
-      category: "Lead-Rite",
-      tags: ["A", "B", "C"],
-      enrolledDate: "2024-01-08",
-      lastAccessed: "2024-01-17",
-      totalLessons: 18,
-      completedLessons: 11
-    },
-    {
-      id: 6,
-      title: "IPSUM LOREPSUM",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      progress: 35,
-      duration: "10 hours",
-
-      bannerColor: "bg-gradient-to-r from-indigo-500 to-indigo-600",
-      category: "Lead-Rite",
-      tags: ["A", "B", "C"],
-      enrolledDate: "2024-01-14",
-      lastAccessed: "2024-01-21",
-      totalLessons: 30,
-      completedLessons: 10
-    }
+   
   ];
   
   // Helper functions for data manipulation

@@ -48,7 +48,7 @@ export const IncompleteCard: React.FC<IncompleteCardProps> = ({
             </h3>
 
             {/* Description */}
-            <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
+            <p className="text-gray-600 max-w-96 truncate dark:text-gray-400 text-sm line-clamp-2">
               {module.description}
             </p>
 

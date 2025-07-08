@@ -57,7 +57,7 @@ export const  LearningCard: React.FC<LearningCardData> = ({
         </h3>
         
         {/* Description */}
-        <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">
+        <p className="text-gray-600 truncate dark:text-gray-400 text-sm mb-4 line-clamp-3">
           {description}
         </p>
 
