@@ -13,7 +13,12 @@ const CurrentOverview = async ({ params }: { params: Promise<{ slug: string }> }
 
   return (
     <div className="flex flex-col gap-4">
-      <OverviewHeader title={overview.title} description={overview.description} />
+      <OverviewHeader
+        title={overview.title}
+        description={overview.description}
+        score={overview?.score ?? 0}
+        percentageChange={overview?.percentageChange ?? 0}
+      />
     </div>
   );
 };
