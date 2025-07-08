@@ -17,7 +17,7 @@ const BehaviourHeader = ({ title, description, icon }: BehaviourHeaderProps) => 
         variant="outline"
         size="xs"
         className="absolute top-3 left-3 !rounded-full"
-        asChild={true}
+        // asChild={true}
       >
         <Link href="/insights">
           <ChevronLeft />
