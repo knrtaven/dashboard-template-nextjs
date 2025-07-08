@@ -3,39 +3,40 @@ import { BookOpen, Clock, Award } from 'lucide-react';
 import { 
   LearningCardData,
 } from '../../constants/index';
+import { getCourseContent } from '../../constants/lessons';
 import { useRouter } from 'next/navigation';
 
-export const  LearningCard: React.FC<LearningCardData> = ({
+export const LearningCard: React.FC<LearningCardData> = ({
   id,
   title,
   description,
   progress,
   duration,
-  // instructor,
-  // level,
   bannerColor,
   category,
   totalLessons,
   completedLessons
 }) => {
-  const navigate = useRouter()
-//   const getLevelColor = (level: string) => {
-//     switch (level) {
-//       case 'Beginner':
-//         return 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400';
-//       case 'Intermediate':
-//         return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400';
-//       case 'Advanced':
-//         return 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400';
-//       default:
-//         return 'bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400';
-//     }
-//   };
+  const navigate = useRouter();
+  
+  // Get course content to show more detailed information
+  const courseContent = getCourseContent(id);
+  const moduleCount = courseContent ? courseContent.totalModules : 0;
+  const completedModules = courseContent ? courseContent.completedModules : 0;
+
+  // Function to get progress description
+  const getProgressDescription = (progress: number) => {
+    if (progress === 100) return 'Course completed!';
+    if (progress >= 75) return 'Almost there! Keep going.';
+    if (progress >= 50) return 'Great progress! Keep going.';
+    if (progress >= 25) return 'Good start! Continue learning.';
+    return 'Just getting started.';
+  };
 
   return (
     <div 
-    onClick={() => {navigate.push(`/learning/courses/${id}`)}}
-    className="bg-white dark:bg-gray-900 hover:cursor-pointer rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 group hover:scale-[1.02]"
+      onClick={() => {navigate.push(`/learning/courses/${id}`)}}
+      className="bg-white dark:bg-gray-900 hover:cursor-pointer rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 group hover:scale-[1.02]"
     >
       {/* Banner Section */}
       <div className={`h-32 ${bannerColor} relative flex items-center justify-center`}>
@@ -46,7 +47,6 @@ export const  LearningCard: React.FC<LearningCardData> = ({
           </div>
           <div className="text-sm font-medium opacity-90">{category}</div>
         </div>
-        
       </div>
 
       {/* Content Section */}
@@ -68,10 +68,6 @@ export const  LearningCard: React.FC<LearningCardData> = ({
               <Clock className="w-4 h-4" />
               <span>{duration}</span>
             </div>
-            {/* <div className="flex items-center space-x-1">
-              <Users className="w-4 h-4" />
-              <span>{instructor}</span>
-            </div> */}
           </div>
           
           {progress === 100 && (
@@ -82,12 +78,17 @@ export const  LearningCard: React.FC<LearningCardData> = ({
           )}
         </div>
 
-        {/* Lesson Progress */}
-        {totalLessons && completedLessons !== undefined && (
+        {/* Module Progress */}
+        {moduleCount > 0 && (
           <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
-            <span className="font-medium">{completedLessons}/{totalLessons}</span> lessons completed
+            <div className="flex justify-between items-center">
+              <span>
+                <span className="font-medium">{completedModules}/{moduleCount}</span> modules completed
+              </span>
+            </div>
           </div>
         )}
+
       </div>
 
       {/* Progress Bar Footer */}
@@ -113,11 +114,7 @@ export const  LearningCard: React.FC<LearningCardData> = ({
         
         {/* Progress Text */}
         <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-          {progress === 100 
-            ? 'Course completed!' 
-            : progress >= 50 
-            ? 'Great progress! Keep going.' 
-            : 'Just getting started.'}
+          {getProgressDescription(progress)}
         </div>
       </div>
     </div>

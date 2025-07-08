@@ -5,27 +5,39 @@ import {
   getCompletedCourses,
   getInProgressCourses
 } from '../../constants/index';
+import { getCourseContent, calculateCourseProgress } from '../../constants/lessons';
 import { LearningCard } from './LearningCard';
 
-
 const LearningCards: React.FC = () => {
-  const completedCourses = getCompletedCourses();
-  const inProgressCourses = getInProgressCourses();
-  const totalCourses = LEARNING_CARDS_DATA.length;
+  // Calculate dynamic progress based on actual module completion
+  const coursesWithDynamicProgress = LEARNING_CARDS_DATA.map(course => {
+    const courseContent = getCourseContent(course.id);
+    const dynamicProgress = courseContent ? calculateCourseProgress(courseContent) : course.progress;
+    
+    return {
+      ...course,
+      progress: dynamicProgress,
+      // Update completed lessons based on actual module data
+      completedLessons: courseContent ? courseContent.completedLessons : course.completedLessons,
+      totalLessons: courseContent ? courseContent.totalLessons : course.totalLessons
+    };
+  });
+
+  const completedCourses = coursesWithDynamicProgress.filter(course => course.progress === 100);
+  const inProgressCourses = coursesWithDynamicProgress.filter(course => course.progress > 0 && course.progress < 100);
+  const totalCourses = coursesWithDynamicProgress.length;
 
   return (
     <div className="w-full space-y-6">
-
       <div className='px-1'>
         <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">
           Courses
         </h2>
-      
       </div>
 
       {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {LEARNING_CARDS_DATA.map((course) => (
+        {coursesWithDynamicProgress.map((course) => (
           <LearningCard key={course.id} {...course} />
         ))}
       </div>

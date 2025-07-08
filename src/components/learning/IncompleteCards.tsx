@@ -1,25 +1,24 @@
 "use client";
-import { getIncompleteWorkRiteModules, getIncompleteLeadRiteModules } from '@/constants/lessons';
+import { LEARNING_CARDS_DATA } from '@/constants/index';
+import { getCourseContent, calculateCourseProgress } from '@/constants/lessons';
 import React from 'react';
 import { IncompleteCard } from './IncompleteCard';
 
 const IncompleteCards = () => {
-  const incompleteWorkRite = getIncompleteWorkRiteModules();
-  const incompleteLeadRite = getIncompleteLeadRiteModules();
-  
-  // Combine all incomplete modules
-  const allIncompleteModules = [...incompleteWorkRite, ...incompleteLeadRite];
-  
-  // Flatten modules for easier rendering
-  const flattenedModules = allIncompleteModules.flatMap(courseData => 
-    courseData.modules.map(module => ({
-      ...module,
-      courseId: courseData.courseId,
-      courseName: courseData.courseName
-    }))
-  );
+  // Calculate dynamic progress and filter incomplete courses
+  const incompleteCourses = LEARNING_CARDS_DATA.map(course => {
+    const courseContent = getCourseContent(course.id);
+    const dynamicProgress = courseContent ? calculateCourseProgress(courseContent) : course.progress;
+    
+    return {
+      ...course,
+      progress: dynamicProgress,
+      completedLessons: courseContent ? courseContent.completedLessons : course.completedLessons,
+      totalLessons: courseContent ? courseContent.totalLessons : course.totalLessons
+    };
+  }).filter(course => course.progress < 100); // Only show courses that aren't 100% complete
 
-  if (flattenedModules.length === 0) {
+  if (incompleteCourses.length === 0) {
     return (
       <div className='w-full'>
         <div className='rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6'>
@@ -28,7 +27,7 @@ const IncompleteCards = () => {
               All caught up! 🎉
             </h3>
             <p className="text-gray-600 dark:text-gray-400 text-sm">
-              You have no incomplete modules at the moment.
+              You have completed all available courses.
             </p>
           </div>
         </div>
@@ -44,27 +43,34 @@ const IncompleteCards = () => {
           Pick up where you left off
         </h2>
         <p className="text-gray-600 dark:text-gray-400 text-sm">
-          {flattenedModules.length} incomplete module{flattenedModules.length !== 1 ? 's' : ''}
+          {incompleteCourses.length} incomplete course{incompleteCourses.length !== 1 ? 's' : ''}
         </p>
       </div>
 
       {/* Mobile-first grid layout */}
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
-        {flattenedModules.map((moduleWithCourse, index) => (
+        {incompleteCourses.map((course) => (
           <IncompleteCard
-            key={`${moduleWithCourse.courseId}-${moduleWithCourse.id}-${index}`}
-            module={moduleWithCourse}
-            courseId={moduleWithCourse.courseId}
-            courseName={moduleWithCourse.courseName}
+            key={course.id}
+            module={{
+              id: course.id,
+              title: course.title,
+              description: course.description,
+              isCompleted: course.progress === 100,
+              isLocked: false,
+              order: course.id,
+            }}
+            courseId={course.id}
+            courseName={course.category}
           />
         ))}
       </div>
 
-      {/* Optional: Show total count on mobile for better UX */}
+      {/*Show total count on mobile*/}
       <div className='sm:hidden'>
         <div className='text-center pt-2 border-t border-gray-200 dark:border-gray-700'>
           <span className="text-xs text-gray-500 dark:text-gray-400">
-            Showing {flattenedModules.length} incomplete modules
+            Showing {incompleteCourses.length} incomplete courses
           </span>
         </div>
       </div>

@@ -1,14 +1,13 @@
+import { getLearningCardById } from './index';
+
 export interface ModuleData {
     id: number;
     title: string;
-    description: string;
-    duration: string; // e.g., "45 minutes"
+    // description: string;
     isCompleted: boolean;
     isLocked: boolean;
     order: number;
-    estimatedTime: string;
-    contentType: 'video' | 'reading' | 'mixed' | 'interactive';
-    totalLessons?: number; // Optional: for display purposes
+
   }
   
   export interface CourseContent {
@@ -16,120 +15,243 @@ export interface ModuleData {
     modules: ModuleData[];
     totalModules: number;
     completedModules: number;
-    estimatedTotalTime: string;
     totalLessons: number; // Total lessons across all modules
     completedLessons: number; // Completed lessons across all modules
   }
   
-  // Generic modules for Work-Rite courses
-  const WORK_RITE_MODULES: CourseContent = {
-    courseId: 1, // Can be mapped to any Work-Rite course
-    estimatedTotalTime: "4 hours",
-    totalModules: 3,
-    completedModules: 2,
-    totalLessons: 12,
-    completedLessons: 9,
-    modules: [
-      {
-        id: 1,
-        title: "Lorem Ipsum Module",
-        description: "Lorem ipsum dolor sit amet consectetur adipiscing elit",
-        duration: "90 minutes",
-        estimatedTime: "1.5 hours",
-        isCompleted: true,
-        isLocked: false,
-        order: 1,
-        contentType: "mixed",
-        totalLessons: 4
-      },
-      {
-        id: 2,
-        title: "Eiusmod Tempor",
-        description: "Eiusmod tempor incididunt ut labore et dolore magna",
-        duration: "90 minutes",
-        estimatedTime: "1.5 hours",
-        isCompleted: true,
-        isLocked: false,
-        order: 2,
-        contentType: "video",
-        totalLessons: 4
-      },
-      {
-        id: 3,
-        title: "Duis Aute",
-        description: "Duis aute irure dolor in reprehenderit voluptate",
-        duration: "60 minutes",
-        estimatedTime: "1 hour",
-        isCompleted: false,
-        isLocked: false,
-        order: 3,
-        contentType: "interactive",
-        totalLessons: 4
-      }
-    ]
-  };
+  // Course-specific modules that match the real course data from index.ts
+  const COURSE_MODULES_DATA: { [key: number]: CourseContent } = {
+    // Course 1: Blame Busting
+    1: {
+      courseId: 1,
+      totalModules: 4,
+      completedModules: 0,
+      totalLessons: 4,
+      completedLessons: 0,
+      modules: [
+        {
+          id: 1,
+          title: "Wellbeing Quiz",
+          // description: "Learn to identify common blame patterns in workplace communication",
+          isCompleted: false,
+          isLocked: false,
+          order: 1,
+        },
+        {
+          id: 2,
+          title: "5 Days to a Healthier You",
+          // description: "Transform blame-based conversations into accountability discussions",
+          isCompleted: false,
+          isLocked: false,
+          order: 2
+
+        },
+        {
+          id: 3,
+          title: "Impact of Stress in the Workplace",
+          // description: "Use empathy and understanding to strengthen workplace relationships",
+          isCompleted: false,
+          isLocked: false,
+          order: 3,
+        },
+        {
+          id: 4,
+          title: "Reducing Stress at Work",
+          // description: "Real-world scenarios and practice exercises for blame-free communication",
+          isCompleted: false,
+          isLocked: false,
+          order: 4,
+
+        }
+      ]
+    },
+    
+    // Course 2: Kindness
+    2: {
+      courseId: 2,
+      totalModules: 4,
+      completedModules: 0,
+      totalLessons: 4,
+      completedLessons: 0,
+      modules: [
+        {
+          id: 1,
+          title: "Why does kindness matter?",
+          // description: "Understand the psychological and physiological benefits of kindness",
+          isCompleted: false,
+          isLocked: false,
+          order: 1,
+        },
+        {
+          id: 2,
+          title: "The Ripple Effect of Kindness",
+          // description: "Apply kindness principles in workplace interactions and leadership",
+          isCompleted: false,
+          isLocked: false,
+          order: 2,
+        },
+        {
+          id: 3,
+          title: "Why kindness matter?",
+          // description: "Learn how small acts of kindness create positive organizational change",
+          isCompleted: false,
+          isLocked: false,
+          order: 3,
+   
+        },
+        {
+          id: 4,
+          title: "Self-kindness",
+          // description: "Build systems and practices that embed kindness into company culture",
+          isCompleted: false,
+          isLocked: false,
+          order: 4,
   
-  // Generic modules for Lead-Rite courses
-  const LEAD_RITE_MODULES: CourseContent = {
-    courseId: 5, // Can be mapped to any Lead-Rite course
-    estimatedTotalTime: "7 hours",
-    totalModules: 3,
-    completedModules: 2,
-    totalLessons: 18,
-    completedLessons: 11,
-    modules: [
-      {
-        id: 1,
-        title: "Lorem Fundamentals",
-        description: "Lorem ipsum dolor sit amet consectetur adipiscing",
-        duration: "150 minutes",
-        estimatedTime: "2.5 hours",
-        isCompleted: true,
-        isLocked: false,
-        order: 1,
-        contentType: "mixed",
-        totalLessons: 5
-      },
-      {
-        id: 2,
-        title: "Dolor Ipsum",
-        description: "Dolor ipsum enim ad minim veniam quis",
-        duration: "120 minutes",
-        estimatedTime: "2 hours",
-        isCompleted: true,
-        isLocked: false,
-        order: 2,
-        contentType: "video",
-        totalLessons: 6
-      },
-      {
-        id: 3,
-        title: "Advanced Lorem",
-        description: "Advanced lorem ipsum techniques and applications",
-        duration: "150 minutes",
-        estimatedTime: "2.5 hours",
-        isCompleted: false,
-        isLocked: false,
-        order: 3,
-        contentType: "interactive",
-        totalLessons: 7
-      }
-    ]
+        }
+      ]
+    },
+    
+    // Course 3: The Art of Giving Compliments
+    3: {
+      courseId: 3,
+      totalModules: 4,
+      completedModules: 0,
+      totalLessons: 4,
+      completedLessons: 0,
+      modules: [
+        {
+          id: 1,
+          title: "Compliments and Wellbeing (Oxytocin)",
+          // description: "Understanding what makes compliments effective and meaningful",
+          isCompleted: false,
+          isLocked: false,
+          order: 1,
+  
+        },
+        {
+          id: 2,
+          title: "Six Compliments that Land",
+          // description: "Learn when and how to deliver compliments for maximum impact",
+          isCompleted: false,
+          isLocked: false,
+          order: 2,
+      
+        },
+        {
+          id: 3,
+          title: "Tall Poppy Syndrome",
+          // description: "Craft specific, actionable compliments that drive performance",
+          isCompleted: false,
+          isLocked: false,
+          order: 3,
+      
+        },
+        {
+          id: 4,
+          title: "Creating a Compliment Rich Workplace",
+          // description: "Foster an environment where appreciation and recognition thrive",
+          isCompleted: false,
+          isLocked: false,
+          order: 4,
+        
+        }
+      ]
+    },
+    
+    // Course 4: Achievement & Connection
+    4: {
+      courseId: 4,
+      totalModules: 4,
+      completedModules: 0,
+      totalLessons: 4,
+      completedLessons: 0,
+      modules: [
+        {
+          id: 1,
+          title: "The Magic of Achievement & Connection",
+          // description: "Learn to drive high performance while maintaining strong connections",
+          isCompleted: false,
+          isLocked: false,
+          order: 1,
+        },
+        {
+          id: 2,
+          title: "Boosting Self-Worth",
+          // description: "Explore frameworks for collective success and individual growth",
+          isCompleted: false,
+          isLocked: false,
+          order: 2,
+          
+        },
+        {
+          id: 3,
+          title: "Fostering Achievement & Connection",
+          // description: "Lead through relationship-building and emotional intelligence",
+          isCompleted: false,
+          isLocked: false,
+          order: 3,
+       
+        },
+        {
+          id: 4,
+          title: "Building Connections",
+          // description: "Create systems that maintain both achievement and team connection",
+          isCompleted: false,
+          isLocked: false,
+          order: 4,
+         
+        }
+      ]
+    },
+
+    5: {
+      courseId: 5,
+      totalModules: 4,
+      completedModules: 0,
+      totalLessons: 4,
+      completedLessons: 0,
+      modules: [
+        {
+          id: 1,
+          title: "Are you a blamer?",
+          // description: "Learn to identify common blame patterns in workplace communication",
+          isCompleted: false,
+          isLocked: false,
+          order: 1,
+        },
+        {
+          id: 2,
+          title: "How blame affects us?",
+          // description: "Transform blame-based conversations into accountability discussions",
+          isCompleted: false,
+          isLocked: false,
+          order: 2
+
+        },
+        {
+          id: 3,
+          title: "Keeping blame in check",
+          // description: "Use empathy and understanding to strengthen workplace relationships",
+          isCompleted: false,
+          isLocked: false,
+          order: 3,
+        },
+        {
+          id: 4,
+          title: "Elevating wellbeing by letting go of blame",
+          // description: "Real-world scenarios and practice exercises for blame-free communication",
+          isCompleted: false,
+          isLocked: false,
+          order: 4,
+
+        }
+      ]
+    },
   };
   
   // Helper functions to get course content
   export const getCourseContent = (courseId: number): CourseContent | null => {
-    // Map course IDs to their respective content
-    const courseContentMap: { [key: number]: CourseContent } = {
-      1: WORK_RITE_MODULES,
-      2: WORK_RITE_MODULES, // Reuse for other Work-Rite courses
-      3: WORK_RITE_MODULES,
-      4: WORK_RITE_MODULES,
-      5: LEAD_RITE_MODULES,
-      6: LEAD_RITE_MODULES, // Reuse for other Lead-Rite courses
-    };
-  
-    return courseContentMap[courseId] || null;
+    return COURSE_MODULES_DATA[courseId] || null;
   };
   
   export const getModuleById = (courseId: number, moduleId: number): ModuleData | null => {
@@ -177,39 +299,45 @@ export interface ModuleData {
   };
 
   // Helper function to get incomplete modules across all Work-Rite courses
-export const getIncompleteWorkRiteModules = (): { courseId: number, modules: ModuleData[], courseName?: string }[] => {
-  const workRiteCourseIds = [1, 2, 3, 4]; // Work-Rite course IDs
-  const incompleteModulesData: { courseId: number, modules: ModuleData[], courseName?: string }[] = [];
+  export const getIncompleteWorkRiteModules = (): { courseId: number, modules: ModuleData[], courseName?: string }[] => {
+    const workRiteCourseIds = [1, 2, 3, 4]; // Work-Rite course IDs
+    const incompleteModulesData: { courseId: number, modules: ModuleData[], courseName?: string }[] = [];
 
-  workRiteCourseIds.forEach(courseId => {
-    const incompleteModules = getIncompleteModules(courseId);
-    if (incompleteModules.length > 0) {
-      incompleteModulesData.push({
-        courseId,
-        modules: incompleteModules,
-        courseName: `Work-Rite Course ${courseId}` // You can customize this based on actual course names
-      });
-    }
-  });
+    workRiteCourseIds.forEach(courseId => {
+      const incompleteModules = getIncompleteModules(courseId);
+      if (incompleteModules.length > 0) {
+        // Get the actual course data to get the real title
+        const courseData = getLearningCardById(courseId);
+        
+        incompleteModulesData.push({
+          courseId,
+          modules: incompleteModules,
+          courseName: courseData?.title || `Work-Rite Course ${courseId}` // Use real title
+        });
+      }
+    });
 
-  return incompleteModulesData;
-};
+    return incompleteModulesData;
+  };
 
-// Helper function to get incomplete modules across all Lead-Rite courses
-export const getIncompleteLeadRiteModules = (): { courseId: number, modules: ModuleData[], courseName?: string }[] => {
-  const leadRiteCourseIds = [5, 6]; // Lead-Rite course IDs
-  const incompleteModulesData: { courseId: number, modules: ModuleData[], courseName?: string }[] = [];
+  // Helper function to get incomplete modules across all Lead-Rite courses
+  export const getIncompleteLeadRiteModules = (): { courseId: number, modules: ModuleData[], courseName?: string }[] => {
+    const leadRiteCourseIds = [5, 6]; // Lead-Rite course IDs (if you add Lead-Rite courses later)
+    const incompleteModulesData: { courseId: number, modules: ModuleData[], courseName?: string }[] = [];
 
-  leadRiteCourseIds.forEach(courseId => {
-    const incompleteModules = getIncompleteModules(courseId);
-    if (incompleteModules.length > 0) {
-      incompleteModulesData.push({
-        courseId,
-        modules: incompleteModules,
-        courseName: `Lead-Rite Course ${courseId}` // You can customize this based on actual course names
-      });
-    }
-  });
+    leadRiteCourseIds.forEach(courseId => {
+      const incompleteModules = getIncompleteModules(courseId);
+      if (incompleteModules.length > 0) {
+        // Get the actual course data to get the real title
+        const courseData = getLearningCardById(courseId);
+        
+        incompleteModulesData.push({
+          courseId,
+          modules: incompleteModules,
+          courseName: courseData?.title || `Lead-Rite Course ${courseId}`
+        });
+      }
+    });
 
-  return incompleteModulesData;
-};
+    return incompleteModulesData;
+  };
