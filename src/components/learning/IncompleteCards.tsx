@@ -1,5 +1,6 @@
 "use client";
 import { getIncompleteWorkRiteModules, getIncompleteLeadRiteModules } from '@/constants/lessons';
+import { getLearningCardById } from '@/constants/index';
 import React from 'react';
 import { IncompleteCard } from './IncompleteCard';
 
@@ -10,13 +11,18 @@ const IncompleteCards = () => {
   // Combine all incomplete modules
   const allIncompleteModules = [...incompleteWorkRite, ...incompleteLeadRite];
   
-  // Flatten modules for easier rendering
+  // Flatten modules for easier rendering with proper course names
   const flattenedModules = allIncompleteModules.flatMap(courseData => 
-    courseData.modules.map(module => ({
-      ...module,
-      courseId: courseData.courseId,
-      courseName: courseData.courseName
-    }))
+    courseData.modules.map(module => {
+      // Get the actual course data for more complete information
+      const actualCourseData = getLearningCardById(courseData.courseId);
+      
+      return {
+        ...module,
+        courseId: courseData.courseId,
+        courseName: actualCourseData?.title || courseData.courseName || `Course ${courseData.courseId}`
+      };
+    })
   );
 
   if (flattenedModules.length === 0) {
@@ -44,7 +50,7 @@ const IncompleteCards = () => {
           Pick up where you left off
         </h2>
         <p className="text-gray-600 dark:text-gray-400 text-sm">
-          {flattenedModules.length} incomplete module{flattenedModules.length !== 1 ? 's' : ''}
+          {flattenedModules.length} incomplete module{flattenedModules.length !== 1 ? 's' : ''} across {allIncompleteModules.length} course{allIncompleteModules.length !== 1 ? 's' : ''}
         </p>
       </div>
 
@@ -60,14 +66,7 @@ const IncompleteCards = () => {
         ))}
       </div>
 
-      {/* Optional: Show total count on mobile for better UX */}
-      <div className='sm:hidden'>
-        <div className='text-center pt-2 border-t border-gray-200 dark:border-gray-700'>
-          <span className="text-xs text-gray-500 dark:text-gray-400">
-            Showing {flattenedModules.length} incomplete modules
-          </span>
-        </div>
-      </div>
+     
     </div>
   );
 };

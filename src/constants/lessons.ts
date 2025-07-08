@@ -1,3 +1,4 @@
+import { getLearningCardById } from './index';
 export interface ModuleData {
     id: number;
     title: string;
@@ -184,10 +185,13 @@ export const getIncompleteWorkRiteModules = (): { courseId: number, modules: Mod
   workRiteCourseIds.forEach(courseId => {
     const incompleteModules = getIncompleteModules(courseId);
     if (incompleteModules.length > 0) {
+      // Get the actual course data to get the real title
+      const courseData = getLearningCardById(courseId);
+      
       incompleteModulesData.push({
         courseId,
         modules: incompleteModules,
-        courseName: `Work-Rite Course ${courseId}` // You can customize this based on actual course names
+        courseName: courseData?.title || `Work-Rite Course ${courseId}` // Use real title or fallback
       });
     }
   });
@@ -195,7 +199,7 @@ export const getIncompleteWorkRiteModules = (): { courseId: number, modules: Mod
   return incompleteModulesData;
 };
 
-// Helper function to get incomplete modules across all Lead-Rite courses
+// Improved helper function to get incomplete modules across all Lead-Rite courses
 export const getIncompleteLeadRiteModules = (): { courseId: number, modules: ModuleData[], courseName?: string }[] => {
   const leadRiteCourseIds = [5, 6]; // Lead-Rite course IDs
   const incompleteModulesData: { courseId: number, modules: ModuleData[], courseName?: string }[] = [];
@@ -203,10 +207,13 @@ export const getIncompleteLeadRiteModules = (): { courseId: number, modules: Mod
   leadRiteCourseIds.forEach(courseId => {
     const incompleteModules = getIncompleteModules(courseId);
     if (incompleteModules.length > 0) {
+      // Get the actual course data to get the real title
+      const courseData = getLearningCardById(courseId);
+      
       incompleteModulesData.push({
         courseId,
         modules: incompleteModules,
-        courseName: `Lead-Rite Course ${courseId}` // You can customize this based on actual course names
+        courseName: courseData?.title || `Lead-Rite Course ${courseId}` // Use real title or fallback
       });
     }
   });
