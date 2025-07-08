@@ -22,10 +22,12 @@ const CurrentOverview = async ({ params }: { params: Promise<{ slug: string }> }
         score={overview?.score ?? 0}
         percentageChange={overview?.percentageChange ?? 0}
       />
-      <OverviewTabs activeTab="current" slug={slug} />
+      <div className="flex flex-col gap-4 mx-auto w-full max-w-6xl">
+        <OverviewTabs activeTab="current" slug={slug} />
 
-      <MainOverviewChart />
-      <OverviewBySiteChart />
+        <MainOverviewChart />
+        <OverviewBySiteChart />
+      </div>
     </div>
   );
 };
