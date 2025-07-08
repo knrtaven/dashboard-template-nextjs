@@ -1,4 +1,5 @@
 import OverviewHeader from '@/components/insights/overview/OverviewHeader';
+import OverviewTabs from '@/components/insights/overview/OverviewTabs';
 import { getOverview } from '@/constants/insights';
 import { notFound } from 'next/navigation';
 
@@ -19,6 +20,7 @@ const CurrentOverview = async ({ params }: { params: Promise<{ slug: string }> }
         score={overview?.score ?? 0}
         percentageChange={overview?.percentageChange ?? 0}
       />
+      <OverviewTabs activeTab="current" slug={slug} />
     </div>
   );
 };
