@@ -1,4 +1,5 @@
 import MainOverviewChart from '@/components/insights/overview/MainOverviewChart';
+import OverviewBySiteChart from '@/components/insights/overview/OverviewBySiteChart';
 import OverviewHeader from '@/components/insights/overview/OverviewHeader';
 import OverviewTabs from '@/components/insights/overview/OverviewTabs';
 import { getOverview } from '@/constants/insights';
@@ -24,6 +25,7 @@ const CurrentOverview = async ({ params }: { params: Promise<{ slug: string }> }
       <OverviewTabs activeTab="current" slug={slug} />
 
       <MainOverviewChart />
+      <OverviewBySiteChart />
     </div>
   );
 };
