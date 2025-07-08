@@ -2,8 +2,10 @@ const ScoreMatrix = () => {
   return (
     <div className="w-full space-y-8 rounded-lg border px-6 py-8">
       <div className="flex flex-col gap-2">
-        <h2 className="text-lg font-medium md:text-xl">What is a good Lead-Rite score?</h2>
-        <p className="text-base text-gray-600">
+        <h2 className="text-lg font-medium md:text-xl dark:text-white">
+          What is a good Lead-Rite score?
+        </h2>
+        <p className="text-base text-gray-600 dark:text-gray-400">
           Lead-Rite Scores measure the degree to which leaders are applying wiser leadership
           behaviours and principles aimed at engaging the hearts and minds of staff while focusing
           on making decisions for the greater good of the orgnaistion.
@@ -97,16 +99,16 @@ const ScoreMatrix = () => {
               Bottom Quartile Scores
             </span>
 
-            <span className="text-xl font-thin md:text-4xl">0% - 24%</span>
+            <span className="text-xl font-thin md:text-4xl dark:text-white">0% - 24%</span>
           </div>
 
           <div className="flex flex-col gap-4">
-            <p className="text-sm text-gray-600 lg:text-base">
+            <p className="text-sm text-gray-600 lg:text-base dark:text-white">
               It is highly likely leadership are working in silos and not applying wiser leadership
               behaviours and principles.
             </p>
 
-            <ul className="list-disc pl-4 text-sm text-gray-600 lg:text-base">
+            <ul className="list-disc pl-4 text-sm text-gray-600 lg:text-base dark:text-white">
               <li>
                 Leader will more likely be experiencing personalised ways of working, creating more
                 stress and anxiety in the workplace
@@ -119,10 +121,10 @@ const ScoreMatrix = () => {
 
         {/* Second Part */}
         <div className="mt-2 flex flex-col gap-2">
-          <h2 className="text-lg font-medium md:text-xl">
+          <h2 className="text-lg font-medium md:text-xl dark:text-white">
             Understanding and improving your Scores
           </h2>
-          <p className="text-base text-gray-600">
+          <p className="text-base text-gray-600 dark:text-gray-400">
             Lead-Rite scores can fluctuate over time depending on the level of leadership
             consistency and the degreee in which leaders are applying wiser leadership behaviours
             and principles
@@ -181,12 +183,12 @@ const ScoreMatrix = () => {
 
           {/* Bottom Quartile */}
           <div className="flex flex-col items-start gap-4 rounded-lg bg-[#d9d2e84d] p-6 md:gap-8">
-            <p className="text-sm text-gray-600 lg:text-base">
+            <p className="text-sm text-gray-600 lg:text-base dark:text-white">
               Bottom Quartile Scores suggest leadership are operating in personalised ways of
               working and not yet applying wiser leadership behaviours and principles. Consider:
             </p>
 
-            <ul className="list-disc pl-4 text-sm text-gray-600 lg:text-base">
+            <ul className="list-disc pl-4 text-sm text-gray-600 lg:text-base dark:text-white">
               <li>
                 Setting expectations that all leaders are to participate in the Lead-Rite program as
                 part of the ongoing Leadership Development.
