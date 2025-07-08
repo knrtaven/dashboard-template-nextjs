@@ -1,7 +1,6 @@
 'use client';
 
 import { ApexOptions } from 'apexcharts';
-import { Info } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 const ReactApexChart = dynamic(() => import('react-apexcharts'), {
@@ -40,8 +39,8 @@ const OverviewBySiteChart = () => {
     plotOptions: {
       bar: {
         horizontal: true,
-        barHeight: '80%', // Proportional height for spacing
-        distributed: false, // Default spacing
+        barHeight: '70%', // More spacing between bars
+        distributed: false,
         colors: {
           ranges: [{
             from: 0,
@@ -52,7 +51,13 @@ const OverviewBySiteChart = () => {
       }
     },
     xaxis: {
-      categories: categories
+      categories: categories,
+      labels: {
+        show: false // Hide numbers on bottom
+      },
+      axisBorder: {
+        show: false // Hide x-axis line
+      }
     }
   };
 
@@ -65,18 +70,11 @@ const OverviewBySiteChart = () => {
     <div className="h-full w-full shrink-0 overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
       <div className="flex flex-col px-6 py-8">
         {/* Title and description */}
-        <h2 className="text-lg font-medium">Lead-Rite</h2>
+        <h2 className="text-lg font-medium">Lead-Rite by Site Jun-25</h2>
         <p className="text-sm font-light text-gray-500">Adjusted score</p>
-        <div className="mt-1 flex flex-row items-center gap-2 text-sm text-gray-600">
-          <Info className="h-4 w-4" />
-          <p>
-            The degree to which leaders are engaged in applying the Lead-rite behaviours and
-            principles.
-          </p>
-        </div>
 
         {/* Chart */}
-        <ReactApexChart options={options} series={series} type="bar" height={350} />
+        <ReactApexChart options={options} series={series} type="bar" height={400} />
       </div>
     </div>
   );
