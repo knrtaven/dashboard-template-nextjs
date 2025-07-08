@@ -3,7 +3,7 @@ import { getLearningCardById } from './index';
 export interface ModuleData {
     id: number;
     title: string;
-    // description: string;
+    description?: string;
     isCompleted: boolean;
     isLocked: boolean;
     order: number;

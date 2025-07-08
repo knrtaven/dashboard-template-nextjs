@@ -54,7 +54,8 @@ const IncompleteCards = () => {
             key={course.id}
             module={{
               id: course.id,
-              title: course.title,
+              title: course.title,              
+              description: course.description,
               isCompleted: course.progress === 100,
               isLocked: false,
               order: course.id,
