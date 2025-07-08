@@ -2,8 +2,8 @@
 
 
 import { ArrowDown, ArrowUp } from 'lucide-react';
-import Button from '../ui/button/Button';
-import { Table, TableBody, TableCell, TableHeader, TableRow } from '../ui/table';
+import Button from '../../ui/button/Button';
+import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../ui/table';
 
 interface Order {
   id: number;

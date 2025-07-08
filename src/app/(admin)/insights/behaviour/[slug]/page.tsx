@@ -1,5 +1,5 @@
-import BehaviourAddCard from '@/components/behaviour/BehaviourAddCard';
-import BehaviourHeader from '@/components/behaviour/BehaviourHeader';
+import BehaviourAddCard from '@/components/insights/behaviour/BehaviourAddCard';
+import BehaviourHeader from '@/components/insights/behaviour/BehaviourHeader';
 import { getBehaviour } from '@/constants/insights';
 import { notFound } from 'next/navigation';
 

@@ -1,5 +1,5 @@
 import { behaviours } from '@/constants/insights';
-import { ScrollArea, ScrollBar } from '../ui/scroll-area/ScrollArea';
+import { ScrollArea, ScrollBar } from '../../ui/scroll-area/ScrollArea';
 import BehaviourCard from './BehaviourCard';
 
 const BehaviourCards = () => {

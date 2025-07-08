@@ -72,3 +72,8 @@ export const getBehaviour = async (slug: string) => {
   const behaviour = behaviours.find((behaviour) => behaviour.title.toLowerCase() === slug.toLowerCase());
   return behaviour;
 };
+
+export const getOverview = async (slug: string) => {
+  const overview = insightsOverview.find((overview) => overview.title.toLowerCase() === slug.toLowerCase());
+  return overview;
+};

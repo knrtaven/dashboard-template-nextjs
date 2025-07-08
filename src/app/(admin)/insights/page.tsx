@@ -1,7 +1,7 @@
-import BehaviourCards from '@/components/insights/BehaviourCards';
-import InsightsHeader from '@/components/insights/InsightsHeader';
-import OverviewCards from '@/components/insights/OverviewCards';
-import SitesPerformance from '@/components/insights/SitesPerformance';
+import BehaviourCards from '@/components/insights/insights/BehaviourCards';
+import InsightsHeader from '@/components/insights/insights/InsightsHeader';
+import OverviewCards from '@/components/insights/insights/OverviewCards';
+import SitesPerformance from '@/components/insights/insights/SitesPerformance';
 
 const Insights = () => {
   return (
