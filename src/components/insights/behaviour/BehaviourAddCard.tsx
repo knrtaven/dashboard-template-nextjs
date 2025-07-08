@@ -1,5 +1,5 @@
 import { Plus } from 'lucide-react';
-import Button from '../ui/button/Button';
+import Button from '../../ui/button/Button';
 
 const BehaviourAddCard = () => {
   return (

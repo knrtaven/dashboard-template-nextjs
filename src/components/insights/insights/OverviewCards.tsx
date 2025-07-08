@@ -1,6 +1,6 @@
 import React from 'react';
 import OverviewCard from './OverviewCard';
-import { insightsOverview } from '../../constants/insights';
+import { insightsOverview } from '../../../constants/insights';
 
 const OverviewCards = () => {
   return (

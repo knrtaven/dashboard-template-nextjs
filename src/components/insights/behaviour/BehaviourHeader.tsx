@@ -1,6 +1,6 @@
 import { ChevronLeft, LucideIcon } from 'lucide-react';
 import React from 'react';
-import Button from '../ui/button/Button';
+import Button from '../../ui/button/Button';
 import Link from 'next/link';
 
 interface BehaviourHeaderProps {
