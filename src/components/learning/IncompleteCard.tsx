@@ -1,5 +1,4 @@
 "use client";
-import { Clock } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import { ModuleData } from '@/constants/lessons';
@@ -52,11 +51,6 @@ export const IncompleteCard: React.FC<IncompleteCardProps> = ({
               {module.description}
             </p>
 
-            {/* Duration */}
-            <div className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400">
-              <Clock className="w-4 h-4" />
-              <span>{module.duration}</span>
-            </div>
 
             {/* Continue Button */}
             <div className="pt-2">

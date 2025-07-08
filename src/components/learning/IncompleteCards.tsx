@@ -1,12 +1,23 @@
 "use client";
-import { LEARNING_CARDS_DATA} from '@/constants/index';
+import { LEARNING_CARDS_DATA } from '@/constants/index';
+import { getCourseContent, calculateCourseProgress } from '@/constants/lessons';
 import React from 'react';
 import { IncompleteCard } from './IncompleteCard';
 
 const IncompleteCards = () => {
-  // Get courses that are not 100% complete (have progress < 100)
-  const incompleteCourses = LEARNING_CARDS_DATA.filter(course => course.progress < 100);
-  
+  // Calculate dynamic progress and filter incomplete courses
+  const incompleteCourses = LEARNING_CARDS_DATA.map(course => {
+    const courseContent = getCourseContent(course.id);
+    const dynamicProgress = courseContent ? calculateCourseProgress(courseContent) : course.progress;
+    
+    return {
+      ...course,
+      progress: dynamicProgress,
+      completedLessons: courseContent ? courseContent.completedLessons : course.completedLessons,
+      totalLessons: courseContent ? courseContent.totalLessons : course.totalLessons
+    };
+  }).filter(course => course.progress < 100); // Only show courses that aren't 100% complete
+
   if (incompleteCourses.length === 0) {
     return (
       <div className='w-full'>
@@ -45,13 +56,9 @@ const IncompleteCards = () => {
               id: course.id,
               title: course.title,
               description: course.description,
-              duration: course.duration,
               isCompleted: course.progress === 100,
               isLocked: false,
               order: course.id,
-              estimatedTime: course.duration,
-              contentType: 'mixed' as const,
-              totalLessons: course.totalLessons
             }}
             courseId={course.id}
             courseName={course.category}
@@ -59,7 +66,7 @@ const IncompleteCards = () => {
         ))}
       </div>
 
-      {/* Optional: Show total count on mobile for better UX */}
+      {/*Show total count on mobile*/}
       <div className='sm:hidden'>
         <div className='text-center pt-2 border-t border-gray-200 dark:border-gray-700'>
           <span className="text-xs text-gray-500 dark:text-gray-400">

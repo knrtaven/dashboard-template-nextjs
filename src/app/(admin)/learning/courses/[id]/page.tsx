@@ -127,30 +127,20 @@ export default function CoursePage({ params }: PageProps) {
               </div>
 
               {/* Course Stats Sidebar */}
-              <div>
-                <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+              <div className="">
+                <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 lg:pb-24">
                   <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
                     Course Details
                   </h3>
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600 dark:text-gray-400">Total Duration</span>
-                      <span className="text-sm font-medium text-gray-900 dark:text-white">
-                        {courseContent.estimatedTotalTime}
-                      </span>
-                    </div>
+                   
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-600 dark:text-gray-400">Total Modules</span>
                       <span className="text-sm font-medium text-gray-900 dark:text-white">
                         {courseContent.totalModules}
                       </span>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600 dark:text-gray-400">Total Lessons</span>
-                      <span className="text-sm font-medium text-gray-900 dark:text-white">
-                        {courseContent.totalLessons}
-                      </span>
-                    </div>
+                  
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-600 dark:text-gray-400">Category</span>
                       <span className="text-sm font-medium text-gray-900 dark:text-white">
@@ -160,6 +150,7 @@ export default function CoursePage({ params }: PageProps) {
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>

@@ -1,12 +1,11 @@
 import React from 'react'
-import { Clock, Play, CheckCircle,  Lock} from 'lucide-react';
+import { Play, CheckCircle,  Lock} from 'lucide-react';
 import Link from 'next/link';
 
 interface Module {
   id: number | string;
   title: string;
   description: string;
-  duration: string;
   totalLessons?: number;
   isLocked: boolean;
   isCompleted: boolean;
@@ -20,9 +19,6 @@ interface CourseModuleProps {
 
 export const CourseModule = ({module, moduleIndex, courseId}: CourseModuleProps) => {
 
-    const formatDuration = (duration: string) => {
-        return duration.replace('minutes', 'min');
-      };
 
   return (
     <div key={module.id} className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] overflow-hidden">
@@ -52,10 +48,7 @@ export const CourseModule = ({module, moduleIndex, courseId}: CourseModuleProps)
           
           {/* Module Meta Info */}
           <div className="flex items-center space-x-6 text-sm text-gray-500 dark:text-gray-400">
-            <div className="flex items-center space-x-1">
-              <Clock className="w-4 h-4" />
-              <span>{formatDuration(module.duration)}</span>
-            </div>
+      
             
             <div className="flex items-center space-x-1">
               <span>{module.totalLessons || 'Multiple'} topics</span>
