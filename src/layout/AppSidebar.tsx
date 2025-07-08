@@ -1,7 +1,8 @@
 "use client";
-import React, { useEffect, useRef, useState,useCallback } from "react";
 import Link from "next/link";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 // import Image from "next/image";
+import { Presentation } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
 import {
@@ -14,8 +15,6 @@ import {
   // PageIcon,
   PieChartIcon,
   PlugInIcon,
-  // TableIcon,
-  // UserCircleIcon,
 } from "../icons/index";
 // import SidebarWidget from "./SidebarWidget";
 
@@ -33,6 +32,11 @@ const navItems: NavItem[] = [
     path: "/learning"
     // subItems: [{ name: "Ecommerce", path: "/", pro: false }],
   },
+  {
+    icon: <Presentation />,
+    name: "Insights",
+    path: "/insights"
+  }
   // {
   //   icon: <CalenderIcon />,
   //   name: "Calendar",
