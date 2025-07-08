@@ -6,6 +6,7 @@ interface Module {
   id: number | string;
   title: string;
   totalLessons?: number;
+  description?: string;
   isLocked: boolean;
   isCompleted: boolean;
 }
@@ -41,6 +42,10 @@ export const CourseModule = ({module, moduleIndex, courseId}: CourseModuleProps)
             </div>
           </div>
           
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
+            {module.description}
+          </p>
+
           
           {/* Module Meta Info */}
           <div className="flex items-center space-x-6 text-sm text-gray-500 dark:text-gray-400">

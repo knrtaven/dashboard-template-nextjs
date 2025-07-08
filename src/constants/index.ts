@@ -48,7 +48,7 @@ export const LEARNING_CARDS_DATA: LearningCardData[] = [
   {
     id: 3,
     title: "The Art of Giving Compliments",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description: "Boosting wellbeing starts with meaningful recognition, where compliments that land...",
     progress: 0,
     duration: "5 hours",
 
@@ -63,7 +63,7 @@ export const LEARNING_CARDS_DATA: LearningCardData[] = [
   {
     id: 4,
     title: "Achievement & Connection",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description: "How to harness achievement and connection to improve workplace wellbeing and achievement.",
     progress: 0,
     duration: "8 hours",
 

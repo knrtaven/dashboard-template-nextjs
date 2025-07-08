@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { LuHandHeart } from "react-icons/lu";
 // import Image from "next/image";
 import { Presentation } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -36,6 +37,12 @@ const navItems: NavItem[] = [
     icon: <Presentation />,
     name: "Insights",
     path: "/insights"
+  },
+
+  {
+    icon: <LuHandHeart className="text-2xl"/>,
+    name: "Showcase",
+    path: "/showcase"
   }
   // {
   //   icon: <CalenderIcon />,
