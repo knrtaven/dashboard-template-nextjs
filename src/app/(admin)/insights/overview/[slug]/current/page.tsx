@@ -1,3 +1,4 @@
+import ConsumptionOverviewChart from '@/components/insights/overview/ConsumptionOverviewChart';
 import MainOverviewChart from '@/components/insights/overview/MainOverviewChart';
 import OverviewBySiteChart from '@/components/insights/overview/OverviewBySiteChart';
 import OverviewHeader from '@/components/insights/overview/OverviewHeader';
@@ -22,11 +23,12 @@ const CurrentOverview = async ({ params }: { params: Promise<{ slug: string }> }
         score={overview?.score ?? 0}
         percentageChange={overview?.percentageChange ?? 0}
       />
-      <div className="flex flex-col gap-4 mx-auto w-full max-w-6xl">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-4">
         <OverviewTabs activeTab="current" slug={slug} />
 
         <MainOverviewChart />
         <OverviewBySiteChart />
+        <ConsumptionOverviewChart />
       </div>
     </div>
   );
