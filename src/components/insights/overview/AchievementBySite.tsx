@@ -60,6 +60,8 @@ const AchievementBySite = () => {
       },
     },
     xaxis: {
+      min: 0,
+      max: 100,
       categories: categories,
       labels: {
         show: false, // Hide numbers on bottom

@@ -95,6 +95,8 @@ const ExecutionChart = () => {
       },
     },
     yaxis: {
+      min: 0,
+      max: 100,
       labels: {
         style: {
           fontSize: '12px',
