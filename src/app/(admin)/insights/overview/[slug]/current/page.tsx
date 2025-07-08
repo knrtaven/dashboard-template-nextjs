@@ -10,6 +10,7 @@ import MainOverviewChart from '@/components/insights/overview/MainOverviewChart'
 import OverviewBySiteChart from '@/components/insights/overview/OverviewBySiteChart';
 import OverviewHeader from '@/components/insights/overview/OverviewHeader';
 import OverviewTabs from '@/components/insights/overview/OverviewTabs';
+import ScoreMatrix from '@/components/insights/overview/ScoreMatrix';
 import WellBeingBySite from '@/components/insights/overview/WellBeingBySite';
 import WellBeingChart from '@/components/insights/overview/WellBeingChart';
 import { getOverview } from '@/constants/insights';
@@ -52,6 +53,8 @@ const CurrentOverview = async ({ params }: { params: Promise<{ slug: string }> }
 
         <WellBeingChart />
         <WellBeingBySite />
+
+        <ScoreMatrix />
       </div>
     </div>
   );
