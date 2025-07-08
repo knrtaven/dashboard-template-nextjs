@@ -7,7 +7,7 @@ const ReactApexChart = dynamic(() => import('react-apexcharts'), {
   ssr: false,
 });
 
-const ConsumptionOverviewChart = () => {
+const AchievementChart = () => {
   const options: ApexOptions = {
     legend: {
       show: false,
@@ -114,17 +114,17 @@ const ConsumptionOverviewChart = () => {
     {
       name: 'Adjusted score',
       type: 'line',
-      data: [78, 82, 75, 84, 79, 77, 83, 76, 81, 80, 85, 78],
+      data: [52, 58, 45, 49, 56, 43, 51, 47, 59, 54, 48, 53],
     },
     {
       name: 'Respondents',
       type: 'bar',
-      data: [76, 83, 79, 85, 77, 81, 75, 84, 78, 80, 76, 82],
+      data: [46, 55, 42, 57, 50, 44, 58, 41, 52, 47, 56, 49],
     },
     {
       name: 'Participants',
       type: 'bar',
-      data: [75, 79, 77, 82, 76, 84, 78, 80, 75, 83, 79, 81],
+      data: [48, 51, 45, 59, 43, 54, 46, 53, 40, 55, 50, 57],
     },
   ];
 
@@ -132,11 +132,11 @@ const ConsumptionOverviewChart = () => {
     <div className="h-full w-full shrink-0 overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
       <div className="flex flex-col px-6 py-8">
         {/* Title and description */}
-        <h2 className="text-lg font-medium dark:text-white">Consumption</h2>
+        <h2 className="text-lg font-medium dark:text-white">Achievement</h2>
         <p className="text-sm font-light text-gray-500 dark:text-gray-400">Adjusted score</p>
         <div className="mt-1 flex flex-row items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
           <Info className="h-4 w-4" />
-          <p>The degree to which leaders have completed the current months Lead-Rite content.</p>
+          <p>Degree to which leaders are fostering a sense of collective achievement.</p>
         </div>
 
         {/* Chart */}
@@ -146,4 +146,4 @@ const ConsumptionOverviewChart = () => {
   );
 };
 
-export default ConsumptionOverviewChart;
+export default AchievementChart;

@@ -1,3 +1,6 @@
+import AchievementBySite from '@/components/insights/overview/AchievementBySite';
+import AchievementChart from '@/components/insights/overview/AchievementChart';
+import ConsumptionBySite from '@/components/insights/overview/ConsumptionBySite';
 import ConsumptionOverviewChart from '@/components/insights/overview/ConsumptionOverviewChart';
 import MainOverviewChart from '@/components/insights/overview/MainOverviewChart';
 import OverviewBySiteChart from '@/components/insights/overview/OverviewBySiteChart';
@@ -28,7 +31,12 @@ const CurrentOverview = async ({ params }: { params: Promise<{ slug: string }> }
 
         <MainOverviewChart />
         <OverviewBySiteChart />
+
         <ConsumptionOverviewChart />
+        <ConsumptionBySite />
+
+        <AchievementChart />
+        <AchievementBySite />
       </div>
     </div>
   );
