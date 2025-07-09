@@ -16,7 +16,7 @@ const OverviewHeader = ({ title, description, score, percentageChange }: Overvie
       {/* Left Side */}
       <div className="space-y-2 text-white lg:w-1/2">
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="xs" className="!rounded-full" asChild={true}>
+          <Button variant="outline" size="xs" className="!rounded-full">
             <Link href="/insights">
               <ChevronLeft />
             </Link>
