@@ -2,11 +2,10 @@
 // import ThemeTogglerTwo from "@/components/references/common/ThemeTogglerTwo";
 
 import { ThemeProvider } from "@/context/ThemeContext";
-import Image from "next/image";
 // import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { Appellon_logo } from "../../../../public/images/logo";
+// import { Appellon_logo } from "../../../../public/images/logo";
 
 export default function AuthLayout({
   children,
@@ -24,16 +23,16 @@ export default function AuthLayout({
             
               <div className="flex flex-col items-center max-w-xs">
                 <Link href="/" className="block mb-4">
-                  <Image
+                  {/* <Image
                     width={231}
                     height={48}
                     src={Appellon_logo}
                     alt="Logo"
-                  />
+                  /> */}
                 </Link>
-                {/* <p className="text-center text-3xl font-bold text-neutral-100 dark:text-white/60">
+                <p className="text-center text-3xl font-bold text-neutral-100 dark:text-white/60">
                   Appellon
-                </p> */}
+                </p>
               </div>
             </div>
           </div>

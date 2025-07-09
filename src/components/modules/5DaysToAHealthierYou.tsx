@@ -102,7 +102,7 @@ const FiveDaysToAHealthierYou = () => {
   // Show locked sections with controlled navigation
   if (currentSection <= 1) {
     return (
-      <div className="relative -mx-4 md:-mx-3 -mt-4 md:-mt-16">
+      <div className="relative -mx-4 md:-mx-3 -mt-12 md:-mt-16">
         <div 
           className="transition-transform duration-500 ease-in-out"
           style={{ 
@@ -142,17 +142,11 @@ const FiveDaysToAHealthierYou = () => {
       <section className="py-8 sm:py-16 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">Workplace Well-being Quiz</h2>
-            <p className="text-gray-600 text-base sm:text-lg">This week's objective is to complete a quiz.</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">5-days to a Healthier You</h2>
+            <h3 className="text-xl sm:text-3xl font-bold text-gray-800 mb-4">Your Weekly Plan</h3>
+            <p className="text-gray-600 text-base sm:text-lg">Explore a plan for you to follow this week to improve your wellbeing in just 5 days. All you have to do is follow the steps.</p>
           </div>
           
-          <div className="p-6 sm:p-8">
-            <p className="text-gray-700 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
-              Now that you know the basic Work-Rite principles and behaviors, and understand how 
-              oxytocin and cortisol affect our well-being at work, let's take a short quiz to see what you've 
-              learned. Once you finish the quiz, you're done for the week.
-            </p>
-          </div>
         </div>
       </section>
 
