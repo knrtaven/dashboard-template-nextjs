@@ -10,12 +10,6 @@ import { Aged_Care_Model, asset_1, asset_2, asset_3 } from '../../../public/imag
 
 const FiveDaysToAHealthierYou = () => {
   const [currentSection, setCurrentSection] = useState(0);
-  const [, setQuizAnswers] = useState({});
-  const [textAnswer, setTextAnswer] = useState('');
-
-  const handleQuizAnswer = (questionId: string, answer: string | number) => {
-    setQuizAnswers(prev => ({...prev, [questionId]: answer}));
-  };
 
   const navigateToSection = (sectionIndex: number) => {
     setCurrentSection(sectionIndex);
@@ -333,7 +327,7 @@ const FiveDaysToAHealthierYou = () => {
       <section className="py-8 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
-              <h4 className="text-xl font-bold text-gray-800 mb-4 ">Reflection</h4>
+              <h4 className="text-xl font-bold text-gray-800 mb-4 font-stretch-75%">Reflection</h4>
               <p className="text-gray-700 mb-6 leading-relaxed">
               Start acknowledging the choices and actions you make that affect your personal well-being. 
               Are these choices helpful or harmful to your well-being? 
