@@ -107,7 +107,7 @@ const WorkplaceWellbeingLesson = () => {
   // Show locked sections with controlled navigation
   if (currentSection <= 1) {
     return (
-      <div className="relative -mx-4 md:-mx-3 -mt-4 md:-mt-16">
+      <div className="relative -mx-4 md:-mx-3 -mt-12 md:-mt-16">
         <div 
           className="transition-transform duration-500 ease-in-out"
           style={{ 
