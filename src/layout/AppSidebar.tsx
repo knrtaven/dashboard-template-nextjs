@@ -17,6 +17,8 @@ import {
   PieChartIcon,
   PlugInIcon,
 } from "../icons/index";
+import { Appellon_logo, Appellon_tree } from "../../public/images/logo";
+import Image from "next/image";
 // import SidebarWidget from "./SidebarWidget";
 
 type NavItem = {
@@ -321,33 +323,27 @@ const AppSidebar: React.FC = () => {
           !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
         }`}
       >
-        <Link href="/">
+        <Link href="/learning">
           {isExpanded || isHovered || isMobileOpen ? (
             <>
-              <h1>Logo Appellon</h1>
-              {/* <Image
-                className="dark:hidden"
-                src="/images/logo/logo.svg"
-                alt="Logo"
-                width={150}
-                height={40}
-              />
               <Image
-                className="hidden dark:block"
-                src="/images/logo/logo-dark.svg"
+                src={Appellon_logo}
                 alt="Logo"
                 width={150}
-                height={40}
-              /> */}
+                height={20}
+              />
+              
             </>
           ) : (
-            <h1>Logo Appellon</h1>
-            // <Image
-            //   src="/images/logo/logo-icon.svg"
-            //   alt="Logo"
-            //   width={32}
-            //   height={32}
-            // />
+            <>
+              <Image
+                src={Appellon_tree}
+                alt="Logo"
+                width={32}
+                height={32}
+              />
+            </>
+
           )}
         </Link>
       </div>

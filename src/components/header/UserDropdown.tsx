@@ -4,6 +4,8 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
+import { user_template } from "../../../public/images/user";
+import { one_year_streak } from "../../../public/images/badges";
 
 export default function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,12 +28,12 @@ function toggleDropdown(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
           <Image
             width={44}
             height={44}
-            src="/images/user/owner.jpg"
+            src={user_template}
             alt="User"
           />
         </span>
 
-        <span className="block mr-1 font-medium text-theme-sm">Musharof</span>
+        <span className="block mr-1 font-medium text-theme-sm">Daniela</span>
 
         <svg
           className={`stroke-gray-500 dark:stroke-gray-400 transition-transform duration-200 ${
@@ -61,14 +63,19 @@ function toggleDropdown(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
         <div >
           <div className="flex items-center justify-between gap-2">
             <span className="block font-medium text-gray-700 text-theme-sm dark:text-gray-400">
-              Musharof Chowdhury
+              Daniela Santos
             </span> 
 
-            <span className="text-gray-500 text-theme-xs dark:text-gray-400 border border-gray-200 rounded-full px-2 py-1">Badge</span>
+                <Image
+                width={30}
+                height={30}
+                src={one_year_streak}
+                alt="User"
+              />
           </div>
           
           <span className="mt-0.5 block text-theme-xs text-gray-500 dark:text-gray-400">
-            randomuser@pimjo.com
+            Daniela@appellon.com
           </span>
         </div>
 
