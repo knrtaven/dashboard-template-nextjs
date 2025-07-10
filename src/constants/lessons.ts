@@ -7,7 +7,7 @@ export interface ModuleData {
     isCompleted: boolean;
     isLocked: boolean;
     order: number;
-    banner?:StaticImageData
+    banner?:StaticImageData | string;
   }
   
   export interface CourseContent {
