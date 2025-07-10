@@ -19,7 +19,6 @@ interface CourseModuleProps {
 
 export const CourseModule = ({module, moduleIndex, courseId}: CourseModuleProps) => {
 
-
   return (
     <div key={module.id} className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] overflow-hidden">
     <div className="p-6">
@@ -28,6 +27,7 @@ export const CourseModule = ({module, moduleIndex, courseId}: CourseModuleProps)
         <div className="flex-1">
           <div className="flex items-center space-x-3 mb-3">
             <div className="flex items-center justify-center w-10 h-10  bg-blue-100 dark:bg-blue-900/20 rounded-full">
+            
               <span className="text-sm font-bold text-blue-600  dark:text-blue-400">
                 {moduleIndex + 1} 
               </span>

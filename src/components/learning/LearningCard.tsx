@@ -14,6 +14,7 @@ export const LearningCard: React.FC<LearningCardData> = ({
   duration,
   bannerColor,
   category,
+  bannerImage
 }) => {
   const navigate = useRouter();
   
@@ -38,6 +39,12 @@ export const LearningCard: React.FC<LearningCardData> = ({
     >
       {/* Banner Section */}
       <div className={`h-32 ${bannerColor} relative flex items-center justify-center`}>
+      <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url('${typeof bannerImage === 'string' ? bannerImage : bannerImage?.src}')`
+            }}
+          />
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative z-10 text-center text-white">
           <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 rounded-full mb-2 backdrop-blur-sm">

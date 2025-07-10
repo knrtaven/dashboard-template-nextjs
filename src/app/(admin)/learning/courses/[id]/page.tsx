@@ -73,7 +73,14 @@ export default function CoursePage({ params }: PageProps) {
         {/* Course Header */}
         <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] overflow-hidden">
           {/* Banner */}
+          
           <div className={`h-48 ${course.bannerColor} relative flex items-center justify-center`}>
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url('${typeof course.bannerImage === 'string' ? course.bannerImage : course.bannerImage?.src}')`
+            }}
+          />
             <div className="absolute inset-0 bg-black/20"></div>
             <div className="relative z-10 text-center text-white">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4 backdrop-blur-sm">
