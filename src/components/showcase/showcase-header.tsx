@@ -114,7 +114,7 @@ const Header = () => {
           <Button
             variant="outline"
             size="sm"
-            className="!hidden !ring-[#7f56d9] sm:!flex"
+            className="!hidden !ring-brand-primary sm:!flex"
             endIcon={<Share2 width={20} height={20} className="text-gray-700" />}
           >
             Share QR code
@@ -123,7 +123,7 @@ const Header = () => {
           <Button
             variant="outline"
             size="sm"
-            className="!ring-[#7f56d9]"
+            className="!ring-brand-primary"
             endIcon={<Plus width={20} height={20} className="text-gray-700" />}
           >
             Add

@@ -110,7 +110,7 @@ export const LearningCard: React.FC<LearningCardData> = ({
         {/* Progress Bar */}
         <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
           <div 
-            className={`h-full transition-all duration-500 ease-out bg-[#7f56d9]`}
+            className={`h-full transition-all duration-500 ease-out bg-brand-primary`}
             style={{ width: `${progress}%` }}
           >
             <div className="h-full bg-white/20 animate-pulse"></div>

@@ -22,7 +22,7 @@ const LearningHeadline = () => {
   const totalCourses = coursesWithDynamicProgress.length;
 
   return (
-    <div className="rounded-lg flex justify-evenly items-center gap-5 h-50 md:h-72 bg-[#7f56d9] relative overflow-hidden">
+    <div className="rounded-lg flex justify-evenly items-center gap-5 h-50 md:h-72 bg-brand-primary relative overflow-hidden">
       {/* Background Image */}
       <Image
         src="/images/grid-image/image-01.png"

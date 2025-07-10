@@ -87,7 +87,7 @@ export default function TwoFactorForm() {
                       onChange={(e) => handleInputChange(index, e.target.value)}
                       onKeyDown={(e) => handleKeyDown(index, e)}
                       onPaste={handlePaste}
-                      className="w-12 h-12 sm:w-14 sm:h-14 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:border-[#7f56d9] focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-[#7f56d9]"
+                      className="w-12 h-12 sm:w-14 sm:h-14 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-brand-primary"
                       autoComplete="off"
                     />
                   ))}
@@ -97,7 +97,7 @@ export default function TwoFactorForm() {
                 <button
                   type="submit"
                   disabled={!code.every(digit => digit !== '')}
-                  className="w-full py-3 px-4 bg-[#7f56d9] hover:bg-[#6d48c7] disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors duration-200 dark:disabled:bg-gray-600"
+                  className="w-full py-3 px-4 bg-brand-primary hover:bg-brand-primary-dark disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors duration-200 dark:disabled:bg-gray-600"
                 >
                   Verify Code
                 </button>

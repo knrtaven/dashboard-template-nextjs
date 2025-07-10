@@ -56,7 +56,7 @@ export const IncompleteCard: React.FC<IncompleteCardProps> = ({
             <div className="pt-2">
               <Link
                 href={`/learning/courses/${courseId}`}
-                className="inline-block w-full text-center px-4 py-2 rounded-lg bg-[#7f56d9] hover:bg-[#6d48c7] text-white font-medium transition-colors duration-200 text-sm"
+                className="inline-block w-full text-center px-4 py-2 rounded-lg bg-brand-primary hover:bg-brand-primary-dark text-white font-medium transition-colors duration-200 text-sm"
               >
                 Continue
               </Link>

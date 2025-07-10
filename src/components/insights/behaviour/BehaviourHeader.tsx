@@ -12,7 +12,7 @@ interface BehaviourHeaderProps {
 const BehaviourHeader = ({ title, description, icon }: BehaviourHeaderProps) => {
   const Icon = icon;
   return (
-    <div className="relative flex h-50 items-center justify-start gap-5 rounded-lg bg-[#7f56d9] px-10 md:gap-7">
+    <div className="relative flex h-50 items-center justify-start gap-5 rounded-lg bg-brand-primary px-10 md:gap-7">
       <Button
         variant="outline"
         size="xs"
