@@ -12,7 +12,7 @@ interface OverviewHeaderProps {
 
 const OverviewHeader = ({ title, description, score, percentageChange }: OverviewHeaderProps) => {
   return (
-    <div className="relative flex h-50 flex-row items-center justify-start gap-5 rounded-lg bg-[#7f56d9] px-10 md:gap-7 lg:justify-between">
+    <div className="relative flex h-50 flex-row items-center justify-start gap-5 rounded-lg bg-brand-primary px-10 md:gap-7 lg:justify-between">
       {/* Left Side */}
       <div className="space-y-2 text-white lg:w-1/2">
         <div className="flex items-center gap-2">

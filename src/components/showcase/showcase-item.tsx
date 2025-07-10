@@ -216,7 +216,7 @@ const ShowcaseItem: React.FC<ShowcaseItemProps> = ({ data }) => {
             disabled={!replyText.trim()}
             variant={replyText.trim() ? "primary" : "outline"}
             size="sm"
-            className={replyText.trim() ? "bg-[#7f56d9]" : ""}
+            className={replyText.trim() ? "bg-brand-primary" : ""}
           >
             Reply
           </Button>

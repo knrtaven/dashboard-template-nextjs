@@ -56,7 +56,7 @@ const ShowcasePage = () => {
       <Breadcrumb
         client="Apollo Care Alliance"
         path="Showcase"
-        className="bg-[#7f56d9]"
+        className="bg-brand-primary"
       />
       <Header />
 
