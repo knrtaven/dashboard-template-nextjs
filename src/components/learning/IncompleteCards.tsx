@@ -34,7 +34,7 @@ const IncompleteCards = () => {
       </div>
     );
   }
-
+  
   return (
     <div className='w-full space-y-6'>
       {/* Header */}
@@ -56,6 +56,7 @@ const IncompleteCards = () => {
               id: course.id,
               title: course.title,              
               description: course.description,
+              banner:course.bannerImage,
               isCompleted: course.progress === 100,
               isLocked: false,
               order: course.id,

@@ -1,10 +1,13 @@
+import { moduleBanner } from "../../public/images/lessonAssets/wellnessBeing";
+import { StaticImageData } from "next/image";
+
 export interface LearningCardData {
   id: number;
   title: string;
   description: string;
   progress: number; // Progress percentage (0-100)
   duration: string;
-
+  bannerImage?: StaticImageData;
   bannerColor: string; // Solid background color for banner
   category: string;
   tags?: string[];
@@ -21,7 +24,7 @@ export const LEARNING_CARDS_DATA: LearningCardData[] = [
     description: "How to create workplace conditions that support personal wellbeing.",
     progress: 0,
     duration: "4 hours",
-
+    bannerImage: moduleBanner,
     bannerColor: "bg-gradient-to-r from-blue-500 to-blue-600",
     category: "Work-Rite",
     tags: ["A", "B", "C"],
@@ -66,7 +69,7 @@ export const LEARNING_CARDS_DATA: LearningCardData[] = [
     description: "How to harness achievement and connection to improve workplace wellbeing and achievement.",
     progress: 0,
     duration: "8 hours",
-
+  
     bannerColor: "bg-gradient-to-r from-orange-500 to-orange-600",
     category: "Work-Rite",
     tags: ["A", "B", "C"],

@@ -23,7 +23,7 @@ export const IncompleteCard: React.FC<IncompleteCardProps> = ({
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url('/images/course-banner.jpg')` // Replace with your image path
+              backgroundImage: `url('${module.banner?.src}')` // Replace with your image path
             }}
           />
           {/* Optional: Overlay for better text readability */}

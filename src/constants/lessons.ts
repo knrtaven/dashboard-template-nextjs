@@ -1,5 +1,5 @@
 import { getLearningCardById } from './index';
-
+import { StaticImageData } from "next/image";
 export interface ModuleData {
     id: number;
     title: string;
@@ -7,7 +7,7 @@ export interface ModuleData {
     isCompleted: boolean;
     isLocked: boolean;
     order: number;
-
+    banner?:StaticImageData
   }
   
   export interface CourseContent {
