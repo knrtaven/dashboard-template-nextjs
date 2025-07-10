@@ -78,7 +78,7 @@ export default function CoursePage({ params }: PageProps) {
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url('${course.bannerImage?.src}')` // Replace with your image path
+              backgroundImage: `url('${typeof course.bannerImage === 'string' ? course.bannerImage : course.bannerImage?.src}')`
             }}
           />
             <div className="absolute inset-0 bg-black/20"></div>

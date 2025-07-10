@@ -42,7 +42,7 @@ export const LearningCard: React.FC<LearningCardData> = ({
       <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url('${bannerImage?.src}')` // Replace with your image path
+              backgroundImage: `url('${typeof bannerImage === 'string' ? bannerImage : bannerImage?.src}')`
             }}
           />
         <div className="absolute inset-0 bg-black/10"></div>
