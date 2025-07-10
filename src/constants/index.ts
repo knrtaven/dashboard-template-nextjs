@@ -7,7 +7,7 @@ export interface LearningCardData {
   description: string;
   progress: number; // Progress percentage (0-100)
   duration: string;
-  bannerImage?: StaticImageData;
+  bannerImage?: StaticImageData | string;
   bannerColor: string; // Solid background color for banner
   category: string;
   tags?: string[];
