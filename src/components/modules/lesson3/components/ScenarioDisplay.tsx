@@ -40,7 +40,7 @@ const ScenarioDisplay: React.FC<ScenarioDisplayProps> = ({
       setVisibleLines(0);
       setIsAnimating(false);
     }
-  }, [isVisible, content, onComplete]);
+  }, [isVisible, content]);
 
   if (!isVisible) return null;
 
