@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { RotateCcw, ArrowLeft } from 'lucide-react';
 import { 
   getScenarioById, 
@@ -23,7 +23,7 @@ const CultureCrossroads: React.FC<CultureCrossroadsProps> = ({ onBack }) => {
 
 
 
-  const handleScenarioComplete = () => {
+  const handleScenarioComplete = useCallback(() => {
     const currentScenario = getScenarioById(moduleState.currentScenario);
     
     if (currentScenario?.choices && !currentScenario.isEnd) {
@@ -33,7 +33,7 @@ const CultureCrossroads: React.FC<CultureCrossroadsProps> = ({ onBack }) => {
     } else if (currentScenario?.isEnd) {
       setModuleState(prev => ({ ...prev, isComplete: true }));
     }
-  };
+  }, [moduleState.currentScenario]);
 
   const handleChoice = (choiceId: string) => {
     const currentScenario = getScenarioById(moduleState.currentScenario);
