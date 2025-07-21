@@ -1,3 +1,6 @@
+import { achievement_connection } from "../../public/images/lessonAssets/achievementNconnection";
+import { art_of_giving_compliment } from "../../public/images/lessonAssets/artOfGivingCompliments";
+import { kindness } from "../../public/images/lessonAssets/kindness";
 import { moduleBanner } from "../../public/images/lessonAssets/wellnessBeing";
 import { StaticImageData } from "next/image";
 
@@ -9,7 +12,7 @@ export interface LearningCardData {
   duration: string;
   bannerImage?: StaticImageData | string;
   bannerColor: string; // Solid background color for banner
-  category: string;
+  category?: string;
   tags?: string[];
   enrolledDate?: string;
   lastAccessed?: string;
@@ -26,7 +29,7 @@ export const LEARNING_CARDS_DATA: LearningCardData[] = [
     duration: "4 hours",
     bannerImage: moduleBanner,
     bannerColor: "bg-gradient-to-r from-blue-500 to-blue-600",
-    category: "Work-Rite",
+
     tags: ["A", "B", "C"],
     enrolledDate: "2024-01-15",
     lastAccessed: "2024-01-20",
@@ -39,9 +42,9 @@ export const LEARNING_CARDS_DATA: LearningCardData[] = [
     description: "Kindness strengthens connection and wellbeing by uncovering its deeper value, sparking ripple effects... ",
     progress: 0,
     duration: "6 hours",
-
+    bannerImage: kindness,
     bannerColor: "bg-gradient-to-r from-purple-500 to-purple-600",
-    category: "Work-Rite",
+
     tags: ["A", "B", "C"],
     enrolledDate: "2024-01-10",
     lastAccessed: "2024-01-18",
@@ -54,9 +57,9 @@ export const LEARNING_CARDS_DATA: LearningCardData[] = [
     description: "Boosting wellbeing starts with meaningful recognition, where compliments that land...",
     progress: 0,
     duration: "5 hours",
-
+    bannerImage: art_of_giving_compliment,
     bannerColor: "bg-gradient-to-r from-green-500 to-green-600",
-    category: "Work-Rite",
+    // category: "Work-Rite",
     tags: ["A", "B", "C"],
     enrolledDate: "2024-01-05",
     lastAccessed: "2024-01-19",
@@ -69,30 +72,30 @@ export const LEARNING_CARDS_DATA: LearningCardData[] = [
     description: "How to harness achievement and connection to improve workplace wellbeing and achievement.",
     progress: 0,
     duration: "8 hours",
-  
+    bannerImage: achievement_connection,
     bannerColor: "bg-gradient-to-r from-orange-500 to-orange-600",
-    category: "Work-Rite",
+    // category: "Work-Rite",
     tags: ["A", "B", "C"],
     enrolledDate: "2024-01-12",
     lastAccessed: "2024-01-16",
     totalLessons: 4,
     completedLessons: 5
   },
-  {
-    id: 5,
-    title: "Blame Busting",
-    description: "How to identify blame and flip it to improve connection and wellbeing",
-    progress: 0,
-    duration: "4 hours",
+  // {
+  //   id: 5,
+  //   title: "Blame Busting",
+  //   description: "How to identify blame and flip it to improve connection and wellbeing",
+  //   progress: 0,
+  //   duration: "4 hours",
 
-    bannerColor: "bg-gradient-to-r from-blue-500 to-blue-600",
-    category: "Work-Rite",
-    tags: ["A", "B", "C"],
-    enrolledDate: "2024-01-15",
-    lastAccessed: "2024-01-20",
-    totalLessons: 4,
-    completedLessons: 0
-  },
+  //   bannerColor: "bg-gradient-to-r from-blue-500 to-blue-600",
+  //   category: "Work-Rite",
+  //   tags: ["A", "B", "C"],
+  //   enrolledDate: "2024-01-15",
+  //   lastAccessed: "2024-01-20",
+  //   totalLessons: 4,
+  //   completedLessons: 0
+  // },
 ];
 
 // Helper functions for data manipulation
