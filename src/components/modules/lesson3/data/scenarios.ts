@@ -11,6 +11,7 @@ export interface Scenario {
   content: string[];
   choices?: Choice[];
   isEnd?: boolean;
+  endingType?: 'POSITIVE' | 'MIXED' | 'NEGATIVE';
   branch?: 'option1' | 'option2';
   nextScenario?: {
     option1?: string;
@@ -114,18 +115,33 @@ export const scenarios: Record<string, Scenario> = {
     }
   },
 
-  // Final outcomes - Branch 1
+  // Step 3 outcomes - Branch 1 (Spoke up path)
   facilitated_outcome: {
     id: 'facilitated_outcome',
     step: 3,
     branch: 'option1',
     content: [
-      'You arrange a private meeting with both team members.',
-      'Through open dialogue, you discover the conflict stems from unclear role boundaries.',
-      'You work together to establish clear responsibilities and communication protocols.',
-      'The team dynamic improves significantly, and both members thank you for your intervention.'
+      'You arrange a mediation session between the two team members.',
+      'By creating a safe space for honest communication, they discover their conflict stemmed from miscommunication and unclear expectations.',
+      'They develop a collaborative plan moving forward.',
+      'Three months into your role, your team is preparing for a major product launch when a critical bug is discovered.'
     ],
-    isEnd: true
+    choices: [
+      {
+        id: 'collaborative_problem_solve',
+        text: 'Collaborative Problem-Solving',
+        description: 'Gather the team to collectively problem-solve without blame, focusing on solutions rather than finding fault.'
+      },
+      {
+        id: 'identify_responsible',
+        text: 'Identify Responsible Party',
+        description: 'Identify who\'s responsible for the bug and ensure they fix it immediately, making it clear that such mistakes are unacceptable.'
+      }
+    ],
+    nextScenario: {
+      option1: 'collaborative_success',
+      option2: 'blame_culture'
+    }
   },
 
   deadline_focused_outcome: {
@@ -133,26 +149,56 @@ export const scenarios: Record<string, Scenario> = {
     step: 3,
     branch: 'option1',
     content: [
-      'You tell them to resolve their differences privately and focus on the deadline.',
-      'The conflict escalates, affecting team productivity and morale.',
-      'Your manager notices the tension and questions your leadership approach.',
-      'You realize that avoiding difficult conversations as a leader can have lasting negative consequences.'
+      'You tell the team members to resolve their issues on their own.',
+      'The tension between them grows and begins affecting other team members.',
+      'Project milestones start slipping. Your manager expresses concern about team dynamics.',
+      'As pressure mounts with an approaching deadline, you need to make a decision about how to proceed.'
     ],
-    isEnd: true
+    choices: [
+      {
+        id: 'emergency_meeting',
+        text: 'Emergency Team Meeting',
+        description: 'Call an emergency team meeting to reset expectations, clear the air, and rebuild collaborative relationships.'
+      },
+      {
+        id: 'strict_oversight',
+        text: 'Implement Strict Oversight',
+        description: 'Implement stricter oversight and daily progress reports to force the team back on track through accountability.'
+      }
+    ],
+    nextScenario: {
+      option1: 'emergency_meeting_recovery',
+      option2: 'toxic_environment'
+    }
   },
 
-  // Final outcomes - Branch 2
+  // Step 3 outcomes - Branch 2 (Stayed quiet path)
   workload_addressed_outcome: {
     id: 'workload_addressed_outcome',
     step: 3,
     branch: 'option2',
     content: [
-      'You meet with the overworked team member and assess their workload.',
-      'Together, you identify tasks that can be redistributed or streamlined.',
-      'You implement a more balanced workload distribution system.',
-      'The team member\'s wellbeing improves, and overall team productivity increases sustainably.'
+      'You reorganize the workload and implement a more sustainable work schedule.',
+      'The team member thanks you privately, and others appreciate the more balanced approach.',
+      'Team energy improves noticeably.',
+      'Six months into your role, the company announces a significant strategic pivot that will require everyone to learn new skills quickly.'
     ],
-    isEnd: true
+    choices: [
+      {
+        id: 'supportive_learning',
+        text: 'Create Learning Environment',
+        description: 'Create a supportive learning environment where team members can share knowledge and help each other adapt.'
+      },
+      {
+        id: 'independent_learning',
+        text: 'Independent Learning',
+        description: 'Set firm expectations that everyone needs to get up to speed independently or risk being left behind.'
+      }
+    ],
+    nextScenario: {
+      option1: 'learning_culture_success',
+      option2: 'fragmented_team'
+    }
   },
 
   dedication_praised_outcome: {
@@ -160,12 +206,152 @@ export const scenarios: Record<string, Scenario> = {
     step: 3,
     branch: 'option2',
     content: [
-      'You publicly praise the team member\'s dedication in the next team meeting.',
-      'Other team members feel pressured to work similar hours to match this "standard."',
-      'Burnout spreads across the team, leading to mistakes and decreased quality.',
-      'You learn that celebrating unsustainable work practices can damage team culture and wellbeing.'
+      'After publicly praising the overworked employee, others reluctantly begin working longer hours too.',
+      'Two weeks later, the overworked employee takes sick leave due to stress, and another team member submits their resignation.',
+      'Your manager calls you in for an urgent discussion about team wellbeing.'
     ],
-    isEnd: true
+    choices: [
+      {
+        id: 'acknowledge_mistake',
+        text: 'Acknowledge Mistake',
+        description: 'Acknowledge your mistake and propose a comprehensive wellness and workload management plan.'
+      },
+      {
+        id: 'maintain_pressure',
+        text: 'Maintain Standards',
+        description: 'Argue that high-pressure environments are normal in tech and the team needs to toughen up to succeed.'
+      }
+    ],
+    nextScenario: {
+      option1: 'wellness_recovery',
+      option2: 'team_collapse'
+    }
+  },
+
+  // Final Endings - Path 1: Collaborative Success (POSITIVE)
+  collaborative_success: {
+    id: 'collaborative_success',
+    step: 4,
+    branch: 'option1',
+    content: [
+      'Your team comes together impressively to fix the bug.',
+      'The collaborative approach not only resolves the immediate issue but strengthens team bonds.',
+      'The product launches successfully, and your team is recognized for both their technical solution and exemplary teamwork.',
+      'One year into your leadership role, your team is now known throughout the company for its positive culture and high performance.',
+      'Other departments are asking how you achieved this transformation.',
+      'POSITIVE ENDING: You\'ve created a resilient, collaborative team culture where psychological safety allows innovation to flourish. Team members support each other through challenges and celebrate successes together. Employee satisfaction scores are at an all-time high, and your approach is being modeled across the organization. Your leadership has made a lasting positive impact on the workplace culture.'
+    ],
+    isEnd: true,
+    endingType: 'POSITIVE'
+  },
+
+  // Final Endings - Path 2: Blame Culture (MIXED)
+  blame_culture: {
+    id: 'blame_culture',
+    step: 4,
+    branch: 'option1',
+    content: [
+      'You identify the developer responsible for the bug and demand they fix it immediately.',
+      'While the issue gets resolved in time for launch, the team atmosphere becomes tense.',
+      'People become hesitant to take risks or admit mistakes.',
+      'Over the following months, innovation slows as team members prioritize avoiding blame over proposing creative solutions.',
+      'MIXED ENDING: Your team meets its targets but operates in a culture of fear. While productivity appears stable on the surface, underlying issues of low psychological safety and risk aversion limit your team\'s potential. High-performing team members begin looking for opportunities elsewhere, citing the stressful environment as their primary reason for leaving.'
+    ],
+    isEnd: true,
+    endingType: 'MIXED'
+  },
+
+  // Final Endings - Path 3: Emergency Meeting Recovery (POSITIVE)
+  emergency_meeting_recovery: {
+    id: 'emergency_meeting_recovery',
+    step: 4,
+    branch: 'option1',
+    content: [
+      'Your emergency meeting initially faces resistance, but your willingness to acknowledge the situation creates space for honest dialogue.',
+      'The team works through their conflicts and recommits to collaboration.',
+      'Though you miss some initial deadlines, the project ultimately succeeds with stronger team cohesion.',
+      'Your manager commends your ability to turn a challenging situation around.',
+      'POSITIVE ENDING: Your willingness to address problems directly but compassionately has transformed your team. Though the path wasn\'t always smooth, you\'ve established a culture where conflicts are addressed constructively rather than avoided. The team now approaches challenges with confidence, knowing they can work through difficulties together. Your leadership has created lasting positive change in the workplace culture.'
+    ],
+    isEnd: true,
+    endingType: 'POSITIVE'
+  },
+
+  // Final Endings - Path 4: Toxic Environment (NEGATIVE)
+  toxic_environment: {
+    id: 'toxic_environment',
+    step: 4,
+    branch: 'option1',
+    content: [
+      'Your implementation of strict oversight and daily reporting creates immediate resentment.',
+      'While the project barely meets its deadline, three team members request transfers immediately afterward.',
+      'Your manager expresses concern about the high turnover and controlling management style that\'s developed under your leadership.',
+      'NEGATIVE ENDING: Your focus on control rather than culture has created a toxic work environment. Team members feel micromanaged and untrusted, leading to compliance without commitment. Innovation has stalled, and your team has gained a reputation as an undesirable place to work. The company now faces significant costs in recruiting and training replacements for departing staff.'
+    ],
+    isEnd: true,
+    endingType: 'NEGATIVE'
+  },
+
+  // Final Endings - Path 5: Learning Culture Success (POSITIVE)
+  learning_culture_success: {
+    id: 'learning_culture_success',
+    step: 4,
+    branch: 'option2',
+    content: [
+      'You organize skill-sharing sessions and create learning pairs where team members support each other.',
+      'The transition period is challenging but manageable as everyone helps each other adapt.',
+      'Your team becomes the first to successfully implement the new strategic direction, earning recognition from company leadership.',
+      'POSITIVE ENDING: Your investment in creating a learning culture has paid off tremendously. The team has developed resilience and adaptability that extends beyond the immediate challenge. Team members feel valued for both their contributions and their growth potential. Your approach has created a sustainable positive culture that balances high performance with employee wellbeing.'
+    ],
+    isEnd: true,
+    endingType: 'POSITIVE'
+  },
+
+  // Final Endings - Path 6: Fragmented Team (MIXED)
+  fragmented_team: {
+    id: 'fragmented_team',
+    step: 4,
+    branch: 'option2',
+    content: [
+      'Your sink-or-swim approach creates immediate anxiety within the team.',
+      'Some members adapt quickly while others struggle silently, afraid to ask for help.',
+      'The implementation of the strategic pivot is inconsistent, with some aspects excellently executed and others falling short.',
+      'Team cohesion suffers as competitive rather than collaborative dynamics emerge.',
+      'MIXED ENDING: Your team has partially succeeded in its objectives but at a significant cost to morale and collaboration. The uneven implementation of new initiatives reflects the fragmented nature of your team culture. While some high performers thrive in the competitive environment, overall innovation and problem-solving capacity are limited by the lack of knowledge sharing and mutual support.'
+    ],
+    isEnd: true,
+    endingType: 'MIXED'
+  },
+
+  // Final Endings - Path 7: Wellness Recovery (POSITIVE)
+  wellness_recovery: {
+    id: 'wellness_recovery',
+    step: 4,
+    branch: 'option2',
+    content: [
+      'You openly acknowledge the mistake to your team and work with HR to implement comprehensive wellness initiatives and realistic workload planning.',
+      'Though it takes time to rebuild trust, your honesty and corrective actions gradually improve team morale.',
+      'The employee on sick leave returns and expresses appreciation for the changes.',
+      'POSITIVE ENDING: Your willingness to acknowledge mistakes and take meaningful corrective action has transformed a potential disaster into a turning point for your team. By prioritizing employee wellbeing alongside performance, you\'ve created a sustainable culture where people feel valued as humans, not just resources. The team has developed a healthy approach to work-life balance that actually enhances their creativity and productivity.'
+    ],
+    isEnd: true,
+    endingType: 'POSITIVE'
+  },
+
+  // Final Endings - Path 8: Team Collapse (NEGATIVE)
+  team_collapse: {
+    id: 'team_collapse',
+    step: 4,
+    branch: 'option2',
+    content: [
+      'You maintain that high pressure is just part of the industry. Your manager is visibly disappointed with your response.',
+      'Within two months, half your team has either transferred or resigned.',
+      'Projects fall behind as remaining team members struggle with the increased workload and low morale.',
+      'Upper management steps in to address the situation.',
+      'NEGATIVE ENDING: Your refusal to address the toxic culture has resulted in a team collapse. The high turnover has created significant costs for the company in lost productivity, institutional knowledge, and recruitment expenses. Your reputation as a leader has been severely damaged, and you\'re placed on a performance improvement plan focusing on people management skills and emotional intelligence.'
+    ],
+    isEnd: true,
+    endingType: 'NEGATIVE'
   }
 };
 

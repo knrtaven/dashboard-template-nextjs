@@ -116,30 +116,81 @@ const CultureCrossroads = () => {
           {/* Module Complete */}
           {moduleState.isComplete && (
             <div className="text-center py-8 animate-in fade-in-50 zoom-in-95 duration-500">
-              <div className="w-20 h-20 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                Journey Complete!
-              </h3>
-              
-              <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-                You&apos;ve navigated through the workplace scenarios and experienced how different leadership approaches can shape team culture. 
-                Your choices in branch &ldquo;{moduleState.branch}&rdquo; led to valuable insights about {moduleState.branch === 'option1' ? 'proactive leadership and inclusive decision-making' : 'reactive leadership and its workplace consequences'}.
-              </p>
-              
-              <div className="space-y-4">
-                <button
-                  onClick={handleRestart}
-                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-                >
-                  <RotateCcw size={18} className="mr-2" />
-                  Try Different Choices
-                </button>
-              </div>
+              {(() => {
+                const endingType = currentScenario?.endingType || 'POSITIVE';
+                const endingConfig = {
+                  POSITIVE: {
+                    bgColor: 'bg-green-100 dark:bg-green-900',
+                    textColor: 'text-green-600 dark:text-green-400',
+                    icon: (
+                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ),
+                    title: 'Excellent Leadership!'
+                  },
+                  MIXED: {
+                    bgColor: 'bg-yellow-100 dark:bg-yellow-900',
+                    textColor: 'text-yellow-600 dark:text-yellow-400',
+                    icon: (
+                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                      </svg>
+                    ),
+                    title: 'Mixed Results'
+                  },
+                  NEGATIVE: {
+                    bgColor: 'bg-red-100 dark:bg-red-900',
+                    textColor: 'text-red-600 dark:text-red-400',
+                    icon: (
+                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    ),
+                    title: 'Leadership Challenge'
+                  }
+                };
+                const config = endingConfig[endingType];
+                
+                return (
+                  <>
+                    <div className={`w-20 h-20 ${config.bgColor} rounded-full flex items-center justify-center mx-auto mb-6`}>
+                      <div className={config.textColor}>
+                        {config.icon}
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                      {config.title}
+                    </h3>
+                    
+                    <div className={`inline-block px-3 py-1 rounded-full text-sm font-medium mb-6 ${
+                      endingType === 'POSITIVE' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+                      endingType === 'MIXED' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
+                      'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+                    }`}>
+                      {endingType} ENDING
+                    </div>
+                    
+                    <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+                      You&apos;ve completed your leadership journey! Each choice you made shaped the team culture and outcomes. 
+                      {endingType === 'POSITIVE' && ' Your collaborative and empathetic approach created a thriving workplace environment.'}
+                      {endingType === 'MIXED' && ' Your leadership had both positive and negative impacts, showing areas for growth.'}
+                      {endingType === 'NEGATIVE' && ' This path highlights important lessons about the consequences of certain leadership styles.'}
+                    </p>
+                    
+                    <div className="space-y-4">
+                      <button
+                        onClick={handleRestart}
+                        className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                      >
+                        <RotateCcw size={18} className="mr-2" />
+                        Try Different Choices
+                      </button>
+                    </div>
+                  </>
+                );
+              })()}
             </div>
           )}
         </div>
