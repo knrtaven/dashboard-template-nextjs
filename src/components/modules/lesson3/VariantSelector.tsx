@@ -104,11 +104,11 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({ onSelectVariant }) =>
               </div>
               
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                Mary's Story
+                Mary&apos;s Story
               </h2>
               
               <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                Experience an interactive story about positive workplace culture. Follow Mary's journey and test your understanding with comprehension questions.
+                Experience an interactive story about positive workplace culture. Follow Mary&apos;s journey and test your understanding with comprehension questions.
               </p>
               
               <div className="space-y-2 mb-8">
@@ -127,7 +127,7 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({ onSelectVariant }) =>
               </div>
               
               <button className="w-full bg-gradient-to-r from-orange-600 to-amber-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-700 hover:to-amber-700 transition-all duration-200 transform group-hover:scale-105">
-                Start Mary's Story
+                Start Mary&apos;s Story
               </button>
             </div>
           </div>

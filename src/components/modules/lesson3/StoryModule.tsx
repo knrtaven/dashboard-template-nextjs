@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
-import { storySlides, quizQuestions, StorySlide, QuizQuestion } from './data/story';
+import { storySlides, quizQuestions, StorySlide } from './data/story';
 
 interface StoryModuleProps {
   onBack: () => void;
@@ -97,7 +97,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack }) => {
               Congratulations!
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-              You've successfully completed Mary's Story and demonstrated your understanding of positive workplace culture.
+              You&apos;ve successfully completed Mary&apos;s Story and demonstrated your understanding of positive workplace culture.
             </p>
             <button
               onClick={onBack}
@@ -131,7 +131,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack }) => {
                 Knowledge Check
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300">
-                Let's see what you learned from Mary's story about positive workplace culture.
+                Let&apos;s see what you learned from Mary&apos;s story about positive workplace culture.
               </p>
               <div className="mt-6 flex justify-center">
                 <div className="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-4 py-2 rounded-full text-sm font-medium">
@@ -217,7 +217,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack }) => {
 
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Mary's Story
+            Mary&apos;s Story
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300">
             A lesson in positive workplace culture
