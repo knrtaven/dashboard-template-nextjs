@@ -1,10 +1,10 @@
 "use client";
 
 import React from 'react';
-import { Users, MessageCircle } from 'lucide-react';
+import { Users, MessageCircle, BookOpen } from 'lucide-react';
 
 interface VariantSelectorProps {
-  onSelectVariant: (variant: 'culture-crossroads' | 'dialogue-scenarios') => void;
+  onSelectVariant: (variant: 'culture-crossroads' | 'dialogue-scenarios' | 'story') => void;
 }
 
 const VariantSelector: React.FC<VariantSelectorProps> = ({ onSelectVariant }) => {
@@ -16,11 +16,11 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({ onSelectVariant }) =>
             Interactive Learning Modules
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Choose your learning experience. Both modules explore workplace dynamics and leadership through different interactive approaches.
+            Choose your learning experience. All modules explore workplace dynamics and leadership through different interactive approaches.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
           {/* Culture Crossroads Variant */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] cursor-pointer group"
                onClick={() => onSelectVariant('culture-crossroads')}>
@@ -91,6 +91,43 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({ onSelectVariant }) =>
               
               <button className="w-full bg-gradient-to-r from-green-600 to-teal-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-green-700 hover:to-teal-700 transition-all duration-200 transform group-hover:scale-105">
                 Start Dialogue Scenarios
+              </button>
+            </div>
+          </div>
+
+          {/* Story Variant */}
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] cursor-pointer group"
+               onClick={() => onSelectVariant('story')}>
+            <div className="text-center">
+              <div className="w-20 h-20 bg-gradient-to-r from-orange-600 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <BookOpen size={32} className="text-white" />
+              </div>
+              
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                Mary's Story
+              </h2>
+              
+              <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                Experience an interactive story about positive workplace culture. Follow Mary's journey and test your understanding with comprehension questions.
+              </p>
+              
+              <div className="space-y-2 mb-8">
+                <div className="flex items-center justify-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                  <span>Progressive story slides</span>
+                </div>
+                <div className="flex items-center justify-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                  <span>Interactive quiz questions</span>
+                </div>
+                <div className="flex items-center justify-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                  <span>Workplace culture lesson</span>
+                </div>
+              </div>
+              
+              <button className="w-full bg-gradient-to-r from-orange-600 to-amber-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-700 hover:to-amber-700 transition-all duration-200 transform group-hover:scale-105">
+                Start Mary's Story
               </button>
             </div>
           </div>

@@ -4,14 +4,15 @@
 import CultureCrossroads from '@/components/modules/lesson3/CultureCrossroads'
 import VariantSelector from '@/components/modules/lesson3/VariantSelector'
 import DialogueModule from '@/components/modules/lesson3/DialogueModule'
+import StoryModule from '@/components/modules/lesson3/StoryModule'
 import React, { useState } from 'react'
 
-type VariantType = 'culture-crossroads' | 'dialogue-scenarios' | null;
+type VariantType = 'culture-crossroads' | 'dialogue-scenarios' | 'story' | null;
 
 export default function Module3Demo() {
   const [selectedVariant, setSelectedVariant] = useState<VariantType>(null);
 
-  const handleSelectVariant = (variant: 'culture-crossroads' | 'dialogue-scenarios') => {
+  const handleSelectVariant = (variant: 'culture-crossroads' | 'dialogue-scenarios' | 'story') => {
     setSelectedVariant(variant);
   };
 
@@ -31,6 +32,10 @@ export default function Module3Demo() {
 
   if (selectedVariant === 'dialogue-scenarios') {
     return <DialogueModule onBack={handleBackToSelector} />;
+  }
+
+  if (selectedVariant === 'story') {
+    return <StoryModule onBack={handleBackToSelector} />;
   }
 
   return null;
