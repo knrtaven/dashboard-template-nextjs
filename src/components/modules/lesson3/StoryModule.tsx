@@ -10,7 +10,7 @@ interface StoryModuleProps {
 
 const StoryModule: React.FC<StoryModuleProps> = ({ onBack }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [visibleSlides, setVisibleSlides] = useState<StorySlide[]>([]);
+  const [allSlides, setAllSlides] = useState<StorySlide[]>([]);
   const [isStoryComplete, setIsStoryComplete] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -23,7 +23,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack }) => {
 
   useEffect(() => {
     if (storySlides.length > 0) {
-      setVisibleSlides([storySlides[0]]);
+      setAllSlides([storySlides[0]]);
     }
   }, []);
 
@@ -42,13 +42,13 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack }) => {
         behavior: 'smooth'
       });
     }
-  }, [visibleSlides]);
+  }, [allSlides]);
 
   const handleNextSlide = () => {
     if (currentSlideIndex < storySlides.length - 1) {
       const nextIndex = currentSlideIndex + 1;
       setCurrentSlideIndex(nextIndex);
-      setVisibleSlides(prev => [...prev, storySlides[nextIndex]]);
+      setAllSlides(prev => [...prev, storySlides[nextIndex]]);
     } else {
       setIsStoryComplete(true);
     }
@@ -158,8 +158,6 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack }) => {
                             ? 'border-green-500 bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200'
                             : 'border-red-500 bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200'
                           : 'border-orange-500 bg-orange-50 dark:bg-orange-900/20'
-                        : showFeedback && option.isCorrect
-                        ? 'border-green-500 bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200'
                         : 'border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 hover:border-orange-300 dark:hover:border-orange-600'
                     } ${showFeedback ? 'cursor-not-allowed' : 'cursor-pointer hover:bg-orange-50 dark:hover:bg-orange-900/20'}`}
                   >
@@ -180,13 +178,6 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack }) => {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                             </svg>
                           )}
-                        </div>
-                      )}
-                      {showFeedback && option.isCorrect && selectedAnswer !== option.id && (
-                        <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
-                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
                         </div>
                       )}
                     </div>
@@ -245,26 +236,30 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack }) => {
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
           <div
             ref={storyContainerRef}
-            className="h-96 overflow-y-auto p-8 space-y-8"
+            className="h-96 overflow-y-auto p-8"
             style={{ scrollBehavior: 'smooth' }}
           >
-            {visibleSlides.map((slide, index) => (
-              <div
-                key={slide.id}
-                ref={index === visibleSlides.length - 1 ? latestSlideRef : null}
-                className="flex items-center space-x-6 animate-fade-in"
-              >
-                <div className="w-32 h-32 bg-gray-400 dark:bg-gray-600 rounded-lg flex-shrink-0 flex items-center justify-center">
-                  <div className="w-16 h-16 bg-gray-500 dark:bg-gray-700 rounded"></div>
+            <div className="space-y-96">
+              {allSlides.map((slide, index) => (
+                <div
+                  key={slide.id}
+                  ref={index === allSlides.length - 1 ? latestSlideRef : null}
+                  className="flex items-center justify-center min-h-80 animate-fade-in"
+                >
+                  <div className="flex items-center space-x-6 max-w-4xl w-full">
+                    <div className="w-32 h-32 bg-gray-400 dark:bg-gray-600 rounded-lg flex-shrink-0 flex items-center justify-center">
+                      <div className="w-16 h-16 bg-gray-500 dark:bg-gray-700 rounded"></div>
+                    </div>
+                    
+                    <div className="flex-1">
+                      <p className="text-gray-700 dark:text-gray-200 text-lg leading-relaxed">
+                        {slide.content}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                
-                <div className="flex-1">
-                  <p className="text-gray-700 dark:text-gray-200 text-lg leading-relaxed">
-                    {slide.content}
-                  </p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           <div className="border-t border-gray-200 dark:border-gray-600 p-6 flex justify-end">
