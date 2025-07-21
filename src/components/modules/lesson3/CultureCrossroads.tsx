@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { RotateCcw } from 'lucide-react';
+import { RotateCcw, ArrowLeft } from 'lucide-react';
 import { 
   getScenarioById, 
   getNextScenario, 
@@ -12,7 +12,11 @@ import Stepper from './components/Stepper';
 import ScenarioDisplay from './components/ScenarioDisplay';
 import ChoiceButtons from './components/ChoiceButtons';
 
-const CultureCrossroads = () => {
+interface CultureCrossroadsProps {
+  onBack?: () => void;
+}
+
+const CultureCrossroads: React.FC<CultureCrossroadsProps> = ({ onBack }) => {
   const [moduleState, setModuleState] = useState<ModuleState>(initialState);
   const [showChoices, setShowChoices] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -73,6 +77,17 @@ const CultureCrossroads = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-12 px-4">
       <div className="max-w-6xl mx-auto">
+        {/* Back Button */}
+        {onBack && (
+          <button
+            onClick={onBack}
+            className="mb-8 inline-flex items-center px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
+            <ArrowLeft size={16} className="mr-2" />
+            Back to Module Selection
+          </button>
+        )}
+        
         {/* Stepper */}
         <Stepper 
           currentStep={moduleState.currentStep} 
