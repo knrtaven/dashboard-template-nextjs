@@ -48,8 +48,8 @@ export interface ModuleData {
         },
         {
           id: 3,
-          title: "Impact of Stress in the Workplace",
-          // description: "Use empathy and understanding to strengthen workplace relationships",
+          title: "Culture Crossroads",
+          description: "Interactive scenarios exploring how leadership decisions shape workplace culture and team dynamics",
           isCompleted: false,
           isLocked: false,
           order: 3,
