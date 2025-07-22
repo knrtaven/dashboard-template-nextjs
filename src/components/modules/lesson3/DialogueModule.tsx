@@ -13,9 +13,10 @@ import QuestionSection from './components/QuestionSection';
 
 interface DialogueModuleProps {
   onBack?: () => void;
+  onComplete?: () => void;
 }
 
-const DialogueModule: React.FC<DialogueModuleProps> = ({ onBack }) => {
+const DialogueModule: React.FC<DialogueModuleProps> = ({ onBack, onComplete }) => {
   const [moduleState, setModuleState] = useState<DialogueState>(initialDialogueState);
   const [showQuestion, setShowQuestion] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -144,24 +145,32 @@ const DialogueModule: React.FC<DialogueModuleProps> = ({ onBack }) => {
                 through realistic workplace conversations.
               </p>
               
-              <div className="space-y-4">
+              <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
                 <button
                   onClick={handleRestart}
-                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-600 to-teal-600 text-white rounded-lg hover:from-green-700 hover:to-teal-700 transition-colors font-medium"
+                  className="inline-flex items-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium"
                 >
                   <RotateCcw size={18} className="mr-2" />
-                  Try Again
+                  Try Different Choices
                 </button>
+                
+                {onComplete && (
+                  <button
+                    onClick={onComplete}
+                    className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                  >
+                    Continue to Video Lesson
+                  </button>
+                )}
+                
                 {onBack && (
-                  <div className="mt-4">
-                    <button
-                      onClick={onBack}
-                      className="inline-flex items-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium"
-                    >
-                      <ArrowLeft size={18} className="mr-2" />
-                      Back to Module Selection
-                    </button>
-                  </div>
+                  <button
+                    onClick={onBack}
+                    className="inline-flex items-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium"
+                  >
+                    <ArrowLeft size={18} className="mr-2" />
+                    Back to Module Selection
+                  </button>
                 )}
               </div>
             </div>

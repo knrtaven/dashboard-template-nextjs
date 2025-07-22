@@ -5,10 +5,11 @@ import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { storySlides, quizQuestions, StorySlide } from './data/story';
 
 interface StoryModuleProps {
-  onBack: () => void;
+  onBack?: () => void;
+  onComplete?: () => void;
 }
 
-const StoryModule: React.FC<StoryModuleProps> = ({ onBack }) => {
+const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [allSlides, setAllSlides] = useState<StorySlide[]>([]);
   const [isStoryComplete, setIsStoryComplete] = useState(false);
@@ -99,12 +100,25 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack }) => {
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
               You&apos;ve successfully completed Mary&apos;s Story and demonstrated your understanding of positive workplace culture.
             </p>
-            <button
-              onClick={onBack}
-              className="bg-gradient-to-r from-orange-600 to-amber-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-orange-700 hover:to-amber-700 transition-all duration-200"
-            >
-              Return to Module Selection
-            </button>
+            <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+              {onComplete && (
+                <button
+                  onClick={onComplete}
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                >
+                  Continue to Video Lesson
+                </button>
+              )}
+              
+              {onBack && (
+                <button
+                  onClick={onBack}
+                  className="bg-gradient-to-r from-orange-600 to-amber-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-orange-700 hover:to-amber-700 transition-all duration-200"
+                >
+                  Return to Module Selection
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -117,13 +131,15 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack }) => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-orange-900 py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <button
-            onClick={onBack}
-            className="mb-8 flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
-          >
-            <ArrowLeft size={20} />
-            <span>Back to Module Selection</span>
-          </button>
+          {onBack && (
+            <button
+              onClick={onBack}
+              className="mb-8 flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+            >
+              <ArrowLeft size={20} />
+              <span>Back to Module Selection</span>
+            </button>
+          )}
 
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
             <div className="text-center mb-8">
@@ -207,13 +223,15 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-orange-900 py-12 px-4">
       <div className="max-w-4xl mx-auto">
-        <button
-          onClick={onBack}
-          className="mb-8 flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
-        >
-          <ArrowLeft size={20} />
-          <span>Back to Module Selection</span>
-        </button>
+        {onBack && (
+          <button
+            onClick={onBack}
+            className="mb-8 flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+          >
+            <ArrowLeft size={20} />
+            <span>Back to Module Selection</span>
+          </button>
+        )}
 
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">

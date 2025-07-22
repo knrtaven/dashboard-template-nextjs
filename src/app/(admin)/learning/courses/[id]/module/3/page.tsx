@@ -1,8 +1,9 @@
 
 "use client";
 
-import CultureCrossroadsFlow from '@/components/modules/lesson3/CultureCrossroadsFlow'
+import LessonFlow from '@/components/modules/lesson3/components/LessonFlow'
 import VariantSelector from '@/components/modules/lesson3/VariantSelector'
+import CultureCrossroads from '@/components/modules/lesson3/CultureCrossroads'
 import DialogueModule from '@/components/modules/lesson3/DialogueModule'
 import StoryModule from '@/components/modules/lesson3/StoryModule'
 import React, { useState } from 'react'
@@ -27,15 +28,15 @@ export default function Module3Demo() {
 
   // Render selected variant
   if (selectedVariant === 'culture-crossroads') {
-    return <CultureCrossroadsFlow onBack={handleBackToSelector} />;
+    return <LessonFlow LessonComponent={CultureCrossroads} onBack={handleBackToSelector} />;
   }
 
   if (selectedVariant === 'dialogue-scenarios') {
-    return <DialogueModule onBack={handleBackToSelector} />;
+    return <LessonFlow LessonComponent={DialogueModule} onBack={handleBackToSelector} />;
   }
 
   if (selectedVariant === 'story') {
-    return <StoryModule onBack={handleBackToSelector} />;
+    return <LessonFlow LessonComponent={StoryModule} onBack={handleBackToSelector} />;
   }
 
   return null;
