@@ -113,8 +113,8 @@ export interface InteractiveVideoPlayerProps {
   onProgressUpdate?: (progress: ProgressData) => void;
   onQuestionAnswered?: (questionId: number, answer: UserAnswer) => void;
   className?: string;
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
   poster?: string;
   captions?: {
     src: string;
