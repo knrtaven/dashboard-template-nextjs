@@ -8,7 +8,7 @@ const Page = () => {
   
   useEffect(() => {
     router.push('/signin')
-  }, [])
+  }, [router])
   return (
     <div>Redirecting to sign in..</div>
   )
