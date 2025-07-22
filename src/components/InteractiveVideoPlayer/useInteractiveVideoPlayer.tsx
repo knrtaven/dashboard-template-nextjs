@@ -30,7 +30,7 @@ interface ProgressData {
 }
 
 export const useInteractiveVideoPlayer = ({
-  videoUrl,
+  // videoUrl,
   chapters,
   questions,
   onProgressUpdate,
