@@ -76,7 +76,7 @@ const CultureCrossroads: React.FC<CultureCrossroadsProps> = ({ onBack, onComplet
 
 
   return (
-    <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-12 px-4">
+    <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-4 sm:py-6 lg:py-12 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Back Button */}
         {onBack && (
@@ -93,10 +93,10 @@ const CultureCrossroads: React.FC<CultureCrossroadsProps> = ({ onBack, onComplet
         <Stepper 
           currentStep={moduleState.currentStep} 
           totalSteps={4}
-          className="mb-12"
+          className="mb-4 sm:mb-6 lg:mb-12"
         />
 
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12">
+        <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 lg:p-12">
           {/* Current Scenario */}
           {currentScenario && (
             <div className="mb-8">
@@ -110,7 +110,7 @@ const CultureCrossroads: React.FC<CultureCrossroadsProps> = ({ onBack, onComplet
 
           {/* Loading State */}
           {isTransitioning && (
-            <div className="flex items-center justify-center py-12">
+            <div className="flex items-center justify-center py-6 sm:py-8 lg:py-12">
               <div className="flex items-center space-x-2">
                 <div className="w-4 h-4 bg-blue-600 rounded-full animate-bounce"></div>
                 <div className="w-4 h-4 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -131,7 +131,7 @@ const CultureCrossroads: React.FC<CultureCrossroadsProps> = ({ onBack, onComplet
 
           {/* Module Complete */}
           {moduleState.isComplete && (
-            <div className="text-center py-8 animate-in fade-in-50 zoom-in-95 duration-500">
+            <div className="text-center py-4 sm:py-6 lg:py-8 animate-in fade-in-50 zoom-in-95 duration-500">
               {(() => {
                 const endingType = currentScenario?.endingType || 'POSITIVE';
                 const endingConfig = {

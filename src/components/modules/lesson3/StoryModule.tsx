@@ -88,9 +88,9 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
 
   if (isQuizComplete) {
     return (
-      <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 py-12 px-4">
+      <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 py-4 sm:py-6 lg:py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-12">
+          <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-12">
             <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8">
               <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -131,7 +131,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
     const currentQuestion = quizQuestions[currentQuestionIndex];
     
     return (
-      <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 py-12 px-4">
+      <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 py-4 sm:py-6 lg:py-12 px-4">
         <div className="max-w-4xl mx-auto">
           {onBack && (
             <button
@@ -143,7 +143,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
             </button>
           )}
 
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+          <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8">
             <div className="text-center mb-8">
               <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
                 Knowledge Check
@@ -253,10 +253,10 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-xl overflow-hidden">
           <div
             ref={storyContainerRef}
-            className="h-96 overflow-y-auto p-8"
+            className="h-80 sm:h-96 overflow-y-auto p-4 sm:p-6 lg:p-8"
             style={{ scrollBehavior: 'smooth' }}
           >
             <div className="space-y-96">
@@ -282,7 +282,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
             </div>
           </div>
 
-          <div className="border-t border-gray-200 dark:border-gray-600 p-6 flex justify-end">
+          <div className="border-t border-gray-200 dark:border-gray-600 p-4 sm:p-6 flex justify-end">
             <Button
               onClick={handleNextSlide}
               variant="primary"

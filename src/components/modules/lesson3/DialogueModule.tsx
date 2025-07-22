@@ -68,7 +68,7 @@ const DialogueModule: React.FC<DialogueModuleProps> = ({ onBack, onComplete }) =
   const totalScenarios = getTotalScenarios();
 
   return (
-    <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-12 px-4">
+    <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-4 sm:py-6 lg:py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Back Button */}
         {onBack && (
@@ -81,7 +81,7 @@ const DialogueModule: React.FC<DialogueModuleProps> = ({ onBack, onComplete }) =
           </button>
         )}
 
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-xl overflow-hidden">
           {/* Current Scenario */}
           {currentScenario && !moduleState.isComplete && (
             <div>
@@ -97,7 +97,7 @@ const DialogueModule: React.FC<DialogueModuleProps> = ({ onBack, onComplete }) =
 
           {/* Loading State */}
           {isTransitioning && (
-            <div className="flex items-center justify-center py-12">
+            <div className="flex items-center justify-center py-6 sm:py-8 lg:py-12">
               <div className="flex items-center space-x-2">
                 <div className="w-4 h-4 bg-green-600 rounded-full animate-bounce"></div>
                 <div className="w-4 h-4 bg-teal-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -108,7 +108,7 @@ const DialogueModule: React.FC<DialogueModuleProps> = ({ onBack, onComplete }) =
 
           {/* Question Section */}
           {currentScenario && showQuestion && !moduleState.isComplete && (
-            <div className="p-8">
+            <div className="p-4 sm:p-6 lg:p-8">
               <QuestionSection
                 question={currentScenario.question}
                 isVisible={!isTransitioning}
@@ -122,7 +122,7 @@ const DialogueModule: React.FC<DialogueModuleProps> = ({ onBack, onComplete }) =
 
           {/* Module Complete */}
           {moduleState.isComplete && (
-            <div className="text-center p-8 animate-in fade-in-50 zoom-in-95 duration-500">
+            <div className="text-center p-4 sm:p-6 lg:p-8 animate-in fade-in-50 zoom-in-95 duration-500">
               <div className="w-20 h-20 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">
                 <div className="text-green-600 dark:text-green-400">
                   <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">

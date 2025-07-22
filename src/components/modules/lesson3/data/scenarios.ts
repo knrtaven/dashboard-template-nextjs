@@ -381,6 +381,16 @@ export const getStepTitle = (step: number): string => {
   return titles[step - 1] || `Step ${step}`;
 };
 
+export const getStepTitleMobile = (step: number): string => {
+  const mobileTitles = [
+    'Challenge',
+    'Decision',
+    'Impact',
+    'Outcome'
+  ];
+  return mobileTitles[step - 1] || `Step ${step}`;
+};
+
 export const initialState: ModuleState = {
   currentStep: 1,
   currentScenario: 'introduction',
