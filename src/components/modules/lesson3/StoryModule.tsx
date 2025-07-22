@@ -3,6 +3,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { storySlides, quizQuestions, StorySlide } from './data/story';
+import Button from '@/components/ui/button/Button';
+import Badge from '@/components/ui/badge/Badge';
 
 interface StoryModuleProps {
   onBack?: () => void;
@@ -86,7 +88,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
 
   if (isQuizComplete) {
     return (
-      <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-orange-900 py-12 px-4">
+      <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-12">
             <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8">
@@ -102,21 +104,21 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
             </p>
             <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
               {onComplete && (
-                <button
+                <Button
                   onClick={onComplete}
-                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                  variant="primary"
                 >
                   Continue to Video Lesson
-                </button>
+                </Button>
               )}
               
               {onBack && (
-                <button
+                <Button
                   onClick={onBack}
-                  className="bg-gradient-to-r from-orange-600 to-amber-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-orange-700 hover:to-amber-700 transition-all duration-200"
+                  variant="primary"
                 >
                   Return to Module Selection
-                </button>
+                </Button>
               )}
             </div>
           </div>
@@ -129,7 +131,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
     const currentQuestion = quizQuestions[currentQuestionIndex];
     
     return (
-      <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-orange-900 py-12 px-4">
+      <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 py-12 px-4">
         <div className="max-w-4xl mx-auto">
           {onBack && (
             <button
@@ -150,9 +152,9 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
                 Let&apos;s see what you learned from Mary&apos;s story about positive workplace culture.
               </p>
               <div className="mt-6 flex justify-center">
-                <div className="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-4 py-2 rounded-full text-sm font-medium">
+                <Badge variant="light" color="primary">
                   Question {currentQuestionIndex + 1} of {quizQuestions.length}
-                </div>
+                </Badge>
               </div>
             </div>
 
@@ -221,7 +223,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-orange-900 py-12 px-4">
+    <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {onBack && (
           <button
@@ -242,9 +244,9 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
           </p>
           
           <div className="mt-6 flex justify-center">
-            <div className="bg-orange-600 h-2 rounded-full" style={{ width: '100%', maxWidth: '400px' }}>
+            <div className="bg-brand-500 h-2 rounded-full" style={{ width: '100%', maxWidth: '400px' }}>
               <div
-                className="bg-orange-800 h-2 rounded-full transition-all duration-300"
+                className="bg-brand-600 h-2 rounded-full transition-all duration-300"
                 style={{ width: `${((currentSlideIndex + 1) / storySlides.length) * 100}%` }}
               />
             </div>
@@ -281,13 +283,13 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
           </div>
 
           <div className="border-t border-gray-200 dark:border-gray-600 p-6 flex justify-end">
-            <button
+            <Button
               onClick={handleNextSlide}
-              className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center space-x-2"
+              variant="primary"
+              endIcon={<ChevronRight size={20} />}
             >
-              <span>{currentSlideIndex < storySlides.length - 1 ? 'Next' : 'Continue to Quiz'}</span>
-              <ChevronRight size={20} />
-            </button>
+              {currentSlideIndex < storySlides.length - 1 ? 'Next' : 'Continue to Quiz'}
+            </Button>
           </div>
         </div>
       </div>
