@@ -29,7 +29,7 @@ const LearningCards: React.FC = () => {
     <div className="w-full space-y-6">
       <div className='px-1'>
         <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">
-          Courses
+          Lessons
         </h2>
       </div>
 

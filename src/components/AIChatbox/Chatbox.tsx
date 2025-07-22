@@ -80,10 +80,10 @@ export default function Chatbox() {
   };
 
   return (
-    <div className='w-full max-w-2xl mx-auto h-[90vh] bg-gray-50 flex flex-col'>
+    <div className='w-full max-w-2xl mx-auto h-[calc(100vh-14vh)] bg-gray-50 flex flex-col'>
         {/* Header */}
 
-        <div className="bg-white border-b px-4 py-3 sm:px-6 sm:py-4 shadow-sm">
+        <div className="bg-white border-b px-4 py-3 sm:px-6 sm:py-4 shadow-sm flex-shrink-0">
             <div className='flex justify-between'>
                <p> Self-Reflection Tool</p>   
                {isComplete && (
