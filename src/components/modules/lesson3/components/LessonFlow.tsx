@@ -73,7 +73,7 @@ const LessonFlow: React.FC<LessonFlowProps> = ({
   // Render video phase
   if (currentPhase === 'video' && !showVideoSurvey) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-12 px-4">
+      <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-12 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-center p-4">
             <div className="w-full max-w-md">
@@ -103,7 +103,7 @@ const LessonFlow: React.FC<LessonFlowProps> = ({
   // Render completion phase
   if (currentPhase === 'completed') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-12 px-4">
+      <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-12 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12">
             <div className="text-center py-8">

@@ -86,7 +86,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
 
   if (isQuizComplete) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-orange-900 py-12 px-4">
+      <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-orange-900 py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-12">
             <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8">
@@ -129,7 +129,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
     const currentQuestion = quizQuestions[currentQuestionIndex];
     
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-orange-900 py-12 px-4">
+      <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-orange-900 py-12 px-4">
         <div className="max-w-4xl mx-auto">
           {onBack && (
             <button
@@ -221,7 +221,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-orange-900 py-12 px-4">
+    <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-orange-900 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {onBack && (
           <button

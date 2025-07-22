@@ -68,7 +68,7 @@ const DialogueModule: React.FC<DialogueModuleProps> = ({ onBack, onComplete }) =
   const totalScenarios = getTotalScenarios();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-12 px-4">
+    <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Back Button */}
         {onBack && (
