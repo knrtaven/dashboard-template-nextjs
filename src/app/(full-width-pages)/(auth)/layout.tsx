@@ -5,8 +5,24 @@ import { Appellon_banner } from "../../../../public/images/logo";
 export default function AuthLayout({
   children,
 }: {
+  
   children: React.ReactNode;
 }) {
+
+  // Helper function to get image source
+  const getImageSrc = (image: string | { src?: string; default?: string }): string => {
+    if (typeof image === 'string') {
+      return image;
+    }
+    if (image && typeof image === 'object' && 'src' in image) {
+      return image.src ?? '';
+    }
+    if (image && typeof image === 'object' && 'default' in image) {
+      return image.default ?? '';
+    }
+    return '';
+  };
+
   return (
     <div className="relative p-6 bg-white dark:bg-gray-900 sm:p-0">
       <ThemeProvider>
@@ -19,7 +35,7 @@ export default function AuthLayout({
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-brand-primary dark:bg-white/5"
               style={{
-                backgroundImage: `url('${typeof Appellon_banner === 'string' ? Appellon_banner : Appellon_banner?.src}')`
+                backgroundImage: `url('${getImageSrc(Appellon_banner)}')`
               }}
             />
             
