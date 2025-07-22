@@ -445,7 +445,7 @@ export default function ModulePage() {
   ];
 
   const handleProgressUpdate = useCallback(
-    (progress: any) => {
+    (progress: { completedQuestions: number }) => {
       // Check if all questions are answered
       const totalQuestions = questions.length;
       const completedQuestions = progress.completedQuestions;

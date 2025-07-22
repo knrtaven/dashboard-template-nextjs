@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 
 interface TextareaProps {
   placeholder?: string; // Placeholder text
@@ -38,7 +38,7 @@ const TextArea: React.FC<TextareaProps> = ({
   };
 
   // Function to adjust the height of the textarea based on content
-  const adjustHeight = () => {
+  const adjustHeight = useCallback(() => {
     const textarea = textareaRef.current;
     if (!textarea) return;
 
@@ -52,7 +52,7 @@ const TextArea: React.FC<TextareaProps> = ({
     // Add scrollbar if content exceeds maxHeight
     textarea.style.overflowY =
       textarea.scrollHeight > maxHeight ? "auto" : "hidden";
-  };
+  }, [maxHeight]);
 
   // Handle Enter key press and auto-expand
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -90,7 +90,7 @@ const TextArea: React.FC<TextareaProps> = ({
   // Adjust height when value changes
   useEffect(() => {
     adjustHeight();
-  }, [value]);
+  }, [value, adjustHeight]);
 
   // Build the class list - remove shadow if borderless
   let textareaClasses = `w-full rounded-lg px-4 py-2.5 text-sm ${!borderless ? "shadow-theme-xs" : ""} focus:outline-hidden resize-none ${className}`;
