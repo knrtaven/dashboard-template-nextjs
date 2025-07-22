@@ -108,7 +108,7 @@ Experience realistic workplace conversations and test your understanding through
               </h2>
               
               <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-Follow Mary's interactive journey about positive workplace culture with comprehension challenges.
+Follow Mary&apos;s interactive journey about positive workplace culture with comprehension challenges.
               </p>
               
               <div className="space-y-1.5 mb-6">
