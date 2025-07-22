@@ -105,7 +105,7 @@ export const getLearningCardById = (id: number): LearningCardData | undefined =>
 
 export const getLearningCardsByCategory = (category: string): LearningCardData[] => {
   return LEARNING_CARDS_DATA.filter(card => 
-    card.category.toLowerCase() === category.toLowerCase()
+    card?.category?.toLowerCase() === category.toLowerCase()
   );
 };
 
