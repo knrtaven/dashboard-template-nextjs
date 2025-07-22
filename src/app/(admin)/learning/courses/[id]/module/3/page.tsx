@@ -1,7 +1,7 @@
 
 "use client";
 
-import CultureCrossroads from '@/components/modules/lesson3/CultureCrossroads'
+import CultureCrossroadsFlow from '@/components/modules/lesson3/CultureCrossroadsFlow'
 import VariantSelector from '@/components/modules/lesson3/VariantSelector'
 import DialogueModule from '@/components/modules/lesson3/DialogueModule'
 import StoryModule from '@/components/modules/lesson3/StoryModule'
@@ -27,7 +27,7 @@ export default function Module3Demo() {
 
   // Render selected variant
   if (selectedVariant === 'culture-crossroads') {
-    return <CultureCrossroads onBack={handleBackToSelector} />;
+    return <CultureCrossroadsFlow onBack={handleBackToSelector} />;
   }
 
   if (selectedVariant === 'dialogue-scenarios') {

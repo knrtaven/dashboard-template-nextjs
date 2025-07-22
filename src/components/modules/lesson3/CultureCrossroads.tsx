@@ -14,9 +14,10 @@ import ChoiceButtons from './components/ChoiceButtons';
 
 interface CultureCrossroadsProps {
   onBack?: () => void;
+  onComplete?: () => void;
 }
 
-const CultureCrossroads: React.FC<CultureCrossroadsProps> = ({ onBack }) => {
+const CultureCrossroads: React.FC<CultureCrossroadsProps> = ({ onBack, onComplete }) => {
   const [moduleState, setModuleState] = useState<ModuleState>(initialState);
   const [showChoices, setShowChoices] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -194,14 +195,23 @@ const CultureCrossroads: React.FC<CultureCrossroadsProps> = ({ onBack }) => {
                       {endingType === 'NEGATIVE' && ' This path highlights important lessons about the consequences of certain leadership styles.'}
                     </p>
                     
-                    <div className="space-y-4">
+                    <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
                       <button
                         onClick={handleRestart}
-                        className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                        className="inline-flex items-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium"
                       >
                         <RotateCcw size={18} className="mr-2" />
                         Try Different Choices
                       </button>
+                      
+                      {onComplete && (
+                        <button
+                          onClick={onComplete}
+                          className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                        >
+                          Continue to Video Lesson
+                        </button>
+                      )}
                     </div>
                   </>
                 );
