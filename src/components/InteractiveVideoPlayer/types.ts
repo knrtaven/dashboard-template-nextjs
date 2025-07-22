@@ -28,7 +28,7 @@ export interface QuestionBranches {
   high?: { jumpTo: number };
 }
 
-export type QuestionType = 'multiple-choice' | 'essay' | 'rating';
+export type QuestionType = 'multiple-choice' | 'essay' | 'rating' | 'text-input';
 export type NextAction = 'continue' | 'branch';
 
 export interface BaseQuestion {
@@ -57,7 +57,12 @@ export interface RatingQuestion extends BaseQuestion {
   scale: number;
 }
 
-export type Question = MultipleChoiceQuestion | EssayQuestion | RatingQuestion;
+export interface TextInputQuestion extends BaseQuestion {
+  type: 'text-input';
+  correctAnswer: string;
+}
+
+export type Question = MultipleChoiceQuestion | EssayQuestion | RatingQuestion | TextInputQuestion;
 
 export interface UserAnswer {
   answer: string;
@@ -89,4 +94,35 @@ export interface VideoPlayerState {
   showChapters: boolean;
   showControls: boolean;
   isMobile: boolean;
+}
+
+export interface ProgressData {
+  currentTime: number;
+  duration: number;
+  progress: number;
+  currentChapter: number;
+  score: number;
+  totalQuestions: number;
+  completedQuestions: number;
+}
+
+export interface InteractiveVideoPlayerProps {
+  videoUrl: string;
+  chapters: Chapter[];
+  questions: Question[];
+  onProgressUpdate?: (progress: ProgressData) => void;
+  onQuestionAnswered?: (questionId: number, answer: UserAnswer) => void;
+  className?: string;
+  width?: number;
+  height?: number;
+  poster?: string;
+  captions?: {
+    src: string;
+    srcLang: string;
+    label: string;
+    kind?: 'subtitles' | 'captions' | 'descriptions' | 'chapters' | 'metadata';
+  }[];
+  autoPlay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
 }
