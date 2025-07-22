@@ -9,7 +9,7 @@ interface VariantSelectorProps {
 
 const VariantSelector: React.FC<VariantSelectorProps> = ({ onSelectVariant }) => {
   return (
-    <div className="h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 flex items-center justify-center px-4">
+    <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 flex items-center justify-center px-4">
       <div className="max-w-5xl w-full">
         <div className="text-center mb-6">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
