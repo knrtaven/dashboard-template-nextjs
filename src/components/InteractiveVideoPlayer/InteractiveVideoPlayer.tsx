@@ -72,13 +72,22 @@ export const InteractiveVideoPlayer: React.FC<InteractiveVideoPlayerProps> = ({
     closeQuestionModal();
   }, [closeQuestion, closeQuestionModal]);
 
+  // Determine if we should use height from props or aspect ratio
+  const useCustomHeight =
+    height === '100%' ||
+    height === '100vh' ||
+    (typeof height === 'string' && height.includes('calc'));
+
   return (
-    <div className={`relative overflow-hidden rounded-lg bg-black shadow-2xl ${className}`}>
+    <div
+      className={`relative overflow-hidden rounded-lg bg-black shadow-2xl ${className}`}
+      style={useCustomHeight ? { height: height } : undefined}
+    >
       {/* Video Element */}
       <video
         ref={videoRef}
         width={width}
-        height={height}
+        height={useCustomHeight ? '100%' : height}
         poster={poster}
         autoPlay={autoPlay}
         loop={loop}
@@ -88,7 +97,7 @@ export const InteractiveVideoPlayer: React.FC<InteractiveVideoPlayerProps> = ({
         playsInline
         controls={false}
         aria-label="Interactive video player"
-        className="h-auto w-full"
+        className={useCustomHeight ? 'h-full w-full object-cover' : 'h-auto w-full'}
       >
         <source src={videoUrl} type="video/mp4" />
         {captions.map((caption, index) => (
