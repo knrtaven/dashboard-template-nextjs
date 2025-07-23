@@ -4,6 +4,7 @@ import { Chapter, Question } from '@/components/InteractiveVideoPlayer/types';
 import React, { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { ThumbsUp, ThumbsDown } from 'lucide-react';
+import Link from 'next/link';
 
 const InteractiveVideoPlayer = dynamic(
   () => import('@/components/InteractiveVideoPlayer/InteractiveVideoPlayer'),
@@ -468,12 +469,13 @@ export default function ModulePage() {
             </button>
           </div>
 
-          <button
-            onClick={() => (window.location.href = '/learning/courses')}
-            className="bg-brand-500 hover:bg-brand-600 rounded-lg px-8 py-3 font-semibold text-white transition-colors"
-          >
-            Back to Courses
-          </button>
+          <Link href={`/learning/courses/1`}>
+            <button
+              className="bg-brand-500 hover:bg-brand-600 rounded-lg px-8 py-3 font-semibold text-white transition-colors"
+            >
+              Back to Courses
+            </button>
+          </Link>
         </div>
       </div>
     );
