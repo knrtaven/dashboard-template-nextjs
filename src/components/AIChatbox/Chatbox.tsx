@@ -25,13 +25,7 @@ export default function Chatbox() {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    // Alternative: Direct scroll method
-    const scrollToBottomDirect = () => {
-      if (messagesContainerRef.current) {
-        messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
-      }
-    };
-
+   
     // Initialize with first message
     useEffect(() => {
       setMessages([{
