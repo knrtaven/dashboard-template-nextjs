@@ -9,7 +9,11 @@ interface Message {
     sender: 'user' | 'bot';
   }
 
-export default function Chatbox() {
+interface ChatboxProps {
+  onNextStep?: () => void; // Callback for when user clicks "Next Step"
+}
+
+export default function Chatbox({ onNextStep }: ChatboxProps) {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState('');
     const [currentStep, setCurrentStep] = useState<number>(0);
@@ -60,7 +64,7 @@ export default function Chatbox() {
       // Show typing indicator after 1 second buffer
       setTimeout(() => {
         setIsTyping(true);
-      }, 1000);
+      }, 500);
 
        // Add next bot response after delay
       setTimeout(() => {
@@ -78,7 +82,7 @@ export default function Chatbox() {
               setIsComplete(true);
             }
           }
-        }, 1200);
+        }, 3500);
     }
 
     const handleReset = (): void => {
@@ -91,6 +95,12 @@ export default function Chatbox() {
       setIsComplete(false);
       setIsTyping(false);
       setInput('');
+    };
+
+    const handleNextStep = () => {
+      if (onNextStep) {
+        onNextStep(); // Call the callback passed from parent
+      }
     };
 
     return (
@@ -163,6 +173,7 @@ export default function Chatbox() {
                 }}
                 placeholder="Share your thoughts..."
                 rows={3}
+                disabled={isTyping}
                 className="flex-1 px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary-dark focus:border-transparent resize-none text-sm"
               />
               <button
@@ -177,7 +188,7 @@ export default function Chatbox() {
             <div className="text-center py-4">
               <p className="text-gray-600 mb-4 text-sm">Session completed! You can review your responses above.</p>
               <button
-                onClick={()=>{}}
+                onClick={handleNextStep}
                 className="px-4 py-2 sm:px-6 sm:py-3 bg-purple-600 text-white text-sm rounded-xl hover:bg-green-600 transition-colors"
               >
                 Next Step
