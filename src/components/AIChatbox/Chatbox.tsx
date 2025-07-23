@@ -80,10 +80,10 @@ export default function Chatbox() {
   };
 
   return (
-    <div className='w-full  mx-auto h-[calc(100vh-14vh)] bg-gray-50 flex flex-col'>
+    <div className='w-full mx-auto bg-gray-50 flex flex-col'>
         {/* Header */}
 
-        <div className="bg-white border-b px-4 py-3 sm:px-6 sm:py-4 shadow-sm flex-shrink-0">
+        <div className="bg-white border-b px-4 py-3 sm:px-6 sm:py-4 shadow-sm shrink">
             <div className='flex justify-between'>
                <p> Self-Reflection Tool</p>   
                {isComplete && (
@@ -109,7 +109,7 @@ export default function Chatbox() {
 
           {/* Messages */}
 
-        <div className='flex-1 overflow-y-auto p-3 sm:py-6 sm:px-1 space-y-3 sm:space-y-2'>
+        <div className='grow overflow-y-auto p-3 h-[calc(100vh-330px)] sm:py-6 sm:px-1 space-y-3 sm:space-y-2'>
         {messages.map(msg => (
           <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className={`max-w-[85%] sm:max-w-md px-3 py-2 sm:px-4 sm:py-3 rounded-2xl ${
@@ -133,7 +133,7 @@ export default function Chatbox() {
 
          {/* Input */}
 
-        <div className="bg-white border-t p-3 sm:p-4 flex-shrink-0 ">
+        <div className="bg-white border-t p-3 sm:p-4 flex-shrink-0 sticky ">
         {!isComplete ? (
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
             <textarea
