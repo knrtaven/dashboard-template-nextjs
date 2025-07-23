@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { storySlides, quizQuestions, StorySlide } from './data/story';
 import Button from '@/components/ui/button/Button';
@@ -267,8 +268,14 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
                   className="flex items-center justify-center min-h-80 animate-fade-in"
                 >
                   <div className="flex items-center space-x-6 max-w-4xl w-full">
-                    <div className="w-32 h-32 bg-gray-400 dark:bg-gray-600 rounded-lg flex-shrink-0 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-gray-500 dark:bg-gray-700 rounded"></div>
+                    <div className="w-48 h-48 flex-shrink-0 relative rounded-lg overflow-hidden">
+                      <Image
+                        src={slide.imageUrl}
+                        alt={`Mary's story illustration ${slide.id}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 192px, 192px"
+                      />
                     </div>
                     
                     <div className="flex-1">

@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
         hostname: "health-e.in",
         pathname: "/wp-content/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "zxkkfqxwop.ufs.sh",
+        pathname: "/f/**",
+      },
     ],
   },
 };
