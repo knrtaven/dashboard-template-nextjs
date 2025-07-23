@@ -21,6 +21,8 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
   const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [isQuizComplete, setIsQuizComplete] = useState(false);
+  const [imageLoadingStates, setImageLoadingStates] = useState<Record<number, boolean>>({});
+  const [imageErrorStates, setImageErrorStates] = useState<Record<number, boolean>>({});
   
   const storyContainerRef = useRef<HTMLDivElement>(null);
   const latestSlideRef = useRef<HTMLDivElement>(null);
@@ -28,8 +30,11 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
   useEffect(() => {
     if (storySlides.length > 0) {
       setAllSlides([storySlides[0]]);
+      // Initialize loading state for first slide
+      setImageLoadingStates({ 1: true });
     }
   }, []);
+
 
   useEffect(() => {
     if (latestSlideRef.current && storyContainerRef.current) {
@@ -53,10 +58,22 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
       const nextIndex = currentSlideIndex + 1;
       setCurrentSlideIndex(nextIndex);
       setAllSlides(prev => [...prev, storySlides[nextIndex]]);
+      // Initialize loading state for new slide
+      setImageLoadingStates(prev => ({ ...prev, [storySlides[nextIndex].id]: true }));
     } else {
       setIsStoryComplete(true);
     }
   };
+
+  const handleImageLoad = (slideId: number) => {
+    setImageLoadingStates(prev => ({ ...prev, [slideId]: false }));
+  };
+
+  const handleImageError = (slideId: number) => {
+    setImageLoadingStates(prev => ({ ...prev, [slideId]: false }));
+    setImageErrorStates(prev => ({ ...prev, [slideId]: true }));
+  };
+
 
   const handleAnswerSelect = (answerId: string) => {
     setSelectedAnswer(answerId);
@@ -224,7 +241,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 py-12 px-4">
+    <div className="min-h-[calc(100vh-60px)] sm:min-h-[calc(100vh-120px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {onBack && (
           <button
@@ -267,14 +284,36 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
                   ref={index === allSlides.length - 1 ? latestSlideRef : null}
                   className="flex items-center justify-center min-h-80 animate-fade-in"
                 >
-                  <div className="flex items-center space-x-6 max-w-4xl w-full">
-                    <div className="w-48 h-48 flex-shrink-0 relative rounded-lg overflow-hidden">
+                  <div className="flex flex-col sm:flex-row sm:items-center space-y-6 sm:space-y-0 sm:space-x-6 max-w-4xl w-full">
+                    <div className="w-full sm:w-48 h-48 flex-shrink-0 relative rounded-lg overflow-hidden">
+                      {/* Loading skeleton overlay */}
+                      {imageLoadingStates[slide.id] && (
+                        <div className="absolute inset-0 z-10 bg-gray-300 dark:bg-gray-600 animate-pulse">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+                        </div>
+                      )}
+                      
+                      {/* Error fallback overlay */}
+                      {imageErrorStates[slide.id] && (
+                        <div className="absolute inset-0 z-10 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                          <div className="text-center">
+                            <svg className="w-12 h-12 text-gray-400 dark:text-gray-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" />
+                            </svg>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">Image unavailable</p>
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* Always render image for proper loading */}
                       <Image
                         src={slide.imageUrl}
                         alt={`Mary's story illustration ${slide.id}`}
                         fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 192px, 192px"
+                        className={`object-cover transition-opacity duration-300 ${imageLoadingStates[slide.id] || imageErrorStates[slide.id] ? 'opacity-0' : 'opacity-100'}`}
+                        sizes="(max-width: 640px) 100vw, 192px"
+                        onLoad={() => handleImageLoad(slide.id)}
+                        onError={() => handleImageError(slide.id)}
                       />
                     </div>
                     
@@ -314,6 +353,17 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
         }
         .animate-fade-in {
           animation: fade-in 0.5s ease-out;
+        }
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+        .animate-shimmer {
+          animation: shimmer 2s infinite;
         }
       `}</style>
     </div>
