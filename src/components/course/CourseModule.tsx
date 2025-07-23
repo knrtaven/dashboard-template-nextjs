@@ -26,18 +26,18 @@ export const CourseModule = ({module, moduleIndex, courseId}: CourseModuleProps)
         {/* Module Info */}
         <div className="flex-1">
           <div className="flex items-center space-x-3 mb-3">
-            <div className="flex items-center justify-center w-10 h-10  bg-blue-100 dark:bg-blue-900/20 rounded-full">
+            <div className="flex items-center justify-center min-w-5 min-h-5 max-w-5 nax-h-5  bg-blue-100 dark:bg-blue-900/20 rounded-full">
             
-              <span className="text-sm font-bold text-blue-600  dark:text-blue-400">
+              <span className="text-sm font-bold text-brand-primary  dark:text-brand-primary-dark">
                 {moduleIndex + 1} 
               </span>
             </div>
-            <div>
+            <div className='overflow-x-hidden text-ellipsis'>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 {module.title}
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Module {moduleIndex + 1}
+              <p className="text-sm text-gray-600 dark:text-gray-400 ">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               </p>
             </div>
           </div>
@@ -51,9 +51,7 @@ export const CourseModule = ({module, moduleIndex, courseId}: CourseModuleProps)
           <div className="flex items-center space-x-6 text-sm text-gray-500 dark:text-gray-400">
       
             
-            <div className="flex items-center space-x-1">
-              <span>{module.totalLessons || 'Multiple'} topics</span>
-            </div>
+          
             
       
           </div>
@@ -68,7 +66,7 @@ export const CourseModule = ({module, moduleIndex, courseId}: CourseModuleProps)
             ) : module.isCompleted ? (
               <CheckCircle className="w-6 h-6 text-green-600 mx-auto mb-1" />
             ) : (
-              <Play className="w-6 h-6 text-blue-600 mx-auto mb-1" />
+              <Play className="w-6 h-6 text-brand-primary mx-auto mb-1" />
             )}
             <p className="text-xs text-gray-500 dark:text-gray-400">
               {module.isLocked ? 'Locked' : module.isCompleted ? 'Completed' : 'Available'}
@@ -82,7 +80,7 @@ export const CourseModule = ({module, moduleIndex, courseId}: CourseModuleProps)
               className={`px-6 py-3 rounded-lg font-medium transition-colors ${
                 module.isCompleted 
                   ? 'bg-green-100 text-green-700 hover:bg-green-200 dark:bg-green-900/20 dark:text-green-400 dark:hover:bg-green-900/30'
-                  : 'bg-blue-600 text-white hover:bg-blue-700'
+                  : 'bg-brand-primary text-white hover:bg-brand-primary-dark'
               }`}
             >
               {module.isCompleted ? 'Review' : 'Start'}
