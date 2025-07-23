@@ -274,7 +274,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
         <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-xl overflow-hidden">
           <div
             ref={storyContainerRef}
-            className="h-80 sm:h-96 overflow-y-auto p-4 sm:p-6 lg:p-8"
+            className="h-[28rem] sm:h-96 overflow-y-auto p-4 sm:p-6 lg:p-8"
             style={{ scrollBehavior: 'smooth' }}
           >
             <div className="space-y-96">
