@@ -106,25 +106,26 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
 
   if (isQuizComplete) {
     return (
-      <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 py-4 sm:py-6 lg:py-12 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-12">
-            <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8">
-              <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="min-h-[calc(100vh-80px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 flex items-center justify-center px-4 py-6">
+        <div className="max-w-5xl w-full text-center">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12 xl:p-16">
+            <div className="w-28 h-28 md:w-32 md:h-32 xl:w-36 xl:h-36 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8 md:mb-10">
+              <svg className="w-14 h-14 md:w-16 md:h-16 xl:w-18 xl:h-18 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-white mb-6 md:mb-8">
               Congratulations!
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+            <p className="text-xl md:text-2xl xl:text-3xl text-gray-600 dark:text-gray-300 mb-10 md:mb-12 leading-relaxed">
               You&apos;ve successfully completed Mary&apos;s Story and demonstrated your understanding of positive workplace culture.
             </p>
-            <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               {onComplete && (
                 <Button
                   onClick={onComplete}
                   variant="primary"
+                  className="text-base md:text-lg px-8 md:px-10 py-4 md:py-5"
                 >
                   Continue to Video Lesson
                 </Button>
@@ -134,6 +135,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
                 <Button
                   onClick={onBack}
                   variant="primary"
+                  className="text-base md:text-lg px-8 md:px-10 py-4 md:py-5"
                 >
                   Return to Module Selection
                 </Button>
@@ -149,35 +151,35 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
     const currentQuestion = quizQuestions[currentQuestionIndex];
     
     return (
-      <div className="min-h-[calc(100vh-120px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 py-4 sm:py-6 lg:py-12 px-4">
-        <div className="max-w-4xl mx-auto">
+      <div className="min-h-[calc(100vh-80px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 flex flex-col px-4 py-6">
+        <div className="max-w-5xl mx-auto w-full flex-1 flex flex-col">
           {onBack && (
             <button
               onClick={onBack}
-              className="mb-8 flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+              className="mb-6 md:mb-8 flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm md:text-base"
             >
-              <ArrowLeft size={20} />
+              <ArrowLeft size={20} className="md:w-6 md:h-6" />
               <span>Back to Module Selection</span>
             </button>
           )}
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8">
-            <div className="text-center mb-8">
-              <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-10 xl:p-12 flex-1 flex flex-col">
+            <div className="text-center mb-8 md:mb-10">
+              <h1 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6">
                 Knowledge Check
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300">
+              <p className="text-lg md:text-xl xl:text-2xl text-gray-600 dark:text-gray-300">
                 Let&apos;s see what you learned from Mary&apos;s story about positive workplace culture.
               </p>
-              <div className="mt-6 flex justify-center">
+              <div className="mt-6 md:mt-8 flex justify-center">
                 <Badge variant="light" color="primary">
                   Question {currentQuestionIndex + 1} of {quizQuestions.length}
                 </Badge>
               </div>
             </div>
 
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+            <div className="max-w-4xl mx-auto flex-1 flex flex-col">
+              <h2 className="text-xl md:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white mb-8 md:mb-10 text-center">
                 {currentQuestionIndex + 1}. {currentQuestion.question}
               </h2>
 
@@ -241,98 +243,94 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-60px)] sm:min-h-[calc(100vh-120px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 py-12 px-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-[calc(100vh-80px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 flex flex-col px-4 py-6">
+      <div className="max-w-6xl mx-auto w-full flex-1 flex flex-col">
         {onBack && (
           <button
             onClick={onBack}
-            className="mb-8 flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+            className="mb-6 md:mb-8 flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm md:text-base"
           >
-            <ArrowLeft size={20} />
+            <ArrowLeft size={20} className="md:w-6 md:h-6" />
             <span>Back to Module Selection</span>
           </button>
         )}
 
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <div className="text-center mb-6 md:mb-8">
+          <h1 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Mary&apos;s Story
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-lg md:text-xl xl:text-2xl text-gray-600 dark:text-gray-300">
             A lesson in positive workplace culture
           </p>
           
-          <div className="mt-6 flex justify-center">
-            <div className="bg-brand-500 h-2 rounded-full" style={{ width: '100%', maxWidth: '400px' }}>
+          <div className="mt-6 md:mt-8 flex justify-center">
+            <div className="bg-brand-500 h-2 md:h-3 rounded-full w-full max-w-md xl:max-w-lg">
               <div
-                className="bg-brand-600 h-2 rounded-full transition-all duration-300"
+                className="bg-brand-600 h-2 md:h-3 rounded-full transition-all duration-300"
                 style={{ width: `${((currentSlideIndex + 1) / storySlides.length) * 100}%` }}
               />
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-xl overflow-hidden">
-          <div
-            ref={storyContainerRef}
-            className="h-[28rem] sm:h-96 overflow-y-auto p-4 sm:p-6 lg:p-8"
-            style={{ scrollBehavior: 'smooth' }}
-          >
-            <div className="space-y-96">
-              {allSlides.map((slide, index) => (
-                <div
-                  key={slide.id}
-                  ref={index === allSlides.length - 1 ? latestSlideRef : null}
-                  className="flex items-center justify-center min-h-80 animate-fade-in"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center space-y-6 sm:space-y-0 sm:space-x-6 max-w-4xl w-full">
-                    <div className="w-full sm:w-48 h-48 flex-shrink-0 relative rounded-lg overflow-hidden">
-                      {/* Loading skeleton overlay */}
-                      {imageLoadingStates[slide.id] && (
-                        <div className="absolute inset-0 z-10 bg-gray-300 dark:bg-gray-600 animate-pulse">
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
-                        </div>
-                      )}
-                      
-                      {/* Error fallback overlay */}
-                      {imageErrorStates[slide.id] && (
-                        <div className="absolute inset-0 z-10 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                          <div className="text-center">
-                            <svg className="w-12 h-12 text-gray-400 dark:text-gray-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" />
-                            </svg>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">Image unavailable</p>
-                          </div>
-                        </div>
-                      )}
-                      
-                      {/* Always render image for proper loading */}
-                      <Image
-                        src={slide.imageUrl}
-                        alt={`Mary's story illustration ${slide.id}`}
-                        fill
-                        className={`object-cover transition-opacity duration-300 ${imageLoadingStates[slide.id] || imageErrorStates[slide.id] ? 'opacity-0' : 'opacity-100'}`}
-                        sizes="(max-width: 640px) 100vw, 192px"
-                        onLoad={() => handleImageLoad(slide.id)}
-                        onError={() => handleImageError(slide.id)}
-                      />
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden flex-1 flex flex-col min-h-0">
+          <div className="flex-1 flex items-center justify-center p-6 md:p-8 xl:p-12 min-h-0">
+            {allSlides.length > 0 && (
+              <div className="flex flex-col lg:flex-row lg:items-center space-y-6 lg:space-y-0 lg:space-x-8 xl:space-x-12 max-w-5xl w-full">
+                <div className="w-full lg:w-64 xl:w-80 h-64 xl:h-80 flex-shrink-0 relative rounded-xl overflow-hidden mx-auto lg:mx-0">
+                  {/* Loading skeleton overlay */}
+                  {imageLoadingStates[allSlides[currentSlideIndex]?.id] && (
+                    <div className="absolute inset-0 z-10 bg-gray-300 dark:bg-gray-600 animate-pulse">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
                     </div>
-                    
-                    <div className="flex-1">
-                      <p className="text-gray-700 dark:text-gray-200 text-lg leading-relaxed">
-                        {slide.content}
-                      </p>
+                  )}
+                  
+                  {/* Error fallback overlay */}
+                  {imageErrorStates[allSlides[currentSlideIndex]?.id] && (
+                    <div className="absolute inset-0 z-10 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                      <div className="text-center">
+                        <svg className="w-12 h-12 xl:w-16 xl:h-16 text-gray-400 dark:text-gray-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" />
+                        </svg>
+                        <p className="text-xs xl:text-sm text-gray-500 dark:text-gray-400">Image unavailable</p>
+                      </div>
                     </div>
-                  </div>
+                  )}
+                  
+                  {/* Current slide image */}
+                  {allSlides[currentSlideIndex] && (
+                    <Image
+                      src={allSlides[currentSlideIndex].imageUrl}
+                      alt={`Mary's story illustration ${allSlides[currentSlideIndex].id}`}
+                      fill
+                      className={`object-cover transition-opacity duration-300 ${
+                        imageLoadingStates[allSlides[currentSlideIndex].id] || imageErrorStates[allSlides[currentSlideIndex].id] 
+                          ? 'opacity-0' : 'opacity-100'
+                      }`}
+                      sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 256px, 320px"
+                      onLoad={() => handleImageLoad(allSlides[currentSlideIndex].id)}
+                      onError={() => handleImageError(allSlides[currentSlideIndex].id)}
+                    />
+                  )}
                 </div>
-              ))}
-            </div>
+                
+                <div className="flex-1 flex items-center">
+                  {allSlides[currentSlideIndex] && (
+                    <p className="text-gray-700 dark:text-gray-200 text-lg md:text-xl xl:text-2xl leading-relaxed">
+                      {allSlides[currentSlideIndex].content}
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
 
-          <div className="border-t border-gray-200 dark:border-gray-600 p-4 sm:p-6 flex justify-end">
+          <div className="border-t border-gray-200 dark:border-gray-600 p-6 md:p-8 flex justify-end">
             <Button
               onClick={handleNextSlide}
               variant="primary"
-              endIcon={<ChevronRight size={20} />}
+              endIcon={<ChevronRight size={20} className="md:w-6 md:h-6" />}
+              className="text-base md:text-lg px-6 md:px-8 py-3 md:py-4"
             >
               {currentSlideIndex < storySlides.length - 1 ? 'Next' : 'Continue to Quiz'}
             </Button>
