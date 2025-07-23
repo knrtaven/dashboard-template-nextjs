@@ -456,8 +456,10 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({ question, isOpen, 
   );
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center bg-black/70 p-4">
-      <div className="mx-4 w-full max-w-lg rounded-lg bg-white shadow-xl">{modalContent}</div>
+    <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+      <div className="relative z-50 mx-4 w-full max-w-lg rounded-lg bg-white shadow-xl">
+        {modalContent}
+      </div>
     </div>
   );
 };
