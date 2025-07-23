@@ -70,7 +70,7 @@ export const useInteractiveVideoPlayer = ({
   );
 
   const currentChapterInfo = useMemo(
-    () => questions[state.currentChapter] || null,
+    () => chapters[state.currentChapter] || null,
     [chapters, state.currentChapter]
   );
 
@@ -178,7 +178,7 @@ export const useInteractiveVideoPlayer = ({
         currentTime,
         prevState.userAnswers
       );
-      const pendingQuestion = unansweredQuestionsAtCurrentTime.find((q) => !prevState.showQuestion);
+      const pendingQuestion = unansweredQuestionsAtCurrentTime.find(() => !prevState.showQuestion);
 
       const activeChapter = chapters.findIndex(
         (chapter) => currentTime >= chapter.startTime && currentTime < chapter.endTime

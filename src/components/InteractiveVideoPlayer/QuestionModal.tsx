@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import { Check, X } from 'lucide-react';
-import { Modal } from '../ui/modal';
 import {
   Question,
   MultipleChoiceQuestion,
@@ -16,12 +15,7 @@ interface QuestionModalProps {
   onAnswer: (answer: string) => void;
 }
 
-export const QuestionModal: React.FC<QuestionModalProps> = ({
-  question,
-  isOpen,
-  onClose,
-  onAnswer,
-}) => {
+export const QuestionModal: React.FC<QuestionModalProps> = ({ question, isOpen, onAnswer }) => {
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
   const [essayAnswer, setEssayAnswer] = useState('');
   const [wordCount, setWordCount] = useState(0);
@@ -438,33 +432,32 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
     );
   }, [isAnswered, isCorrect, countdown, handleContinue, handleSubmit, isSubmitDisabled]);
 
-  return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      showCloseButton={false}
-      className="mx-4 w-full max-w-lg"
-      isFullscreen={false}
-    >
-      {/* Scrollable container with max height */}
-      <div className="flex max-h-[80vh] flex-col overflow-hidden">
-        {/* Header - fixed at top */}
-        <div className="flex-shrink-0 border-b border-gray-200 p-6 pb-4">
-          <h3 className="text-xl font-bold text-gray-900">Question {question.id}</h3>
-          <p className="mt-2 text-lg text-gray-700">{question.question}</p>
-        </div>
+  if (!isOpen) return null;
 
-        {/* Scrollable content area */}
-        <div className="flex-1 overflow-y-auto p-6 pt-4">
-          {renderQuestionContent}
-          {renderFeedback}
-        </div>
-
-        {/* Footer - fixed at bottom */}
-        <div className="flex-shrink-0 border-t border-gray-200 p-6 pt-4">
-          <div className="flex justify-end">{renderButton}</div>
-        </div>
+  const modalContent = (
+    <div className="flex max-h-[80vh] flex-col overflow-hidden">
+      {/* Header - fixed at top */}
+      <div className="flex-shrink-0 border-b border-gray-200 p-6 pb-4">
+        <h3 className="text-xl font-bold text-gray-900">Question {question.id}</h3>
+        <p className="mt-2 text-lg text-gray-700">{question.question}</p>
       </div>
-    </Modal>
+
+      {/* Scrollable content area */}
+      <div className="flex-1 overflow-y-auto p-6 pt-4">
+        {renderQuestionContent}
+        {renderFeedback}
+      </div>
+
+      {/* Footer - fixed at bottom */}
+      <div className="flex-shrink-0 border-t border-gray-200 p-6 pt-4">
+        <div className="flex justify-end">{renderButton}</div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-black/70 p-4">
+      <div className="mx-4 w-full max-w-lg rounded-lg bg-white shadow-xl">{modalContent}</div>
+    </div>
   );
 };
