@@ -125,7 +125,9 @@ export const InteractiveVideoPlayer: React.FC<InteractiveVideoPlayerProps> = ({
           question={state.currentQuestion}
           isOpen={isQuestionModalOpen}
           onClose={handleModalClose}
-          onAnswer={handleQuestionAnswer}
+          onAnswer={(answer) => {
+            handleQuestionAnswer(answer);
+          }}
         />
       )}
 

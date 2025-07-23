@@ -3,6 +3,7 @@
 import { Chapter, Question } from '@/components/InteractiveVideoPlayer/types';
 import React, { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
+import { ThumbsUp, ThumbsDown } from 'lucide-react';
 
 const InteractiveVideoPlayer = dynamic(
   () => import('@/components/InteractiveVideoPlayer/InteractiveVideoPlayer'),
@@ -242,7 +243,7 @@ export default function ModulePage() {
     // Second trigger time
     {
       id: 3,
-      triggerTime: 62,
+      triggerTime: 61.5,
       question: 'Every decision we make falls on continuum',
       type: 'multiple-choice',
       options: [
@@ -259,7 +260,7 @@ export default function ModulePage() {
     },
     {
       id: 4,
-      triggerTime: 62,
+      triggerTime: 61.5,
       question: 'Do helpful behaviours release oxytocin?',
       type: 'multiple-choice',
       options: [
@@ -311,7 +312,7 @@ export default function ModulePage() {
     // Fourth trigger time
     {
       id: 7,
-      triggerTime: 139,
+      triggerTime: 138.5,
       question: 'Appellon is about helping your organisation to develop',
       type: 'multiple-choice',
       options: [
@@ -328,7 +329,7 @@ export default function ModulePage() {
     },
     {
       id: 8,
-      triggerTime: 139,
+      triggerTime: 138.5,
       question: 'We can improve our connection, performance, achievement and ______',
       type: 'text-input',
       correctAnswer: 'wellbeing',
@@ -380,7 +381,7 @@ export default function ModulePage() {
     // Sixth trigger time
     {
       id: 11,
-      triggerTime: 203,
+      triggerTime: 203.5,
       question: 'Appellon is about helping your organisation to develop',
       type: 'multiple-choice',
       options: [
@@ -397,7 +398,7 @@ export default function ModulePage() {
     },
     {
       id: 12,
-      triggerTime: 203,
+      triggerTime: 203.5,
       question: 'Do helpful behaviours release oxytocin?',
       type: 'multiple-choice',
       options: [
@@ -450,6 +451,23 @@ export default function ModulePage() {
             <br />
             What did you think?
           </p>
+
+          {/* Like/Dislike buttons */}
+          <div className="mb-6 flex justify-center gap-4">
+            <button
+              onClick={() => console.log('Liked')}
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-green-500 text-white transition-colors hover:bg-green-600"
+            >
+              <ThumbsUp size={20} />
+            </button>
+            <button
+              onClick={() => console.log('Disliked')}
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-red-500 text-white transition-colors hover:bg-red-600"
+            >
+              <ThumbsDown size={20} />
+            </button>
+          </div>
+
           <button
             onClick={() => (window.location.href = '/learning/courses')}
             className="bg-brand-500 hover:bg-brand-600 rounded-lg px-8 py-3 font-semibold text-white transition-colors"
