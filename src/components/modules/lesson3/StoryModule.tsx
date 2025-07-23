@@ -106,7 +106,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
 
   if (isQuizComplete) {
     return (
-      <div className="min-h-[calc(100vh-80px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 flex items-center justify-center px-4 py-6">
+      <div className="min-h-[calc(100vh-57px)] md:min-h-[calc(100vh-140px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 flex items-center justify-center px-4 py-6">
         <div className="max-w-5xl w-full text-center">
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12 xl:p-16">
             <div className="w-28 h-28 md:w-32 md:h-32 xl:w-36 xl:h-36 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8 md:mb-10">
@@ -151,7 +151,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
     const currentQuestion = quizQuestions[currentQuestionIndex];
     
     return (
-      <div className="min-h-[calc(100vh-80px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 flex flex-col px-4 py-6">
+      <div className="min-h-[calc(100vh-57px)] md:min-h-[calc(100vh-81px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 flex flex-col px-4 py-6">
         <div className="max-w-5xl mx-auto w-full flex-1 flex flex-col">
           {onBack && (
             <button

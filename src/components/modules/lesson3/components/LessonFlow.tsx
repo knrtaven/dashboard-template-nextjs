@@ -73,7 +73,7 @@ const LessonFlow: React.FC<LessonFlowProps> = ({
   // Render video phase
   if (currentPhase === 'video' && !showVideoSurvey) {
     return (
-      <div className="min-h-[calc(100vh-80px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 flex items-center justify-center px-4 py-6">
+      <div className="min-h-[calc(100vh-57px)] md:min-h-[calc(100vh-81px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 flex items-center justify-center px-4 py-6">
         <div className="max-w-7xl w-full">
           <div className="flex justify-center">
             <div className="w-full max-w-sm md:max-w-md xl:max-w-lg 2xl:max-w-xl">
@@ -103,7 +103,7 @@ const LessonFlow: React.FC<LessonFlowProps> = ({
   // Render completion phase
   if (currentPhase === 'completed') {
     return (
-      <div className="min-h-[calc(100vh-80px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 flex items-center justify-center px-4 py-6">
+      <div className="min-h-[calc(100vh-57px)] md:min-h-[calc(100vh-81px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 flex items-center justify-center px-4 py-6">
         <div className="max-w-5xl w-full">
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12 xl:p-16">
             <div className="text-center">

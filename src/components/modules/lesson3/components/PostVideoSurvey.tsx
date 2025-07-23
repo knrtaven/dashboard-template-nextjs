@@ -70,7 +70,7 @@ const PostVideoSurvey: React.FC<PostVideoSurveyProps> = ({ onSurveyComplete }) =
 
   if (showIntro) {
     return (
-      <div className="min-h-[calc(100vh-80px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 flex items-center justify-center px-4 py-6">
+      <div className="min-h-[calc(100vh-57px)] md:min-h-[calc(100vh-81px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 flex items-center justify-center px-4 py-6">
         <div className="w-full max-w-lg rounded-2xl bg-white dark:bg-gray-800 p-8 md:p-12 text-center shadow-xl">
           <h2 className="mb-6 text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">How&apos;s work?</h2>
           <p className="mb-10 text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">

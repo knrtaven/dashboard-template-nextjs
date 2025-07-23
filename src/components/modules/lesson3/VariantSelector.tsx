@@ -9,13 +9,13 @@ interface VariantSelectorProps {
 
 const VariantSelector: React.FC<VariantSelectorProps> = ({ onSelectVariant }) => {
   return (
-    <div className="min-h-[calc(100vh-80px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 flex items-center justify-center px-4 py-6">
+    <div className="min-h-[calc(100vh-57px)] md:min-h-[calc(100vh-140px)] bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 flex items-center justify-center px-4 py-6">
       <div className="max-w-7xl w-full">
         <div className="text-center mb-8 md:mb-10 xl:mb-12">
-          <h1 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Interactive Learning Modules
           </h1>
-          <p className="text-lg md:text-xl xl:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg xl:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
 Choose your learning path to explore workplace dynamics and leadership skills.
           </p>
         </div>
@@ -29,30 +29,30 @@ Choose your learning path to explore workplace dynamics and leadership skills.
                 <Users size={24} className="text-white md:w-7 md:h-7 xl:w-8 xl:h-8" />
               </div>
               
-              <h2 className="text-xl md:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              <h2 className="text-lg md:text-xl xl:text-2xl font-bold text-gray-900 dark:text-white mb-4">
                 Culture Crossroads
               </h2>
               
-              <p className="text-sm md:text-base xl:text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed flex-1">
+              <p className="text-xs md:text-sm xl:text-base text-gray-600 dark:text-gray-300 mb-6 leading-relaxed flex-1">
 Navigate workplace scenarios through interactive storylines. Make leadership decisions and explore different outcomes.
               </p>
               
               <div className="space-y-2 md:space-y-3 mb-8 flex-shrink-0">
-                <div className="flex items-center justify-center space-x-2 text-sm md:text-base text-gray-500 dark:text-gray-400">
+                <div className="flex items-center justify-center space-x-2 text-xs md:text-sm text-gray-500 dark:text-gray-400">
                   <span className="w-2 h-2 bg-brand-500 rounded-full"></span>
                   <span>Multiple decision branches</span>
                 </div>
-                <div className="flex items-center justify-center space-x-2 text-sm md:text-base text-gray-500 dark:text-gray-400">
+                <div className="flex items-center justify-center space-x-2 text-xs md:text-sm text-gray-500 dark:text-gray-400">
                   <span className="w-2 h-2 bg-brand-500 rounded-full"></span>
                   <span>8 different endings</span>
                 </div>
-                <div className="flex items-center justify-center space-x-2 text-sm md:text-base text-gray-500 dark:text-gray-400">
+                <div className="flex items-center justify-center space-x-2 text-xs md:text-sm text-gray-500 dark:text-gray-400">
                   <span className="w-2 h-2 bg-brand-500 rounded-full"></span>
                   <span>Leadership impact scenarios</span>
                 </div>
               </div>
               
-              <button className="w-full bg-gradient-to-r from-brand-500 to-brand-primary text-white py-3 md:py-4 xl:py-5 px-6 rounded-lg font-semibold hover:from-brand-600 hover:to-brand-primary-dark transition-all duration-200 transform group-hover:scale-105 text-sm md:text-base xl:text-lg">
+              <button className="w-full bg-gradient-to-r from-brand-500 to-brand-primary text-white py-3 md:py-4 xl:py-5 px-6 rounded-lg font-semibold hover:from-brand-600 hover:to-brand-primary-dark transition-all duration-200 transform group-hover:scale-105 text-xs md:text-sm xl:text-base">
                 Start Culture Crossroads
               </button>
             </div>
@@ -66,30 +66,30 @@ Navigate workplace scenarios through interactive storylines. Make leadership dec
                 <MessageCircle size={24} className="text-white md:w-7 md:h-7 xl:w-8 xl:h-8" />
               </div>
               
-              <h2 className="text-xl md:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              <h2 className="text-lg md:text-xl xl:text-2xl font-bold text-gray-900 dark:text-white mb-4">
                 Dialogue Scenarios
               </h2>
               
-              <p className="text-sm md:text-base xl:text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed flex-1">
+              <p className="text-xs md:text-sm xl:text-base text-gray-600 dark:text-gray-300 mb-6 leading-relaxed flex-1">
 Experience realistic workplace conversations and test your understanding through interactive dialogues.
               </p>
               
               <div className="space-y-2 md:space-y-3 mb-8 flex-shrink-0">
-                <div className="flex items-center justify-center space-x-2 text-sm md:text-base text-gray-500 dark:text-gray-400">
+                <div className="flex items-center justify-center space-x-2 text-xs md:text-sm text-gray-500 dark:text-gray-400">
                   <span className="w-2 h-2 bg-brand-500 rounded-full"></span>
                   <span>3 workplace scenarios</span>
                 </div>
-                <div className="flex items-center justify-center space-x-2 text-sm md:text-base text-gray-500 dark:text-gray-400">
+                <div className="flex items-center justify-center space-x-2 text-xs md:text-sm text-gray-500 dark:text-gray-400">
                   <span className="w-2 h-2 bg-brand-500 rounded-full"></span>
                   <span>Interactive conversations</span>
                 </div>
-                <div className="flex items-center justify-center space-x-2 text-sm md:text-base text-gray-500 dark:text-gray-400">
+                <div className="flex items-center justify-center space-x-2 text-xs md:text-sm text-gray-500 dark:text-gray-400">
                   <span className="w-2 h-2 bg-brand-500 rounded-full"></span>
                   <span>Comprehension challenges</span>
                 </div>
               </div>
               
-              <button className="w-full bg-gradient-to-r from-brand-500 to-brand-primary text-white py-3 md:py-4 xl:py-5 px-6 rounded-lg font-semibold hover:from-brand-600 hover:to-brand-primary-dark transition-all duration-200 transform group-hover:scale-105 text-sm md:text-base xl:text-lg">
+              <button className="w-full bg-gradient-to-r from-brand-500 to-brand-primary text-white py-3 md:py-4 xl:py-5 px-6 rounded-lg font-semibold hover:from-brand-600 hover:to-brand-primary-dark transition-all duration-200 transform group-hover:scale-105 text-xs md:text-sm xl:text-base">
                 Start Dialogue Scenarios
               </button>
             </div>
@@ -103,30 +103,30 @@ Experience realistic workplace conversations and test your understanding through
                 <BookOpen size={24} className="text-white md:w-7 md:h-7 xl:w-8 xl:h-8" />
               </div>
               
-              <h2 className="text-xl md:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              <h2 className="text-lg md:text-xl xl:text-2xl font-bold text-gray-900 dark:text-white mb-4">
                 Mary&apos;s Story
               </h2>
               
-              <p className="text-sm md:text-base xl:text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed flex-1">
+              <p className="text-xs md:text-sm xl:text-base text-gray-600 dark:text-gray-300 mb-6 leading-relaxed flex-1">
 Follow Mary&apos;s interactive journey about positive workplace culture with comprehension challenges.
               </p>
               
               <div className="space-y-2 md:space-y-3 mb-8 flex-shrink-0">
-                <div className="flex items-center justify-center space-x-2 text-sm md:text-base text-gray-500 dark:text-gray-400">
+                <div className="flex items-center justify-center space-x-2 text-xs md:text-sm text-gray-500 dark:text-gray-400">
                   <span className="w-2 h-2 bg-brand-500 rounded-full"></span>
                   <span>Progressive story slides</span>
                 </div>
-                <div className="flex items-center justify-center space-x-2 text-sm md:text-base text-gray-500 dark:text-gray-400">
+                <div className="flex items-center justify-center space-x-2 text-xs md:text-sm text-gray-500 dark:text-gray-400">
                   <span className="w-2 h-2 bg-brand-500 rounded-full"></span>
                   <span>Interactive quiz questions</span>
                 </div>
-                <div className="flex items-center justify-center space-x-2 text-sm md:text-base text-gray-500 dark:text-gray-400">
+                <div className="flex items-center justify-center space-x-2 text-xs md:text-sm text-gray-500 dark:text-gray-400">
                   <span className="w-2 h-2 bg-brand-500 rounded-full"></span>
                   <span>Workplace culture lesson</span>
                 </div>
               </div>
               
-              <button className="w-full bg-gradient-to-r from-brand-500 to-brand-primary text-white py-3 md:py-4 xl:py-5 px-6 rounded-lg font-semibold hover:from-brand-600 hover:to-brand-primary-dark transition-all duration-200 transform group-hover:scale-105 text-sm md:text-base xl:text-lg">
+              <button className="w-full bg-gradient-to-r from-brand-500 to-brand-primary text-white py-3 md:py-4 xl:py-5 px-6 rounded-lg font-semibold hover:from-brand-600 hover:to-brand-primary-dark transition-all duration-200 transform group-hover:scale-105 text-xs md:text-sm xl:text-base">
                 Start Mary&apos;s Story
               </button>
             </div>

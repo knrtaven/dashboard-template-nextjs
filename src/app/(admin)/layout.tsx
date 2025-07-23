@@ -29,7 +29,7 @@ export default function AdminLayout({
   const pageContentPadding = isShowcasePage ? "" : "p-4 md:px-3 md:py-6";
 
   return (
-    <div className="min-h-screen xl:flex">
+    <div className="xl:flex">
       {/* Sidebar and Backdrop */}
       <AppSidebar />
       <Backdrop />
