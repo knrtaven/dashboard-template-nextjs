@@ -462,17 +462,16 @@ export default function ModulePage() {
   }
 
   return (
-    <div className="flex h-[calc(100dvh-130px)] justify-center">
-      <div className="h-full w-full max-w-md">
+    <div className="min-h-[calc(100dvh-130px)]">
+      <div className="h-full w-full">
         <InteractiveVideoPlayer
-          height="100%"
           videoUrl="https://uvupczshcgzfnfdqadwc.supabase.co/storage/v1/object/public/public-storage//lesson1_2.mp4"
           chapters={chapters}
           questions={questions}
           muted={false}
           autoPlay={false}
-          className=""
           onProgressUpdate={handleProgressUpdate}
+          height="calc(100dvh - 130px)"
         />
       </div>
     </div>
