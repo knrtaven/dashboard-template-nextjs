@@ -27,7 +27,7 @@ const IncompleteCards = () => {
               All caught up! 🎉
             </h3>
             <p className="text-gray-600 dark:text-gray-400 text-sm">
-              You have completed all available courses.
+              You have completed all available lessons.
             </p>
           </div>
         </div>
@@ -43,7 +43,7 @@ const IncompleteCards = () => {
           Pick up where you left off
         </h2>
         <p className="text-gray-600 dark:text-gray-400 text-sm">
-          {incompleteCourses.length} incomplete course{incompleteCourses.length !== 1 ? 's' : ''}
+          {incompleteCourses.length} incomplete module{incompleteCourses.length !== 1 ? 's' : ''}
         </p>
       </div>
 

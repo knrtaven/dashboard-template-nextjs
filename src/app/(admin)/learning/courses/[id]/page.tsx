@@ -97,7 +97,7 @@ export default function CoursePage({ params }: PageProps) {
               {/* Course Description */}
               <div className="lg:col-span-2">
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Course Overview
+                  Module Overview
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
                   {course.description}
@@ -137,7 +137,7 @@ export default function CoursePage({ params }: PageProps) {
               <div className="">
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 lg:pb-24">
                   <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
-                    Course Details
+                    Lesson Details
                   </h3>
                   <div className="space-y-4">
                    
@@ -148,11 +148,11 @@ export default function CoursePage({ params }: PageProps) {
                       </span>
                     </div>
                   
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600 dark:text-gray-400">Category</span>
+                    <div className="flex items-center justify-between h-5">
+                      {/* <span className="text-sm text-gray-600 dark:text-gray-400">Category</span>
                       <span className="text-sm font-medium text-gray-900 dark:text-white">
                         {course.category}
-                      </span>
+                      </span> */}
                     </div>
                   </div>
                 </div>
@@ -165,7 +165,7 @@ export default function CoursePage({ params }: PageProps) {
         {/* Course Modules */}
         <div className="space-y-4">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-            Course Modules
+            Lessons
           </h2>
           
           <div className="grid gap-6">

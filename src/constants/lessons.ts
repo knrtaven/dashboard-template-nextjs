@@ -31,7 +31,7 @@ export interface ModuleData {
       modules: [
         {
           id: 1,
-          title: "Wellbeing Quiz",
+          title: "Lesson title 1",
           // description: "Learn to identify common blame patterns in workplace communication",
           isCompleted: false,
           isLocked: false,
@@ -39,7 +39,7 @@ export interface ModuleData {
         },
         {
           id: 2,
-          title: "5 Days to a Healthier You",
+          title: "Lesson title 2",
           // description: "Transform blame-based conversations into accountability discussions",
           isCompleted: false,
           isLocked: false,
@@ -48,15 +48,15 @@ export interface ModuleData {
         },
         {
           id: 3,
-          title: "Culture Crossroads",
-          description: "Interactive scenarios exploring how leadership decisions shape workplace culture and team dynamics",
+          title: "Lesson title 3",
+          // description: "Interactive scenarios exploring how leadership decisions shape workplace culture and team dynamics",
           isCompleted: false,
           isLocked: false,
           order: 3,
         },
         {
           id: 4,
-          title: "Reducing Stress at Work",
+          title: "Lesson title 4",
           // description: "Real-world scenarios and practice exercises for blame-free communication",
           isCompleted: false,
           isLocked: false,
