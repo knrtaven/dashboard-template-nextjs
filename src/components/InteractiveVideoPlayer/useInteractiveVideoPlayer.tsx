@@ -30,7 +30,6 @@ interface ProgressData {
 }
 
 export const useInteractiveVideoPlayer = ({
-  // videoUrl,
   chapters,
   questions,
   onProgressUpdate,
@@ -63,8 +62,8 @@ export const useInteractiveVideoPlayer = ({
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const progressUpdateTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const fadeIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Computed values
   const progressPercentage = useMemo(
     () => (state.duration > 0 ? (state.currentTime / state.duration) * 100 : 0),
     [state.currentTime, state.duration]
@@ -75,7 +74,6 @@ export const useInteractiveVideoPlayer = ({
     [chapters, state.currentChapter]
   );
 
-  // Utility functions
   const formatTime = useCallback((time: number): string => {
     if (!time || isNaN(time) || time < 0) return '0:00';
     const minutes = Math.floor(time / 60);
@@ -83,7 +81,38 @@ export const useInteractiveVideoPlayer = ({
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   }, []);
 
-  // Progress bar hover handlers
+  const fadeInVolume = useCallback(() => {
+    const video = videoRef.current;
+    if (!video || state.isMuted) return;
+
+    let currentVolume = 0;
+    const targetVolume = state.volume;
+    const fadeSteps = 30;
+    const fadeInterval = 1500 / fadeSteps;
+    const volumeStep = targetVolume / fadeSteps;
+
+    video.volume = 0;
+
+    if (fadeIntervalRef.current) {
+      clearInterval(fadeIntervalRef.current);
+    }
+
+    fadeIntervalRef.current = setInterval(() => {
+      currentVolume += volumeStep;
+
+      if (currentVolume >= targetVolume) {
+        currentVolume = targetVolume;
+        video.volume = currentVolume;
+        if (fadeIntervalRef.current) {
+          clearInterval(fadeIntervalRef.current);
+          fadeIntervalRef.current = null;
+        }
+      } else {
+        video.volume = currentVolume;
+      }
+    }, fadeInterval);
+  }, [state.volume, state.isMuted]);
+
   const handleProgressHover = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
       if (state.duration > 0) {
@@ -102,15 +131,12 @@ export const useInteractiveVideoPlayer = ({
     setHoverPosition(null);
   }, []);
 
-  // Debounced progress update to avoid excessive callbacks
   const updateProgress = useCallback(() => {
     if (onProgressUpdate) {
-      // Clear any pending timeout
       if (progressUpdateTimeoutRef.current) {
         clearTimeout(progressUpdateTimeoutRef.current);
       }
 
-      // Debounce the progress update
       progressUpdateTimeoutRef.current = setTimeout(() => {
         const progressData: ProgressData = {
           currentTime: state.currentTime,
@@ -126,7 +152,20 @@ export const useInteractiveVideoPlayer = ({
     }
   }, [state, progressPercentage, questions.length, onProgressUpdate]);
 
-  // Video event handlers
+  const getQuestionsAtTime = useCallback(
+    (time: number) => {
+      return questions.filter((q) => Math.abs(time - q.triggerTime) < 0.5);
+    },
+    [questions]
+  );
+
+  const getUnansweredQuestionsAtTime = useCallback(
+    (time: number, userAnswers: UserAnswers) => {
+      return getQuestionsAtTime(time).filter((q) => !userAnswers[q.id]);
+    },
+    [getQuestionsAtTime]
+  );
+
   const handleTimeUpdate = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -134,14 +173,12 @@ export const useInteractiveVideoPlayer = ({
     const currentTime = video.currentTime;
     const duration = video.duration || 0;
 
-    // Use functional state update to avoid stale closures
     setState((prevState) => {
-      const pendingQuestion = questions.find(
-        (q) =>
-          Math.abs(currentTime - q.triggerTime) < 0.5 &&
-          !prevState.userAnswers[q.id] &&
-          !prevState.showQuestion
+      const unansweredQuestionsAtCurrentTime = getUnansweredQuestionsAtTime(
+        currentTime,
+        prevState.userAnswers
       );
+      const pendingQuestion = unansweredQuestionsAtCurrentTime.find(() => !prevState.showQuestion);
 
       const activeChapter = chapters.findIndex(
         (chapter) => currentTime >= chapter.startTime && currentTime < chapter.endTime
@@ -157,8 +194,7 @@ export const useInteractiveVideoPlayer = ({
         newState.currentChapter = activeChapter;
       }
 
-      if (pendingQuestion) {
-        // Pause video immediately
+      if (pendingQuestion && !prevState.showQuestion) {
         if (video && !video.paused) {
           video.pause();
         }
@@ -173,9 +209,8 @@ export const useInteractiveVideoPlayer = ({
 
       return newState;
     });
-  }, [questions, chapters]);
+  }, [questions, chapters, getUnansweredQuestionsAtTime]);
 
-  // Video controls
   const handlePlayPause = useCallback(() => {
     const video = videoRef.current;
     if (!video || state.showQuestion) return;
@@ -202,12 +237,15 @@ export const useInteractiveVideoPlayer = ({
     [state.duration, state.showQuestion]
   );
 
-  const handleVolumeChange = useCallback((volume: number) => {
-    setState((prev) => ({ ...prev, volume }));
-    if (videoRef.current) {
-      videoRef.current.volume = volume;
-    }
-  }, []);
+  const handleVolumeChange = useCallback(
+    (volume: number) => {
+      setState((prev) => ({ ...prev, volume }));
+      if (videoRef.current && !state.isMuted) {
+        videoRef.current.volume = volume;
+      }
+    },
+    [state.isMuted]
+  );
 
   const handleToggleMute = useCallback(() => {
     const video = videoRef.current;
@@ -218,7 +256,6 @@ export const useInteractiveVideoPlayer = ({
     }
   }, [state.isMuted]);
 
-  // Question handling
   const handleQuestionAnswer = useCallback(
     (answer: string) => {
       if (!state.currentQuestion) return;
@@ -246,12 +283,14 @@ export const useInteractiveVideoPlayer = ({
 
       const questionId = state.currentQuestion.id;
 
-      // Update state
       setState((prev) => {
         const newAnswers: UserAnswers = {
           ...prev.userAnswers,
           [questionId]: userAnswer,
         };
+
+        const remainingQuestionsAtTime = getUnansweredQuestionsAtTime(prev.currentTime, newAnswers);
+        const nextQuestion = remainingQuestionsAtTime.find((q) => q.id !== questionId);
 
         return {
           ...prev,
@@ -263,26 +302,42 @@ export const useInteractiveVideoPlayer = ({
               state.currentQuestion?.type === 'text-input')
               ? prev.score + 1
               : prev.score,
-          showQuestion: false,
-          currentQuestion: null,
+          showQuestion: !!nextQuestion,
+          currentQuestion: nextQuestion || null,
         };
       });
 
-      // Call callbacks asynchronously to avoid render phase issues
       setTimeout(() => {
         if (onQuestionAnswered) {
           onQuestionAnswered(questionId, userAnswer);
         }
 
-        // Resume video
-        const video = videoRef.current;
-        if (video) {
-          setState((prev) => ({ ...prev, isPlaying: true }));
-          video.play().catch(console.error);
-        }
+        setState((prev) => {
+          const remainingQuestions = getUnansweredQuestionsAtTime(
+            prev.currentTime,
+            prev.userAnswers
+          );
+
+          if (remainingQuestions.length === 0) {
+            const video = videoRef.current;
+            if (video) {
+              setState((prevState) => ({ ...prevState, isPlaying: true }));
+              fadeInVolume();
+              video.play().catch(console.error);
+            }
+          }
+
+          return prev;
+        });
       }, 0);
     },
-    [state.currentQuestion, state.currentTime, onQuestionAnswered]
+    [
+      state.currentQuestion,
+      state.currentTime,
+      onQuestionAnswered,
+      fadeInVolume,
+      getUnansweredQuestionsAtTime,
+    ]
   );
 
   const jumpToQuestion = useCallback((question: Question) => {
@@ -308,7 +363,6 @@ export const useInteractiveVideoPlayer = ({
     }));
   }, []);
 
-  // Chapter navigation
   const jumpToChapter = useCallback(
     (chapterIndex: number) => {
       if (state.showQuestion) return;
@@ -323,7 +377,6 @@ export const useInteractiveVideoPlayer = ({
     [state.showQuestion, chapters]
   );
 
-  // Video event listeners
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -333,6 +386,7 @@ export const useInteractiveVideoPlayer = ({
     const handleLoadedMetadata = () => {
       if (video.duration && !isNaN(video.duration)) {
         setState((prev) => ({ ...prev, duration: video.duration }));
+        video.volume = state.volume;
       }
     };
     const handleCanPlay = () => {
@@ -359,31 +413,29 @@ export const useInteractiveVideoPlayer = ({
       video.removeEventListener('canplay', handleCanPlay);
       video.removeEventListener('error', handleError);
     };
-  }, [handleTimeUpdate, autoPlay]);
+  }, [handleTimeUpdate, autoPlay, state.volume]);
 
-  // Update progress when relevant state changes
   useEffect(() => {
     updateProgress();
   }, [updateProgress]);
 
-  // Cleanup
   useEffect(() => {
     return () => {
       if (progressUpdateTimeoutRef.current) {
         clearTimeout(progressUpdateTimeoutRef.current);
       }
+      if (fadeIntervalRef.current) {
+        clearInterval(fadeIntervalRef.current);
+      }
     };
   }, []);
 
   return {
-    // State
     state,
     videoRef,
     progressPercentage,
     currentChapterInfo,
     hoverPosition,
-
-    // Actions
     handlePlayPause,
     handleSeek,
     handleVolumeChange,
@@ -394,8 +446,6 @@ export const useInteractiveVideoPlayer = ({
     jumpToChapter,
     handleProgressHover,
     handleProgressLeave,
-
-    // Utilities
     formatTime,
   };
 };

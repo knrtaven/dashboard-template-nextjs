@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Pause, Play, Loader2 } from 'lucide-react';
-import { useModal } from '../../hooks/useModal';
 import { useInteractiveVideoPlayer } from './useInteractiveVideoPlayer';
 import { QuestionModal } from './QuestionModal';
 import { InteractiveVideoPlayerProps } from './types';
@@ -46,44 +45,20 @@ export const InteractiveVideoPlayer: React.FC<InteractiveVideoPlayerProps> = ({
     muted,
   });
 
-  const {
-    isOpen: isQuestionModalOpen,
-    openModal: openQuestionModal,
-    closeModal: closeQuestionModal,
-  } = useModal();
-
-  // Handle question modal state
-  React.useEffect(() => {
-    if (state.showQuestion && state.currentQuestion && !isQuestionModalOpen) {
-      openQuestionModal();
-    } else if (!state.showQuestion && isQuestionModalOpen) {
-      closeQuestionModal();
-    }
-  }, [
-    state.showQuestion,
-    state.currentQuestion,
-    isQuestionModalOpen,
-    openQuestionModal,
-    closeQuestionModal,
-  ]);
-
-  const handleModalClose = React.useCallback(() => {
-    closeQuestion();
-    closeQuestionModal();
-  }, [closeQuestion, closeQuestionModal]);
-
   // Determine if we should use height from props or aspect ratio
   const useCustomHeight =
     height === '100%' ||
     height === '100vh' ||
     (typeof height === 'string' && height.includes('calc'));
 
+  const containerAspectRatio = useCustomHeight ? '' : 'aspect-[9/16] sm:aspect-video';
+
   return (
     <div
-      className={`relative overflow-hidden rounded-lg bg-black shadow-2xl ${className}`}
+      className={`relative w-full overflow-hidden rounded-lg bg-black shadow-2xl ${containerAspectRatio} ${className}`}
       style={useCustomHeight ? { height: height } : undefined}
     >
-      {/* Video Element */}
+      {/* Video Element with proper aspect ratio handling */}
       <video
         ref={videoRef}
         width={width}
@@ -97,7 +72,11 @@ export const InteractiveVideoPlayer: React.FC<InteractiveVideoPlayerProps> = ({
         playsInline
         controls={false}
         aria-label="Interactive video player"
-        className={useCustomHeight ? 'h-full w-full object-cover' : 'h-auto w-full'}
+        className="absolute inset-0 h-full w-full object-contain"
+        style={{
+          objectFit: 'contain',
+          objectPosition: 'center',
+        }}
       >
         <source src={videoUrl} type="video/mp4" />
         {captions.map((caption, index) => (
@@ -113,12 +92,12 @@ export const InteractiveVideoPlayer: React.FC<InteractiveVideoPlayerProps> = ({
         Your browser does not support the video tag.
       </video>
 
-      {/* Question Modal */}
+      {/* Question Overlay - Using QuestionModal as video overlay */}
       {state.currentQuestion && (
         <QuestionModal
           question={state.currentQuestion}
-          isOpen={isQuestionModalOpen}
-          onClose={handleModalClose}
+          isOpen={state.showQuestion}
+          onClose={closeQuestion}
           onAnswer={handleQuestionAnswer}
         />
       )}
@@ -162,7 +141,7 @@ export const InteractiveVideoPlayer: React.FC<InteractiveVideoPlayerProps> = ({
                 <div
                   key={question.id}
                   className={`absolute top-1/2 z-20 h-3 w-3 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full transition-all duration-200 hover:scale-125 ${
-                    isAnswered ? 'bg-green-400' : 'bg-yellow-400'
+                    isAnswered ? 'bg-green-400' : 'bg-blue-400'
                   }`}
                   style={{
                     left: `${Math.max(0, Math.min(100, markerPosition))}%`,
