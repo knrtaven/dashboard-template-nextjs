@@ -1,5 +1,5 @@
-import React from 'react'
-import { Play, CheckCircle,  Lock} from 'lucide-react';
+import React from 'react';
+import { Play, CheckCircle, Lock } from 'lucide-react';
 import Link from 'next/link';
 
 interface Module {
@@ -17,88 +17,78 @@ interface CourseModuleProps {
   courseId: string | number;
 }
 
-export const CourseModule = ({module, moduleIndex, courseId}: CourseModuleProps) => {
-
+export const CourseModule = ({ module, moduleIndex, courseId }: CourseModuleProps) => {
   return (
-    <div key={module.id} className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] overflow-hidden">
-    <div className="p-6">
-      <div className="flex items-center justify-between">
-        {/* Module Info */}
-        <div className="flex-1">
-          <div className="flex items-center space-x-3 mb-3">
-            <div className="flex items-center justify-center min-w-5 min-h-5 max-w-5 nax-h-5  bg-blue-100 dark:bg-blue-900/20 rounded-full">
-            
-              <span className="text-sm font-bold text-brand-primary  dark:text-brand-primary-dark">
-                {moduleIndex + 1} 
-              </span>
+    <div
+      key={module.id}
+      className="overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+    >
+      <div className="p-6">
+        <div className="flex items-center justify-between">
+          {/* Module Info */}
+          <div className="flex-1">
+            <div className="mb-3 flex items-center space-x-3">
+              <div className="nax-h-5 flex min-h-5 max-w-5 min-w-5 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/20">
+                <span className="text-brand-primary dark:text-brand-primary-dark text-sm font-bold">
+                  {moduleIndex + 1}
+                </span>
+              </div>
+              <div className="overflow-x-hidden text-ellipsis">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  {module.title}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{module.description}</p>
+              </div>
             </div>
-            <div className='overflow-x-hidden text-ellipsis'>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                {module.title}
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 ">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+
+            {/* <p className="text-gray-600 dark:text-gray-400 mb-4">
+          </p> */}
+
+            {/* Module Meta Info */}
+            <div className="flex items-center space-x-6 text-sm text-gray-500 dark:text-gray-400"></div>
+          </div>
+
+          {/* Module Actions */}
+          <div className="flex items-center space-x-4">
+            {/* Status Indicator */}
+            <div className="text-center">
+              {module.isLocked ? (
+                <Lock className="mx-auto mb-1 h-6 w-6 text-gray-400" />
+              ) : module.isCompleted ? (
+                <CheckCircle className="mx-auto mb-1 h-6 w-6 text-green-600" />
+              ) : (
+                <Play className="text-brand-primary mx-auto mb-1 h-6 w-6" />
+              )}
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                {module.isLocked ? 'Locked' : module.isCompleted ? 'Completed' : 'Available'}
               </p>
             </div>
-          </div>
-          
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
-            {module.description}
-          </p>
 
-          
-          {/* Module Meta Info */}
-          <div className="flex items-center space-x-6 text-sm text-gray-500 dark:text-gray-400">
-      
-            
-          
-            
-      
-          </div>
-        </div>
-
-        {/* Module Actions */}
-        <div className="flex items-center space-x-4">
-          {/* Status Indicator */}
-          <div className="text-center">
-            {module.isLocked ? (
-              <Lock className="w-6 h-6 text-gray-400 mx-auto mb-1" />
-            ) : module.isCompleted ? (
-              <CheckCircle className="w-6 h-6 text-green-600 mx-auto mb-1" />
-            ) : (
-              <Play className="w-6 h-6 text-brand-primary mx-auto mb-1" />
+            {/* Start/Continue Button */}
+            {!module.isLocked && (
+              <Link
+                href={`/learning/courses/${courseId}/module/${module.id}`}
+                className={`rounded-lg px-6 py-3 font-medium transition-colors ${
+                  module.isCompleted
+                    ? 'bg-green-100 text-green-700 hover:bg-green-200 dark:bg-green-900/20 dark:text-green-400 dark:hover:bg-green-900/30'
+                    : 'bg-brand-primary hover:bg-brand-primary-dark text-white'
+                }`}
+              >
+                {module.isCompleted ? 'Review' : 'Start'}
+              </Link>
             )}
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              {module.isLocked ? 'Locked' : module.isCompleted ? 'Completed' : 'Available'}
-            </p>
-          </div>
 
-          {/* Start/Continue Button */}
-          {!module.isLocked && (
-            <Link 
-              href={`/learning/courses/${courseId}/module/${module.id}`}
-              className={`px-6 py-3 rounded-lg font-medium transition-colors ${
-                module.isCompleted 
-                  ? 'bg-green-100 text-green-700 hover:bg-green-200 dark:bg-green-900/20 dark:text-green-400 dark:hover:bg-green-900/30'
-                  : 'bg-brand-primary text-white hover:bg-brand-primary-dark'
-              }`}
-            >
-              {module.isCompleted ? 'Review' : 'Start'}
-            </Link>
-          )}
-          
-          {module.isLocked && (
-            <button 
-              disabled
-              className="px-6 py-3 bg-gray-200 text-gray-500 rounded-lg font-medium cursor-not-allowed dark:bg-gray-700 dark:text-gray-400"
-            >
-              Locked
-            </button>
-          )}
+            {module.isLocked && (
+              <button
+                disabled
+                className="cursor-not-allowed rounded-lg bg-gray-200 px-6 py-3 font-medium text-gray-500 dark:bg-gray-700 dark:text-gray-400"
+              >
+                Locked
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  )
-}
-
+  );
+};
