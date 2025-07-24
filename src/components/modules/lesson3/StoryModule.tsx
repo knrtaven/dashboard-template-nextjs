@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
@@ -23,7 +23,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
   const [isQuizComplete, setIsQuizComplete] = useState(false);
   const [imageLoadingStates, setImageLoadingStates] = useState<Record<number, boolean>>({});
   const [imageErrorStates, setImageErrorStates] = useState<Record<number, boolean>>({});
-  
+
   const storyContainerRef = useRef<HTMLDivElement>(null);
   const latestSlideRef = useRef<HTMLDivElement>(null);
 
@@ -35,7 +35,6 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
     }
   }, []);
 
-
   useEffect(() => {
     if (latestSlideRef.current && storyContainerRef.current) {
       const container = storyContainerRef.current;
@@ -43,12 +42,12 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
       const containerHeight = container.offsetHeight;
       const slideHeight = slide.offsetHeight;
       const slideOffsetTop = slide.offsetTop;
-      
-      const scrollTop = slideOffsetTop - (containerHeight / 2) + (slideHeight / 2);
-      
+
+      const scrollTop = slideOffsetTop - containerHeight / 2 + slideHeight / 2;
+
       container.scrollTo({
         top: scrollTop,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
   }, [allSlides]);
@@ -57,37 +56,36 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
     if (currentSlideIndex < storySlides.length - 1) {
       const nextIndex = currentSlideIndex + 1;
       setCurrentSlideIndex(nextIndex);
-      setAllSlides(prev => [...prev, storySlides[nextIndex]]);
+      setAllSlides((prev) => [...prev, storySlides[nextIndex]]);
       // Initialize loading state for new slide
-      setImageLoadingStates(prev => ({ ...prev, [storySlides[nextIndex].id]: true }));
+      setImageLoadingStates((prev) => ({ ...prev, [storySlides[nextIndex].id]: true }));
     } else {
       setIsStoryComplete(true);
     }
   };
 
   const handleImageLoad = (slideId: number) => {
-    setImageLoadingStates(prev => ({ ...prev, [slideId]: false }));
+    setImageLoadingStates((prev) => ({ ...prev, [slideId]: false }));
   };
 
   const handleImageError = (slideId: number) => {
-    setImageLoadingStates(prev => ({ ...prev, [slideId]: false }));
-    setImageErrorStates(prev => ({ ...prev, [slideId]: true }));
+    setImageLoadingStates((prev) => ({ ...prev, [slideId]: false }));
+    setImageErrorStates((prev) => ({ ...prev, [slideId]: true }));
   };
-
 
   const handleAnswerSelect = (answerId: string) => {
     setSelectedAnswer(answerId);
     const currentQuestion = quizQuestions[currentQuestionIndex];
-    const selectedOption = currentQuestion.options.find(opt => opt.id === answerId);
+    const selectedOption = currentQuestion.options.find((opt) => opt.id === answerId);
     const isCorrect = selectedOption?.isCorrect || false;
-    
+
     setIsAnswerCorrect(isCorrect);
     setShowFeedback(true);
 
     if (isCorrect) {
       setTimeout(() => {
         if (currentQuestionIndex < quizQuestions.length - 1) {
-          setCurrentQuestionIndex(prev => prev + 1);
+          setCurrentQuestionIndex((prev) => prev + 1);
           setSelectedAnswer(null);
           setIsAnswerCorrect(null);
           setShowFeedback(false);
@@ -114,28 +112,29 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-white mb-6 md:mb-8">
+            <h1 className="mb-6 text-4xl font-bold text-gray-900 md:mb-8 md:text-5xl xl:text-6xl dark:text-white">
               Congratulations!
             </h1>
-            <p className="text-xl md:text-2xl xl:text-3xl text-gray-600 dark:text-gray-300 mb-10 md:mb-12 leading-relaxed">
-              You&apos;ve successfully completed Mary&apos;s Story and demonstrated your understanding of positive workplace culture.
+            <p className="mb-10 text-xl leading-relaxed text-gray-600 md:mb-12 md:text-2xl xl:text-3xl dark:text-gray-300">
+              You&apos;ve successfully completed Mary&apos;s Story and demonstrated your
+              understanding of positive workplace culture.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
               {onComplete && (
                 <Button
                   onClick={onComplete}
                   variant="primary"
-                  className="text-base md:text-lg px-8 md:px-10 py-4 md:py-5"
+                  className="px-8 py-4 text-base md:px-10 md:py-5 md:text-lg"
                 >
-                  Continue to Video Lesson
+                  Continue
                 </Button>
               )}
-              
+
               {onBack && (
                 <Button
                   onClick={onBack}
                   variant="primary"
-                  className="text-base md:text-lg px-8 md:px-10 py-4 md:py-5"
+                  className="px-8 py-4 text-base md:px-10 md:py-5 md:text-lg"
                 >
                   Return to Module Selection
                 </Button>
@@ -149,37 +148,38 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
 
   if (isStoryComplete) {
     const currentQuestion = quizQuestions[currentQuestionIndex];
-    
+
     return (
       <div className="h-[calc(100vh-140px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 flex flex-col px-4 py-6">
         <div className="max-w-5xl mx-auto w-full flex-1 flex flex-col">
           {onBack && (
             <button
               onClick={onBack}
-              className="mb-6 md:mb-8 flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm md:text-base"
+              className="mb-6 flex items-center space-x-2 text-sm text-gray-600 transition-colors duration-200 hover:text-gray-900 md:mb-8 md:text-base dark:text-gray-300 dark:hover:text-white"
             >
-              <ArrowLeft size={20} className="md:w-6 md:h-6" />
+              <ArrowLeft size={20} className="md:h-6 md:w-6" />
               <span>Back to Module Selection</span>
             </button>
           )}
 
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-10 xl:p-12 flex-1 flex flex-col">
-            <div className="text-center mb-8 md:mb-10">
-              <h1 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6">
+          <div className="flex flex-1 flex-col rounded-2xl bg-white p-6 shadow-xl md:p-10 xl:p-12 dark:bg-gray-800">
+            <div className="mb-8 text-center md:mb-10">
+              <h1 className="mb-4 text-3xl font-bold text-gray-900 md:mb-6 md:text-4xl xl:text-5xl dark:text-white">
                 Knowledge Check
               </h1>
-              <p className="text-lg md:text-xl xl:text-2xl text-gray-600 dark:text-gray-300">
-                Let&apos;s see what you learned from Mary&apos;s story about positive workplace culture.
+              <p className="text-lg text-gray-600 md:text-xl xl:text-2xl dark:text-gray-300">
+                Let&apos;s see what you learned from Mary&apos;s story about positive workplace
+                culture.
               </p>
-              <div className="mt-6 md:mt-8 flex justify-center">
+              <div className="mt-6 flex justify-center md:mt-8">
                 <Badge variant="light" color="primary">
                   Question {currentQuestionIndex + 1} of {quizQuestions.length}
                 </Badge>
               </div>
             </div>
 
-            <div className="max-w-4xl mx-auto flex-1 flex flex-col">
-              <h2 className="text-xl md:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white mb-8 md:mb-10 text-center">
+            <div className="mx-auto flex max-w-4xl flex-1 flex-col">
+              <h2 className="mb-8 text-center text-xl font-bold text-gray-900 md:mb-10 md:text-2xl xl:text-3xl dark:text-white">
                 {currentQuestionIndex + 1}. {currentQuestion.question}
               </h2>
 
@@ -189,31 +189,53 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
                     key={option.id}
                     onClick={() => !showFeedback && handleAnswerSelect(option.id)}
                     disabled={showFeedback}
-                    className={`w-full p-6 text-left rounded-xl border-2 transition-all duration-200 ${
+                    className={`w-full rounded-xl border-2 p-6 text-left transition-all duration-200 ${
                       selectedAnswer === option.id
                         ? showFeedback
                           ? isAnswerCorrect
-                            ? 'border-green-500 bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200'
-                            : 'border-red-500 bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200'
+                            ? 'border-green-500 bg-green-50 text-green-800 dark:bg-green-900/20 dark:text-green-200'
+                            : 'border-red-500 bg-red-50 text-red-800 dark:bg-red-900/20 dark:text-red-200'
                           : 'border-orange-500 bg-orange-50 dark:bg-orange-900/20'
-                        : 'border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 hover:border-orange-300 dark:hover:border-orange-600'
+                        : 'border-gray-200 bg-gray-50 hover:border-orange-300 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-orange-600'
                     } ${showFeedback ? 'cursor-not-allowed' : 'cursor-pointer hover:bg-orange-50 dark:hover:bg-orange-900/20'}`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-900 dark:text-white font-medium">
+                      <span className="font-medium text-gray-900 dark:text-white">
                         {option.text}
                       </span>
                       {showFeedback && selectedAnswer === option.id && (
-                        <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                          isAnswerCorrect ? 'bg-green-500' : 'bg-red-500'
-                        }`}>
+                        <div
+                          className={`flex h-6 w-6 items-center justify-center rounded-full ${
+                            isAnswerCorrect ? 'bg-green-500' : 'bg-red-500'
+                          }`}
+                        >
                           {isAnswerCorrect ? (
-                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            <svg
+                              className="h-4 w-4 text-white"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M5 13l4 4L19 7"
+                              />
                             </svg>
                           ) : (
-                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            <svg
+                              className="h-4 w-4 text-white"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M6 18L18 6M6 6l12 12"
+                              />
                             </svg>
                           )}
                         </div>
@@ -224,15 +246,16 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
               </div>
 
               {showFeedback && (
-                <div className={`mt-6 p-4 rounded-lg text-center ${
-                  isAnswerCorrect
-                    ? 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-200'
-                    : 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-200'
-                }`}>
+                <div
+                  className={`mt-6 rounded-lg p-4 text-center ${
+                    isAnswerCorrect
+                      ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-200'
+                      : 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-200'
+                  }`}
+                >
                   {isAnswerCorrect
-                    ? "Correct! Great understanding of the story."
-                    : "Not quite right. Try again!"
-                  }
+                    ? 'Correct! Great understanding of the story.'
+                    : 'Not quite right. Try again!'}
                 </div>
               )}
             </div>
@@ -248,55 +271,67 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
         {onBack && (
           <button
             onClick={onBack}
-            className="mb-6 md:mb-8 flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm md:text-base"
+            className="mb-6 flex items-center space-x-2 text-sm text-gray-600 transition-colors duration-200 hover:text-gray-900 md:mb-8 md:text-base dark:text-gray-300 dark:hover:text-white"
           >
-            <ArrowLeft size={20} className="md:w-6 md:h-6" />
+            <ArrowLeft size={20} className="md:h-6 md:w-6" />
             <span>Back to Module Selection</span>
           </button>
         )}
 
-        <div className="text-center mb-6 md:mb-8">
-          <h1 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        <div className="mb-6 text-center md:mb-8">
+          <h1 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl xl:text-5xl dark:text-white">
             Mary&apos;s Story
           </h1>
-          <p className="text-lg md:text-xl xl:text-2xl text-gray-600 dark:text-gray-300">
+          <p className="text-lg text-gray-600 md:text-xl xl:text-2xl dark:text-gray-300">
             A lesson in positive workplace culture
           </p>
-          
-          <div className="mt-6 md:mt-8 flex justify-center">
-            <div className="bg-brand-500 h-2 md:h-3 rounded-full w-full max-w-md xl:max-w-lg">
+
+          <div className="mt-6 flex justify-center md:mt-8">
+            <div className="bg-brand-500 h-2 w-full max-w-md rounded-full md:h-3 xl:max-w-lg">
               <div
-                className="bg-brand-600 h-2 md:h-3 rounded-full transition-all duration-300"
+                className="bg-brand-600 h-2 rounded-full transition-all duration-300 md:h-3"
                 style={{ width: `${((currentSlideIndex + 1) / storySlides.length) * 100}%` }}
               />
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden flex-1 flex flex-col min-h-0">
-          <div className="flex-1 flex items-center justify-center p-6 md:p-8 xl:p-12 min-h-0">
+        <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl bg-white shadow-xl dark:bg-gray-800">
+          <div className="flex min-h-0 flex-1 items-center justify-center p-6 md:p-8 xl:p-12">
             {allSlides.length > 0 && (
               <div className="flex flex-col lg:flex-row lg:items-center space-y-6 lg:space-y-0 lg:space-x-8 xl:space-x-12 max-w-5xl w-full">
                 <div className="w-full lg:w-64 xl:w-80 h-64 xl:h-80 flex-shrink-0 relative rounded-xl overflow-hidden">
                   {/* Loading skeleton overlay */}
                   {imageLoadingStates[allSlides[currentSlideIndex]?.id] && (
-                    <div className="absolute inset-0 z-10 bg-gray-300 dark:bg-gray-600 animate-pulse">
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+                    <div className="absolute inset-0 z-10 animate-pulse bg-gray-300 dark:bg-gray-600">
+                      <div className="animate-shimmer absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
                     </div>
                   )}
-                  
+
                   {/* Error fallback overlay */}
                   {imageErrorStates[allSlides[currentSlideIndex]?.id] && (
-                    <div className="absolute inset-0 z-10 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-gray-200 dark:bg-gray-700">
                       <div className="text-center">
-                        <svg className="w-12 h-12 xl:w-16 xl:h-16 text-gray-400 dark:text-gray-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" />
+                        <svg
+                          className="mx-auto mb-2 h-12 w-12 text-gray-400 xl:h-16 xl:w-16 dark:text-gray-500"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z"
+                          />
                         </svg>
-                        <p className="text-xs xl:text-sm text-gray-500 dark:text-gray-400">Image unavailable</p>
+                        <p className="text-xs text-gray-500 xl:text-sm dark:text-gray-400">
+                          Image unavailable
+                        </p>
                       </div>
                     </div>
                   )}
-                  
+
                   {/* Current slide image */}
                   {allSlides[currentSlideIndex] && (
                     <Image
@@ -304,8 +339,10 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
                       alt={`Mary's story illustration ${allSlides[currentSlideIndex].id}`}
                       fill
                       className={`object-cover transition-opacity duration-300 ${
-                        imageLoadingStates[allSlides[currentSlideIndex].id] || imageErrorStates[allSlides[currentSlideIndex].id] 
-                          ? 'opacity-0' : 'opacity-100'
+                        imageLoadingStates[allSlides[currentSlideIndex].id] ||
+                        imageErrorStates[allSlides[currentSlideIndex].id]
+                          ? 'opacity-0'
+                          : 'opacity-100'
                       }`}
                       sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 256px, 320px"
                       onLoad={() => handleImageLoad(allSlides[currentSlideIndex].id)}
@@ -313,10 +350,10 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
                     />
                   )}
                 </div>
-                
-                <div className="flex-1 flex items-center">
+
+                <div className="flex flex-1 items-center">
                   {allSlides[currentSlideIndex] && (
-                    <p className="text-gray-700 dark:text-gray-200 text-lg md:text-xl xl:text-2xl leading-relaxed">
+                    <p className="text-lg leading-relaxed text-gray-700 md:text-xl xl:text-2xl dark:text-gray-200">
                       {allSlides[currentSlideIndex].content}
                     </p>
                   )}
@@ -325,12 +362,12 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
             )}
           </div>
 
-          <div className="border-t border-gray-200 dark:border-gray-600 p-6 md:p-8 flex justify-end">
+          <div className="flex justify-end border-t border-gray-200 p-6 md:p-8 dark:border-gray-600">
             <Button
               onClick={handleNextSlide}
               variant="primary"
-              endIcon={<ChevronRight size={20} className="md:w-6 md:h-6" />}
-              className="text-base md:text-lg px-6 md:px-8 py-3 md:py-4"
+              endIcon={<ChevronRight size={20} className="md:h-6 md:w-6" />}
+              className="px-6 py-3 text-base md:px-8 md:py-4 md:text-lg"
             >
               {currentSlideIndex < storySlides.length - 1 ? 'Next' : 'Continue to Quiz'}
             </Button>
