@@ -243,7 +243,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
   }
 
   return (
-    <div className="min-h-[calc(100dvh-100px)] md:min-h-[calc(100dvh-100px)] lg:min-h-[calc(100dvh-120px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 flex flex-col px-3 py-3 sm:px-4 sm:py-4 md:px-4 md:py-6">
+    <div className="min-h-[calc(100dvh-100px)] md:min-h-[calc(100dvh-100px)] lg:min-h-[calc(100dvh-130px)] bg-gradient-to-br from-brand-50 to-brand-100 dark:from-gray-900 dark:to-brand-900 flex flex-col px-3 py-3 sm:px-4 sm:py-4 md:px-4 md:py-6">
       <div className="max-w-6xl mx-auto w-full flex-1 flex flex-col">
         {onBack && (
           <button
@@ -274,7 +274,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden overflow-y-auto flex-1 flex flex-col min-h-0">
-          <div className="flex-1 flex items-center justify-center p-3 sm:p-4 md:p-6 lg:p-4 xl:p-6 2xl:p-8 min-h-0">
+          <div className="flex-1 flex items-center justify-center p-3 sm:p-4 md:p-6 lg:p-2 xl:p-4 2xl:p-6 min-h-0">
             {allSlides.length > 0 && (
               <div className="flex flex-col lg:flex-row lg:items-center space-y-3 sm:space-y-4 lg:space-y-0 lg:space-x-3 xl:space-x-4 2xl:space-x-6 max-w-5xl w-full">
                 <div className="w-full lg:w-64 xl:w-80 h-40 sm:h-48 md:h-56 lg:h-52 xl:h-60 2xl:h-72 flex-shrink-0 relative rounded-xl overflow-hidden">
