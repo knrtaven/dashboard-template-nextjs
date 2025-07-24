@@ -277,7 +277,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
           <div className="flex-1 flex items-center justify-center p-6 md:p-8 xl:p-12 min-h-0">
             {allSlides.length > 0 && (
               <div className="flex flex-col lg:flex-row lg:items-center space-y-6 lg:space-y-0 lg:space-x-8 xl:space-x-12 max-w-5xl w-full">
-                <div className="w-full lg:w-64 xl:w-80 h-64 xl:h-80 flex-shrink-0 relative rounded-xl overflow-hidden mx-auto lg:mx-0">
+                <div className="w-full lg:w-64 xl:w-80 h-64 xl:h-80 flex-shrink-0 relative rounded-xl overflow-hidden">
                   {/* Loading skeleton overlay */}
                   {imageLoadingStates[allSlides[currentSlideIndex]?.id] && (
                     <div className="absolute inset-0 z-10 bg-gray-300 dark:bg-gray-600 animate-pulse">
