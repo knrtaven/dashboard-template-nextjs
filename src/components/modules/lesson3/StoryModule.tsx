@@ -248,18 +248,18 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
         {onBack && (
           <button
             onClick={onBack}
-            className="mb-3 sm:mb-4 md:mb-6 flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm md:text-base"
+            className="mb-3 sm:mb-4 md:mb-6 lg:mb-3 xl:mb-4 2xl:mb-6 flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm md:text-base"
           >
             <ArrowLeft size={20} className="md:w-6 md:h-6" />
             <span>Back to Module Selection</span>
           </button>
         )}
 
-        <div className="text-center mb-3 sm:mb-4 md:mb-6">
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <div className="text-center mb-3 sm:mb-4 md:mb-6 lg:mb-3 xl:mb-4 2xl:mb-6">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Mary&apos;s Story
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-base sm:text-lg md:text-lg lg:text-xl text-gray-600 dark:text-gray-300">
             A lesson in positive workplace culture
           </p>
           
@@ -274,10 +274,10 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden overflow-y-auto flex-1 flex flex-col min-h-0">
-          <div className="flex-1 flex items-center justify-center p-3 sm:p-4 md:p-6 lg:p-8 min-h-0">
+          <div className="flex-1 flex items-center justify-center p-3 sm:p-4 md:p-6 lg:p-4 xl:p-6 2xl:p-8 min-h-0">
             {allSlides.length > 0 && (
-              <div className="flex flex-col lg:flex-row lg:items-center space-y-3 sm:space-y-4 lg:space-y-0 lg:space-x-6 max-w-5xl w-full">
-                <div className="w-full lg:w-64 xl:w-80 h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72 flex-shrink-0 relative rounded-xl overflow-hidden">
+              <div className="flex flex-col lg:flex-row lg:items-center space-y-3 sm:space-y-4 lg:space-y-0 lg:space-x-3 xl:space-x-4 2xl:space-x-6 max-w-5xl w-full">
+                <div className="w-full lg:w-64 xl:w-80 h-40 sm:h-48 md:h-56 lg:h-52 xl:h-60 2xl:h-72 flex-shrink-0 relative rounded-xl overflow-hidden">
                   {/* Loading skeleton overlay */}
                   {imageLoadingStates[allSlides[currentSlideIndex]?.id] && (
                     <div className="absolute inset-0 z-10 bg-gray-300 dark:bg-gray-600 animate-pulse">
@@ -316,7 +316,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
                 
                 <div className="flex-1 flex items-center">
                   {allSlides[currentSlideIndex] && (
-                    <p className="text-gray-700 dark:text-gray-200 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
+                    <p className="text-gray-700 dark:text-gray-200 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl leading-relaxed lg:leading-normal xl:leading-relaxed">
                       {allSlides[currentSlideIndex].content}
                     </p>
                   )}
@@ -325,7 +325,7 @@ const StoryModule: React.FC<StoryModuleProps> = ({ onBack, onComplete }) => {
             )}
           </div>
 
-          <div className="border-t border-gray-200 dark:border-gray-600 p-3 sm:p-4 md:p-6 flex justify-end">
+          <div className="border-t border-gray-200 dark:border-gray-600 p-3 sm:p-4 md:p-6 lg:p-3 xl:p-4 2xl:p-6 flex justify-end">
             <Button
               onClick={handleNextSlide}
               variant="primary"
