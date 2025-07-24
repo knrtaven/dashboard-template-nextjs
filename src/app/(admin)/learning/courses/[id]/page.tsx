@@ -142,7 +142,7 @@ export default function CoursePage({ params }: PageProps) {
                   <div className="space-y-4">
                    
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600 dark:text-gray-400">Total Modules</span>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">Total Lessons</span>
                       <span className="text-sm font-medium text-gray-900 dark:text-white">
                         {courseContent.totalModules}
                       </span>
